@@ -1,51 +1,43 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language spanish-mexico
 \language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -55,7 +47,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -73,7 +65,96 @@ Marco Teórico
 \end_layout
 
 \begin_layout Subsection
-Botnet y Malware
+Botnets y Malware
+\end_layout
+
+\begin_layout Subsubsection
+Definición de Botnet
+\end_layout
+
+\begin_layout Standard
+Se define como Botnet al conjunto de dispositivos infectados por un bot
+ que conforman una red controlada por un nodo central, denominado BotMaster,
+ quien tiene la capacidad de comunicarse con cada bot y ordenar la ejecución
+ de órdenes específicas, tales como scans de las redes asociadas al host
+ infectado por el bot, ataques distribuidos de denegación de servicio (DDOS),
+ spamming, bitcoin mining, procesamiento distribuido orientado a desencriptación
+, entre otras.
+\end_layout
+
+\begin_layout Subsubsection
+Ciclo de vida
+\end_layout
+
+\begin_layout Standard
+Las Botnets en general siguen un conjunto de etapas a lo largo de su existencia.
+ Cada etapa ofrece un conjunto de alternativas para tratar de poder responder
+ ante la amenaza que representan.
+ Se pueden definir las siguientes etapas [Botnets: Lifecycle and Taxonomy]:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Distribución e infección: 
+\series default
+En general utilizan enfoques comunes vistos en otros tipos de malware.
+ En particular se ha advertido un incremento en el uso de las redes sociales
+ como método para llegar a la infección del host, a través del uso de ingeniería
+ social.
+ Otros métodos comunes de infección los componen el envío de mails con archivos
+ adjuntos comprometidos, la explotación de vulnerabilidades en alguna aplicación
+ corriendo en el host remoto, la propagación de malware a través de redes
+ de compartición de archivos P2P, etc.
+ Habiendo infectado, el bot buscará propagarse buscando vulnerabilidades
+ en otros hosts adyacentes al infectado.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Command & Control (C&C): 
+\series default
+Se denomina canal C&C al conducto al conducto de comunicación mediante el
+ cual el Bot Master envía órdenes al bot.
+ Si bien existen diferentes modelos y topologías (IRC, HTTP, P2P, etc),
+ éstos son invariantes entre los bots y hasta cierto punto ofrecen un comportami
+ento parecido entre distintas Botnets.
+ En esta etapa el bot establece el método de comunicación con el Master
+ y la comunicación propiamente dicha.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Ejecución de órdenes: 
+\series default
+Entre las órdenes más comunes se pueden encontrar: Ataques distribuidos
+ de denegación de servicio, spamming, distribución de malware, espionaje,
+ phising, 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Ofuscación y actualización
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang spanish
+Tipos
+\lang spanish-mexico
+ de Botnets
+\end_layout
+
+\begin_layout Subsubsection
+C&C Channel
+\end_layout
+
+\begin_layout Subsubsection
+Detection approaches
 \end_layout
 
 \begin_layout Subsection
@@ -82,10 +163,6 @@ Stratosphere Testing Framework (modelo de letras)
 
 \begin_layout Subsection
 Redes Neuronales Recurrentes (RNN)
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \end_body
