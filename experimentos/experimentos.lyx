@@ -76,6 +76,10 @@ Experimentos
 Material
 \end_layout
 
+\begin_layout Standard
+* Esta sección debería ir en Detección de comportamiento?
+\end_layout
+
 \begin_layout Subsubsection
 HARDWARE
 \end_layout
@@ -89,7 +93,11 @@ Intel i7 4770k @4Ghz
 \end_layout
 
 \begin_layout Itemize
-NVIDIA 680 GTX
+
+\lang spanish-mexico
+NVIDIA
+\lang english
+ 680 GTX
 \end_layout
 
 \begin_layout Subsubsection
@@ -120,146 +128,78 @@ Numpy
 CUDA 7.5
 \end_layout
 
-\begin_layout Subsubsection
-NEURAL NETWORK ARCHITECTURE
-\end_layout
-
-\begin_layout Itemize
-Capa 1 - LSTM (50 input, 128 hidden units, 0.25 Dropout) 
-\end_layout
-
-\begin_layout Itemize
-Capa 2 - Fully Connected Layer (128 inputs, 1 output, Sigmoid Activation)
- 
-\end_layout
-
-\begin_layout Subsubsection
-Conjunto de datos
+\begin_layout Subsection
+Datasets
 \end_layout
 
 \begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="4">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
+Los datasets utilizados en el presente trabajo corresponden a capturas de
+ tráfico realizadas por el Malware Capture Facility Project en la CTU University
+, República Checa, en 2011, y que son parte del denominado Dataset CTU-13.
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-Dataset
+Citar "An empirical comparison of botnet detection methods"
 \end_layout
 
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
-Ejemplos
+
 \end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Botnet
+\begin_layout Subsubsection
+Dataset 22
 \end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-% Botnet 
+\begin_layout Standard
+Corresponde a la captura identificada en el CTU-13 como CTU-MALWARE-CAPTURE-BOTN
+ET-42.
+ El malware fue identificado como Neris y el dispositivo infectado fue una
+ máquina virtual de Windows XP corriendo sobre VirtualBox.
 \end_layout
 
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dataset 22 TCP
+\begin_layout Standard
+La captura tuvo una duración de 6.15 horas, en las que se capturó la actividad
+ de la máquina virtual infectada junto con la actividad dentro del departamento
+ de investigacíon en la CTU.
+ La botnet utilizó un canal C&C basado en HTTP y las acciones realizadas
+ fueron:
 \end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2814
+\begin_layout Itemize
+Comunicarse por múltiples canales de C&C y después tratar de enviar SPAM.
 \end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2101
+\begin_layout Itemize
+Enviar SPAM.
 \end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-74,66%
+\begin_layout Itemize
+Realizar click-fraud utilizando un servicio de publicidad.
 \end_layout
 
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dataset 45 TCP
+\begin_layout Paragraph
+Composición
 \end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1795
+\begin_layout Standard
+El Dataset está compuesto por 2814 muestras, de las cuales 2101 corresponden
+ a tráfico etiquetado como Botnet (74,66%).
 \end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1678
+\begin_layout Paragraph
+Histograma de longitud de estados
 \end_layout
 
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-93,48%
+\begin_layout Standard
+A continuación se puede observar el gráfico correspondiente al histograma
+ de frecuencia en base a la cantidad de estados que componen cada muestra.
 \end_layout
 
-\end_inset
-</cell>
-</row>
-</lyxtabular>
+\begin_layout Standard
+\begin_inset Graphics
+	filename histo_dataset22_len.png
 
 \end_inset
 
@@ -267,12 +207,76 @@ Dataset 45 TCP
 \end_layout
 
 \begin_layout Standard
-Los datasets 22 y 45 provienen de la misma captura.
- 
+En el caso de tráfico de botnet se puede observar que la mayoría de las
+ muestras del dataset contienen entre 1 y 15 estados, con una alta predominancia
+ de muestras compuestas por entre 1 y 5 estados.
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Standard
+En el caso de tráfico normal también se ve que en su mayoría contienen entre
+ 1 y 15 estados y, en menor medida que en el caso de tráfico de botnet,
+ una predominancia de las muestras compuestas por entre 1 y 5 estados.
+\end_layout
+
+\begin_layout Standard
+Se observa una diferencia importante entre la cantidad de muestras etiquetadas
+ como Botnet y la cantidad de muestras etiquetadas como normal.
+\end_layout
+
+\begin_layout Paragraph
+Histograma de tipo de operación
+\end_layout
+
+\begin_layout Standard
+A continuación se puede observar el gráfico correspondiente al histograma
+ de frecuencia en base a la etiqueta que identifica la actividad realizada
+ en el flujo de red.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Estre gráfico hay que volver a armarlo sacando los flujos UDP.
+ En los experimentos sólo se ha evaluado TCP.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename histo_dataset22_labelsBotnet.png
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se puede observar, la mayoría de las muestras corresponden a flujos
+ de red que corresponden a intentos del bot para enviar SPAM y en menor
+ medida intentos de conexion y conexiones por HTTP.
+\end_layout
+
+\begin_layout Subsection
 Métricas
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Reescribir esta sección COMPLETA
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -501,12 +505,20 @@ Undersampling
 Oversampling
 \end_layout
 
+\begin_layout Subsubsection
+Técnicas de validación
+\end_layout
+
+\begin_layout Paragraph
+Stratified K-Fold Cross Validation
+\end_layout
+
 \begin_layout Subsection
-Experimento 1
+Experimentos
 \end_layout
 
 \begin_layout Subsubsection
-Experimento 1.1
+Experimento 1
 \end_layout
 
 \begin_layout Paragraph
@@ -514,17 +526,19 @@ Objetivo
 \end_layout
 
 \begin_layout Standard
-Evaluar el modelo de red al modificar el número de caracteres de entrada
- y la técnica de muestreo, utilizando 10-Fold Cross Validation.
- Utilizar los primeros 5, 10, 25 y 50 caracteres de cada ejemplo como entrada.
+Probar distintas técnicas de sampling utilizando no más de los 10 estados
+ iniciales de cada muestra.
 \end_layout
 
 \begin_layout Paragraph
-Datasets
+Descripción
 \end_layout
 
 \begin_layout Standard
-Se utilizaron los datasets 22 y 45 en conjunto.
+Para este experimento se utilizó el dataset 22 y se aplicó Stratified K-Fold
+ Cross Validation en cada corrida del algoritmo.
+ Se ejecutaron 50 corridas del algoritmo para incrementar la confianza en
+ los resultados obtenidos.
 \end_layout
 
 \begin_layout Paragraph
@@ -535,521 +549,16 @@ Resultados
 No Sampling
 \end_layout
 
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Caracteres
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Attack Detection Rate
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-False Alarm Rate
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.965 ∓ 0.009
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.158 ∓ 0.061
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.970 ∓ 0.012
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.165 ∓ 0.035
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-25
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.973 ∓ 0.009
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.151 ∓ 0.053
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-50
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.973 ∓ 0.007
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.155 ∓ 0.028
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subparagraph
 Oversampling
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Caracteres
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Attack Detection Rate
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-False Alarm Rate
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.924 ∓ 0.011
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.019 ∓ 0.009
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.942 ∓ 0.015
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.025 ∓ 0.009
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-25
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.934 ∓ 0.014
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.018 ∓ 0.009
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-50
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.945 ∓ 0.009
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.024 ∓ 0.008
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subparagraph
 Undersampling
 \end_layout
 
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Caracteres
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Attack Detection Rate
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-False Alarm Rate
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.930 ∓ 0.028
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.042 ∓ 0.030
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.933 ∓ 0.027
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.035 ∓ 0.023
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-25
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.924 ∓ 0.032
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.035 ∓ 0.022
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-50
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.939 ∓ 0.0396
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.032 ∓ 0.019
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../../exp1_1.png
-	scale 50
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../exp1_2.png
-	scale 50
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename ../../barplot_exp_1_2.png
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename ../../boxplot_exp_1_2.png
-
-\end_inset
-
-
+\begin_layout Paragraph
+Análisis
 \end_layout
 
 \begin_layout Standard
@@ -1059,10 +568,6 @@ Del análisis de los resultados se desprende que:
 \begin_layout Standard
 No utilizar un método de sampling incrementa considerablemente el ratio
  de falsas alarmas.
-\end_layout
-
-\begin_layout Standard
-No se presentan diferencias significativas al modificar el número de caracteres.
 \end_layout
 
 \begin_layout Standard
@@ -1079,7 +584,7 @@ Debido a la disminución en la cantidad de ejemplos a analizar por el algorimo,
 \end_layout
 
 \begin_layout Subsubsection
-Experimento 1.2
+Experimento 2
 \end_layout
 
 \begin_layout Paragraph
@@ -1087,551 +592,90 @@ Objetivo
 \end_layout
 
 \begin_layout Standard
-Medir la performance del algoritmo frente a un conjunto de datos nunca antes
- visto.
+Utilizando random undersampling como técnica de muestreo, probar la capacidad
+ de discriminación del algoritmo al variar el número de estados iniciales
+ a tener en cuenta en cada muestra.
 \end_layout
 
 \begin_layout Paragraph
-Datasets
+Descripción
 \end_layout
 
 \begin_layout Standard
-Dataset 22 para entrenamiento aplicando undersampling 50-50 con selección
- aleatoria de los ejemplos .
- Dataset 45 para testing.
+Para este experimento se utilizó el dataset 22 y se aplicó Stratified K-Fold
+ Cross Validation en cada corrida del algoritmo.
+ La cantidad de estados tenidos en cuenta para realizar la evaluacion fue
+ de 2, 4, 5, 6, 10, 25, 50, y 100 respectivamente.
+ Se ejecutaron 50 corridas del algoritmo para incrementar la confianza en
+ los resultados obtenidos.
 \end_layout
 
 \begin_layout Paragraph
 Resultados
 \end_layout
 
-\begin_layout Subparagraph
-5 caracteres de entrada
+\begin_layout Paragraph
+Análisis
 \end_layout
 
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Predicted Negative
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Predicted Positive
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-True Negative
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-115
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-True Positive
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-189
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1489
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-accuracy: 0.893
-\end_layout
-
-\begin_layout Standard
-recall: 0.887
-\end_layout
-
-\begin_layout Standard
-false alarm rate: 0.017
-\end_layout
-
-\begin_layout Subparagraph
-10 caracteres de entrada
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Predicted Negative
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Predicted Positive
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-True Negative
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-117
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-True Positive
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-183
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1495
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-accuracy: 0.896
-\end_layout
-
-\begin_layout Standard
-recall: 0.890
-\end_layout
-
-\begin_layout Standard
-false alarm rate: 0
-\end_layout
-
-\begin_layout Subparagraph
-25 caracteres de entrada
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Predicted Negative
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Predicted Positive
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-True Negative
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-115 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-2
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-True Positive
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-190
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1488 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-accuracy: 0.891
-\end_layout
-
-\begin_layout Standard
-recall: 0.886
-\end_layout
-
-\begin_layout Standard
-false alarm rate: 0.017
-\end_layout
-
-\begin_layout Subparagraph
-50 caracteres de entrada
-\end_layout
-
-\begin_layout Standard
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\uuline off
-\uwave off
-\noun off
-\color none
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Predicted Negative
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Predicted Positive
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-True Negative
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-116 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-True Positive
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-183
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1495
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-accuracy: 0.895
-\end_layout
-
-\begin_layout Standard
-recall: 0.890
-\end_layout
-
-\begin_layout Standard
-false alarm rate: 0.008
-\end_layout
-
-\begin_layout Subparagraph
-Análisis de los resultados
-\end_layout
-
-\begin_layout Standard
-No se presentan diferencias significativas al modificar el número de caracteres,
- lo cual es esperable y se condice con los resultados del experimento 1.1.
-\end_layout
-
-\begin_layout Standard
-El algoritmo es capaz de discriminar correctamente aproximadamente el 90%
- de los ejemplos, manteniendo un ratio de falsos positivos muy cercano a
- cero.
- El conjunto de ejemplos incorrectamente clasificados corresponden en casi
- su totalidad a tráfico de botnet clasificado como tráfico normal.
-\end_layout
-
-\begin_layout Subsection
-Experimento 2
-\end_layout
-
-\begin_layout Subsection
+\begin_layout Subsubsection
 Experimento 3
+\end_layout
+
+\begin_layout Paragraph
+Objetivo
+\end_layout
+
+\begin_layout Standard
+Evaluar la capacidad de generalización del algoritmo contra un dataset compuesto
+ por muestras nunca antes vistas provenientes de un mismo tipo de botnet.
+\end_layout
+
+\begin_layout Paragraph
+Descripción
+\end_layout
+
+\begin_layout Standard
+Para este experimento se utilizó el dataset 22 en el entrenamiento y se
+ evaluó contra el dataset 45.
+\end_layout
+
+\begin_layout Paragraph
+Resultados
+\end_layout
+
+\begin_layout Paragraph
+Análisis
+\end_layout
+
+\begin_layout Subsubsection
+Experimento 4
+\end_layout
+
+\begin_layout Paragraph
+Objetivo
+\end_layout
+
+\begin_layout Standard
+Evaluar la capacidad de generalización del algoritmo contra un dataset compuesto
+ por muestras nunca antes vistas provienientes de otro tipo de botnet.
+\end_layout
+
+\begin_layout Paragraph
+Descripción
+\end_layout
+
+\begin_layout Standard
+Para este experimento se utilizó el dataset 22 en el entrenamiento y se
+ evaluó contra el dataset 87.
+\end_layout
+
+\begin_layout Paragraph
+Resultados
+\end_layout
+
+\begin_layout Paragraph
+Análisis
 \end_layout
 
 \end_body
