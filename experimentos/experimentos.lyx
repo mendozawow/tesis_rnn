@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -28,15 +28,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -73,7 +82,7 @@ Plataforma de experimentación
 status open
 
 \begin_layout Plain Layout
-si, va aca
+si, va aca, pero no aporta nada.
 \end_layout
 
 \end_inset
@@ -264,8 +273,43 @@ Como se puede observar, la mayoría de las muestras corresponden a flujos
  medida intentos de conexion y conexiones por HTTP.
 \end_layout
 
-\begin_layout Subsection
-Métricas
+\begin_layout Subsubsection
+Dataset 2
+\end_layout
+
+\begin_layout Standard
+Corresponde a la captura identificada en el CTU-13 como CTU-MALWARE-CAPTURE-BOTN
+ET-43.
+ Así como en el dataset 1, el malware fue identificado como Neris y el dispositi
+vo infectado fue una máquina virtual de Windows XP corriendo sobre VirtualBox.
+\end_layout
+
+\begin_layout Paragraph
+Composición
+\end_layout
+
+\begin_layout Standard
+El Dataset está compuesto por 1795 muestras, de las cuales 1678 corresponden
+ a tráfico etiquetado como Botnet (93,48%).
+\end_layout
+
+\begin_layout Paragraph
+Histograma de longitud de estados
+\end_layout
+
+\begin_layout Standard
+A continuación se puede observar el gráfico correspondiente al histograma
+ de frecuencia en base a la cantidad de estados que componen cada muestra.
+\end_layout
+
+\begin_layout Paragraph
+Histograma de tipo de operación
+\end_layout
+
+\begin_layout Standard
+A continuación se puede observar el gráfico correspondiente al histograma
+ de frecuencia en base a la etiqueta que identifica la actividad realizada
+ en el flujo de red.
 \end_layout
 
 \begin_layout Standard
@@ -273,7 +317,8 @@ Métricas
 status open
 
 \begin_layout Plain Layout
-Reescribir esta sección COMPLETA
+Estre gráfico hay que volver a armarlo sacando los flujos UDP.
+ En los experimentos sólo se ha evaluado TCP.
 \end_layout
 
 \end_inset
@@ -281,25 +326,67 @@ Reescribir esta sección COMPLETA
 
 \end_layout
 
+\begin_layout Standard
+* Histograma de las etiquetas
+\end_layout
+
 \begin_layout Paragraph
-Confusion Matrix
+Composición
 \end_layout
 
 \begin_layout Standard
-Tabla con dos filas y dos columnas que reporta de la clasificación el número
- de falsos positivos (FP), falsos negativos (FN), verdaderos positivos (TP)
- y verdaderos negativos (TN).
- Las columnas hacen referencia a la clase predecida, mientras que las filas
- hacen referencia a la clase real.
+El Dataset está compuesto por 488 muestras, de las cuales 188 corresponden
+ a tráfico etiquetado como Botnet (38,52%).
+\end_layout
+
+\begin_layout Paragraph
+Histograma de longitud de estados
+\end_layout
+
+\begin_layout Standard
+A continuación se puede observar el gráfico correspondiente al histograma
+ de frecuencia en base a la cantidad de estados que componen cada muestra.
+\end_layout
+
+\begin_layout Paragraph
+Histograma de tipo de operación
+\end_layout
+
+\begin_layout Standard
+A continuación se puede observar el gráfico correspondiente al histograma
+ de frecuencia en base a la etiqueta que identifica la actividad realizada
+ en el flujo de red.
+\end_layout
+
+\begin_layout Subsubsection
+Dataset 3
+\end_layout
+
+\begin_layout Standard
+Corresponde a la captura identificada en el CTU-13 como CTU-MALWARE-CAPTURE-BOTN
+ET-47.
+ El malware fue identificado como DonBot y el dispositivo infectado fue
+ una máquina virtual de Windows XP corriendo sobre VirtualBox.
+\end_layout
+
+\begin_layout Subsection
+Métricas de rendimiento para modelado predictivo
+\end_layout
+
+\begin_layout Standard
+En problemas de clasificación, la fuente principal de métricas de rendimiento
+ es una matriz de clasificación (también conocida como matriz de confusión).
+ A continuación se puede ver el formato de la matriz de confusión para el
+ objeto actual de estudio:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
-<column alignment="center" valignment="top" width="0">
+<features rotate="0" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -314,7 +401,7 @@ Tabla con dos filas y dos columnas que reporta de la clasificación el número
 \begin_inset Text
 
 \begin_layout Plain Layout
-Predicted Negative
+Predicción Normal
 \end_layout
 
 \end_inset
@@ -323,7 +410,7 @@ Predicted Negative
 \begin_inset Text
 
 \begin_layout Plain Layout
-Predicted Positive
+Predicción Botnet
 \end_layout
 
 \end_inset
@@ -334,7 +421,7 @@ Predicted Positive
 \begin_inset Text
 
 \begin_layout Plain Layout
-True Negative
+Normal
 \end_layout
 
 \end_inset
@@ -363,7 +450,7 @@ FP
 \begin_inset Text
 
 \begin_layout Plain Layout
-True Positive
+Botnet
 \end_layout
 
 \end_inset
@@ -394,39 +481,36 @@ TP
 
 \end_layout
 
-\begin_layout Paragraph
-Precision/Attack Detection Rate(ADR)
+\begin_layout Standard
+Los valores a lo largo de la diagonal de izquierda a derecha representan
+ las clasificaciones correctas (Verdadero Negativo, True Negative o TN y
+ Verdadero Positivo, True Positive o TP), mientras que los valores fuera
+ de la diagonal representan los errores de clasificación.
+ El ratio de verdaderos positivos (para el caso de estudio, conocido como
+ Attack Detection Rate) es estimado dividiendo los positivos correctamente
+ clasificados por el total de positivos.
+ El ratio de falsos positivos (también conocido como el ratio de falsas
+ alarmas o False Alarm Rate, FAR) del clasificador es estimado dividiendo
+ los negativos incorrectamente clasificados por el total de negativos.
+ La precisión del clasificador es estimada dividiendo el total de muestras
+ correctamente clasificadas como positivas o negativas por el número total
+ de muestras.
 \end_layout
 
 \begin_layout Standard
-Ratio entre el número de ejemplos positivos correctamente clasificados frente
- al número total de ejemplos clasificados como positivos.
+Las ecuaciones de las métricas más frecuentemente utilizadas pueden ser
+ calculadas a partir de la matriz de clasificación, entre las cuales para
+ el objeto de estudio se destacan las siguientes:
+\end_layout
+
+\begin_layout Paragraph
+Attack Detection Rate (ADR)
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
 \frac{TP}{TP+FP}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Recall
-\end_layout
-
-\begin_layout Standard
-Ratio entre el número de ejemplos positivos correctamente clasificados frente
- al número total de ejemplos positivos.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\frac{TP}{TP+FN}
 \]
 
 \end_inset
@@ -454,26 +538,7 @@ Ratio de ejemplos incorrectamente clasificados como positivos.
 \end_layout
 
 \begin_layout Paragraph
-F-1 Score
-\end_layout
-
-\begin_layout Standard
-Media armónica entre precision y recall.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-2*\frac{precision*recall}{precision+recall}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Accuracy
+Exactitud
 \end_layout
 
 \begin_layout Standard
@@ -515,58 +580,100 @@ Técnicas de validación
 Stratified K-Fold Cross Validation
 \end_layout
 
+\begin_layout Standard
+A manera de minimizar el sesgo asociado con el muestreo aleatorio de las
+ muestras de entrenamiento y evaluación al comparar la precisión predictiva
+ de dos o más métodos, uno puede utilizar una metodología de muestreo llamada
+ K-Fold Cross Validation.
+ En K-Fold Cross Validation el dataset completo es dividido aleatoriamente
+ en K subsets mutuamente excluyentes de aproximadamente igual tamaño.
+ El modelo de clasificación es entrenado y evaluado K veces.
+ En cada vez es entrenado con todos menos uno de los folds y evaluado sobre
+ este fold.
+ El estimador de precisión del conjunto total de cross validation de un
+ modelo es calculado promediando las K medidas individuales de precisión.
+\end_layout
+
+\begin_layout Standard
+Debido a que la precisión de cross validation depende de la asignación aleatoria
+ de los casos individuales a K folds distintos, una práctica común es estratific
+ar los folds.
+ En stratified K-Fold Cross Validation, los folds son creados de tal manera
+ que contienen aproximadamente la misma proporción en cantidad de etiquetas/clas
+es que el dataset original.
+ Estudios empíricos han demostrado que stratified cross validation tiende
+ a generar resultados de comparación con menor sesgo y varianza en comparación
+ con cross validation regular.
+\end_layout
+
+\begin_layout Standard
+K-Fold cross validation es usualmente también llamado 10-fold cross validation,
+ debido a que K con el valor de 10 ha sido la práctica más común.
+ De hecho, estudios empíricos han mostrado que 10 parece ser el valor óptimo
+ de folds (en relación al tiempo que lleva completar el test versus el sesgo
+ y varianza asociados al proceso de validación).
+\end_layout
+
+\begin_layout Standard
+Se denota además que k-fold cross validation no requiere más datos en comparació
+n con el método tradicional de experimentación de división única (⅔ para
+ entrenamiento, ⅓ para evaluación).
+ De hecho, en estudios de comparación de métodos con datasets relativamente
+ pequeños, se recomienda el uso de métodos de experimentación del tipo k-fold.
+ El inconveniente que viene aparejado con el uso de esta técnica es que
+ se requiere realizar el entrenamiento y evaluación K veces, a diferencia
+ del método tradicional que sólo requiere una vez.
+\end_layout
+
+\begin_layout Standard
+* Advanced Data Mining Techniques - David L.
+ Olson,Dursun Delen 
+\end_layout
+
 \begin_layout Subsection
 Experimentos
 \end_layout
 
 \begin_layout Standard
-* Parrafo que introduzca los experimentos a realizar 
+Debido a la complejidad que presenta el entrenamiento de una RNN, se han
+ realizado una serie de experimentos para delimitar los parámetros frente
+ a los cuales se incrementa la probabilidad de obtener resultados concisos
+ en la evaluación del algoritmo.
+ Entre los pasos a seguir se determinó en primer lugar la necesidad de determina
+r en que medida utilizar o no una técnica de muestreo y qué técnica de muestreo
+ podía afectar el rendimiento del algoritmo.
+ La motivación para llevar a cabo estas pruebas vienen por el hecho de que
+ el rendimiento de las NN cae notoriamente al ser entrenadas con conjuntos
+ de datos desbalanceados, y es una situación que se presenta para el caso
+ de análisis de tráfico de Botnet, ya que del tráfico total de una red se
+ estima que solo un 1% podría ser tráfico malicioso.
+\end_layout
+
+\begin_layout Standard
+En segundo lugar, se busca conocer cuantos estados del modelo de comportamiento
+ de un flujo se deben analizar para poder realizar una predicción efectiva.
+\end_layout
+
+\begin_layout Standard
+Una vez delimitados estos parámetros se procede a realizar la evaluación
+ del algoritmo frente a muestras nunca antes vistas y de esta manera obtener
+ una medida de la capacidad de generalización del algoritmo.
 \end_layout
 
 \begin_layout Subsubsection
-Experimento 1
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Titulos que hagan referencia al objetivo del experimento
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Objetivo
+Análisis de técnicas de muestreo
 \end_layout
 
 \begin_layout Standard
-Probar distintas técnicas de sampling utilizando no más de los 10 estados
- iniciales de cada muestra.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-No utilizar titulos de subsecciones referenciales, sino escribir en cada
- parrafo el contenido esperado de cada uno
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Descripción
+El objetivo de este experimento fue probar distintas técnicas de sampling
+ utilizando no más de los 10 estados iniciales de cada muestra.
 \end_layout
 
 \begin_layout Standard
 Para este experimento se utilizó el dataset 22 y se aplicó Stratified K-Fold
  Cross Validation en cada corrida del algoritmo.
+ La decisión de utilizar no más de 10 estados iniciales se debió a que la
+ mayoría de las muestras del dataset tenían entre 1 y 10 estados.
  Se ejecutaron 50 corridas del algoritmo para incrementar la confianza en
  los resultados obtenidos.
 \end_layout
@@ -596,15 +703,23 @@ Del análisis de los resultados se desprende que:
 \end_layout
 
 \begin_layout Standard
-No utilizar un método de sampling incrementa considerablemente el ratio
+No utilizar un método de muestreo incrementa considerablemente el ratio
  de falsas alarmas.
 \end_layout
 
 \begin_layout Standard
-No utilizar un método de sampling presenta el mejor Attack Detection Rate,
- con un 97% de los ejemplos correctamente clasificados.
- Oversampling muestra un rate del 93,6%, seguido de Undersampling con un
- rate del 93,1%.
+No utilizar un método de muestreo presenta el mejor Attack Detection Rate,
+ con un 98% de los ejemplos correctamente clasificados.
+ Undersampling muestra un ratio del 96,8%, seguido de Oversampling con un
+ rate del 96%.
+ En cuanto al ratio de falsas alarmas, no utilizar un método de muestreo
+ muestra 3,7% de muestras normales clasificadas como Botnet, mientras que
+ undersampling se ubica en el 2% y oversampling presenta el menor valor
+ con un 1,1%.
+ A partir de estos datos podemos inferir que el hecho de que el dataset
+ se encuentre desbalanceado podría generar un incremento en la cantidad
+ de falsas alarmas, dado que en su mayoría las muestras pertenecen al conjunto
+ de Botnet.
 \end_layout
 
 \begin_layout Standard
@@ -614,27 +729,19 @@ Debido a la disminución en la cantidad de ejemplos a analizar por el algorimo,
 \end_layout
 
 \begin_layout Subsubsection
-Experimento 2
-\end_layout
-
-\begin_layout Paragraph
-Objetivo
+Análisis de cantidad de estados
 \end_layout
 
 \begin_layout Standard
-Utilizando random undersampling como técnica de muestreo, probar la capacidad
- de discriminación del algoritmo al variar el número de estados iniciales
- a tener en cuenta en cada muestra.
-\end_layout
-
-\begin_layout Paragraph
-Descripción
-\end_layout
-
-\begin_layout Standard
-Para este experimento se utilizó el dataset 22 y se aplicó Stratified K-Fold
+En este experimento se buscó encontrar la cantidad de estados que se requiere
+ analizar para poder clasificar con la mayor exactitud posible un modelo
+ de comportamiento.
+ Utilizando submuestreo aleatorio como técnica de muestreo, se buscó probar
+ la capacidad de discriminación del algoritmo al variar el número de estados
+ iniciales a tener en cuenta en cada muestra.
+ Para este experimento se utilizó el dataset 22 y se aplicó Stratified K-Fold
  Cross Validation en cada corrida del algoritmo.
- La cantidad de estados tenidos en cuenta para realizar la evaluacion fue
+ La cantidad de estados tenidos en cuenta para realizar la evaluación fue
  de 2, 4, 5, 6, 10, 25, 50, y 100 respectivamente.
  Se ejecutaron 50 corridas del algoritmo para incrementar la confianza en
  los resultados obtenidos.
@@ -648,8 +755,25 @@ Resultados
 Análisis
 \end_layout
 
+\begin_layout Standard
+A partir de los resultados obtenidos podemos deducir que con 10 estados
+ se puede obtener un ratio de detección de ataques óptimo en un 96,8% y
+ que se mantiene casi invariable al incrementar la cantidad de estados a
+ tomar en cuenta en cada muestra.
+ Una de las razones que podrían explicar este fenómeno esta dada por la
+ composición del dataset, puesto que como se puede ver en el histograma
+ de frecuencia por cantidad de estados, la mayoría de las muestras tienen
+ entre 2 y 10 caracteres, lo que genera que el peso que puedan tener muestras
+ de mayor longitud sea mucho menor.
+\end_layout
+
+\begin_layout Standard
+En cuanto al ratio de falsas alarmas, se puede apreciar que el porcentaje
+ se mantiene casi invariable, fluctuando entre 1,7% y 2,4%
+\end_layout
+
 \begin_layout Subsubsection
-Experimento 3
+Evaluación del algoritmo contra muestras desconocidas de misma botnet
 \end_layout
 
 \begin_layout Paragraph
@@ -693,7 +817,7 @@ Analizar si conviene agregar los gráficos de PCA/MCA para explicar las muestras
 \end_layout
 
 \begin_layout Subsubsection
-Experimento 4
+Evaluación del algoritmo contra muestras desconocidas de diferentes botnets
 \end_layout
 
 \begin_layout Paragraph
