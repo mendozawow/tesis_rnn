@@ -159,8 +159,22 @@ Citar "An empirical comparison of botnet detection methods"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Identificar donde poner la explicación de las etiquetas (Attempt, Established,
+ Unknown, etc)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
-Dataset 1
+Dataset A
 \end_layout
 
 \begin_layout Standard
@@ -200,7 +214,7 @@ El Dataset está compuesto por 2814 muestras, de las cuales 2101 corresponden
 \end_layout
 
 \begin_layout Paragraph
-Histograma de longitud de estados
+Histograma de frecuencia por longitud de estados
 \end_layout
 
 \begin_layout Standard
@@ -209,8 +223,35 @@ A continuación se puede observar el gráfico correspondiente al histograma
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Histograma de longitud de estados del dataset A para muestras Botnet.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dataset_A_len_botnet"
+
+\end_inset
+
+
 \begin_inset Graphics
-	filename histo_dataset22_len.png
+	filename dataset_22_len_botnet.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -218,15 +259,68 @@ A continuación se puede observar el gráfico correspondiente al histograma
 \end_layout
 
 \begin_layout Standard
-En el caso de tráfico de botnet se puede observar que la mayoría de las
- muestras del dataset contienen entre 1 y 15 estados, con una alta predominancia
- de muestras compuestas por entre 1 y 5 estados.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Histograma de longitud de estados del dataset A para muestras Normal.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dataset_A_len_normal"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dataset_22_len_normal.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-En el caso de tráfico normal también se ve que en su mayoría contienen entre
- 1 y 15 estados y, en menor medida que en el caso de tráfico de botnet,
- una predominancia de las muestras compuestas por entre 1 y 5 estados.
+En el caso de tráfico de botnet, como se puede observar en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dataset_A_len_botnet"
+
+\end_inset
+
+ la mayoría de las muestras del dataset contienen entre 1 y 15 estados,
+ con una alta predominancia de muestras compuestas por entre 1 y 5 estados.
+\end_layout
+
+\begin_layout Standard
+En el caso de tráfico normal, en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dataset_A_len_normal"
+
+\end_inset
+
+ también se ve que en su mayoría contienen entre 1 y 15 estados y, en menor
+ medida que en el caso de tráfico de botnet, una predominancia de las muestras
+ compuestas por entre 1 y 5 estados.
 \end_layout
 
 \begin_layout Standard
@@ -235,7 +329,7 @@ Se observa una diferencia importante entre la cantidad de muestras etiquetadas
 \end_layout
 
 \begin_layout Paragraph
-Histograma de tipo de operación
+Histograma de frecuencias por etiqueta
 \end_layout
 
 \begin_layout Standard
@@ -245,12 +339,29 @@ A continuación se puede observar el gráfico correspondiente al histograma
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-Estre gráfico hay que volver a armarlo sacando los flujos UDP.
- En los experimentos sólo se ha evaluado TCP.
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:histogram_a_labels_botnet"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dataset_22_labels_botnet.png
+	lyxscale 25
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -258,9 +369,9 @@ Estre gráfico hay que volver a armarlo sacando los flujos UDP.
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Graphics
-	filename histo_dataset22_labelsBotnet.png
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -269,12 +380,56 @@ Estre gráfico hay que volver a armarlo sacando los flujos UDP.
 
 \begin_layout Standard
 Como se puede observar, la mayoría de las muestras corresponden a flujos
- de red que corresponden a intentos del bot para enviar SPAM y en menor
- medida intentos de conexion y conexiones por HTTP.
+ de red que corresponden a intentos de conexión, de los cuales la mayoría
+ fueron identificados para enviar SPAM, mientras que un número menor representar
+on intentos de conexion a servidores HTTP.
+ El resto de mas muestras Botnet pertenecientes al dataset son en general
+ conexiones HTTP establecidas, de las cuales se destacan aquellas etiquetadas
+ como
+\emph on
+ CC.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_22_labels_normal.png
+	lyxscale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las muestras Normal son casi en su totalidad conexiones establecidas HTTP
+ y HTTPS.
 \end_layout
 
 \begin_layout Subsubsection
-Dataset 2
+Dataset B
 \end_layout
 
 \begin_layout Standard
@@ -294,86 +449,94 @@ El Dataset está compuesto por 1795 muestras, de las cuales 1678 corresponden
 \end_layout
 
 \begin_layout Paragraph
-Histograma de longitud de estados
+Histograma de frecuencia por longitud de estados
 \end_layout
 
 \begin_layout Standard
 A continuación se puede observar el gráfico correspondiente al histograma
- de frecuencia en base a la cantidad de estados que componen cada muestra.
+ de frecuencia en base a la cantidad de estados que componen cada muestr
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Histograma de longitud de estados del dataset B para muestras Botnet.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dataset_B_len_botnet"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dataset_45_len_botnet.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Histograma de longitud de estados del dataset A para muestras Normal.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dataset_B_len_normal"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dataset_45_len_normal.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
-Histograma de tipo de operación
+Histograma de frecuencias por etiqueta
 \end_layout
 
 \begin_layout Standard
 A continuación se puede observar el gráfico correspondiente al histograma
  de frecuencia en base a la etiqueta que identifica la actividad realizada
  en el flujo de red.
-\end_layout
-
-\begin_layout Standard
-SMTP-SPAM.Attempt 1021 
-\end_layout
-
-\begin_layout Standard
-Unknown-Attempt 439 
-\end_layout
-
-\begin_layout Standard
-HTTP- 90 
-\end_layout
-
-\begin_layout Standard
-HTTP-Advertising 45 
-\end_layout
-
-\begin_layout Standard
-Unknown- 36 
-\end_layout
-
-\begin_layout Standard
-HTTPS- 14 
-\end_layout
-
-\begin_layout Standard
-HTTP-Advertising.Google.Analytics 12 
-\end_layout
-
-\begin_layout Standard
-HTTP-CC 5 
-\end_layout
-
-\begin_layout Standard
-Unknown-Established.Data 4 
-\end_layout
-
-\begin_layout Standard
-HTTP-Attempt 3 
-\end_layout
-
-\begin_layout Standard
-SMTP-MSA.SPAM 2 
-\end_layout
-
-\begin_layout Standard
-SMTP-SPAM 2 
-\end_layout
-
-\begin_layout Standard
-HTTPS-Microsoft.Live.com 2 
-\end_layout
-
-\begin_layout Standard
-Unknown-SMTP.Proxy 1 
-\end_layout
-
-\begin_layout Standard
-HTTP-CC.Custom.Port 1 
-\end_layout
-
-\begin_layout Standard
-HTTP-Custom.Port.Binary.Download 1
 \end_layout
 
 \begin_layout Standard
@@ -388,6 +551,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename histo_dataset45_labelsBotnet.png
+	lyxscale 50
 
 \end_inset
 
@@ -402,34 +566,6 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-* Histograma de las etiquetas
-\end_layout
-
-\begin_layout Standard
-HTTP- 59 
-\end_layout
-
-\begin_layout Standard
-HTTPS-Google 26 
-\end_layout
-
-\begin_layout Standard
-HTTP-Google 25 
-\end_layout
-
-\begin_layout Standard
-HTTPS-UbuntuOne 4 
-\end_layout
-
-\begin_layout Standard
-Other-Jabber.XMPP.Google 1 
-\end_layout
-
-\begin_layout Standard
-HTTP-LastFM 1 HTTPS- 1
 \end_layout
 
 \begin_layout Standard
@@ -448,6 +584,104 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename histo_dataset45_labelsNormales.png
+	lyxscale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Dataset C
+\end_layout
+
+\begin_layout Standard
+Corresponde a la captura identificada en el CTU-13 como CTU-MALWARE-CAPTURE-BOTN
+ET-47.
+ El malware fue identificado como DonBot y el dispositivo infectado fue
+ una máquina virtual de Windows XP corriendo sobre VirtualBox.
+\end_layout
+
+\begin_layout Paragraph
+Composición
+\end_layout
+
+\begin_layout Standard
+El Dataset está compuesto por 488 muestras, de las cuales 188 corresponden
+ a tráfico etiquetado como Botnet (38,52%).
+\end_layout
+
+\begin_layout Paragraph
+Histograma de frecuencia por longitud de estados
+\end_layout
+
+\begin_layout Standard
+A continuación se puede observar el gráfico correspondiente al histograma
+ de frecuencia en base a la cantidad de estados que componen cada muestra.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename dataset_87_len_botnet.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename dataset_87_len_normal.png
 
 \end_inset
 
@@ -469,25 +703,7 @@ status open
 \end_layout
 
 \begin_layout Paragraph
-Composición
-\end_layout
-
-\begin_layout Standard
-El Dataset está compuesto por 488 muestras, de las cuales 188 corresponden
- a tráfico etiquetado como Botnet (38,52%).
-\end_layout
-
-\begin_layout Paragraph
-Histograma de longitud de estados
-\end_layout
-
-\begin_layout Standard
-A continuación se puede observar el gráfico correspondiente al histograma
- de frecuencia en base a la cantidad de estados que componen cada muestra.
-\end_layout
-
-\begin_layout Paragraph
-Histograma de tipo de operación
+Histograma de frecuencias por etiqueta
 \end_layout
 
 \begin_layout Standard
@@ -496,15 +712,119 @@ A continuación se puede observar el gráfico correspondiente al histograma
  en el flujo de red.
 \end_layout
 
-\begin_layout Subsubsection
-Dataset 3
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:histogram_c_labels_botnet"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_87_labels_botnet.png
+	lyxscale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Corresponde a la captura identificada en el CTU-13 como CTU-MALWARE-CAPTURE-BOTN
-ET-47.
- El malware fue identificado como DonBot y el dispositivo infectado fue
- una máquina virtual de Windows XP corriendo sobre VirtualBox.
+La figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:histogram_c_labels_botnet"
+
+\end_inset
+
+ revela que la mayoría de las muestras corresponden a 
+\emph on
+Unknown-Attempt
+\emph default
+.
+ Las muestras que han sido identificadas con 
+\emph on
+Attempt 
+\emph default
+hacen referencia a un intento de establecer una conexión TCP.
+ En el caso particular de 
+\emph on
+Unknown, 
+\emph default
+se hace referencia a un puerto que no es comunmente asociado a un servicio
+ estándar de aplicación.
+ Las muestras etiquetadas como 
+\emph on
+SMTP-Attempt_SPAM
+\emph default
+ también hacen referencia a este tipo de comportamiento y representan la
+ segunda etiqueta con más muestras dentro del dataset.
+ El resto de las muestras en su mayoría hacen referencia a conexiones establecid
+as a través de HTTP y HTTPS.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:histogram_c_labels_normal"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_87_labels_normal.png
+	lyxscale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se puede observar, las conexiones Normal en su mayoría son conexiones
+ establecidas por HTTP, con algunas muestras de Jabber y Matlab.
 \end_layout
 
 \begin_layout Subsection
@@ -695,19 +1015,74 @@ Porcentaje de ejemplos correctamente clasificados.
 \end_layout
 
 \begin_layout Subsubsection
-Técnicas de muestreo
+Técnicas de muestreo (DATA MINING FOR IMBALANCED DATASETS: AN OVERVIEW -
+ SPRINGER05)
 \end_layout
 
 \begin_layout Standard
-Sampling: (DATA MINING FOR IMBALANCED DATASETS: AN OVERVIEW - SPRINGER05)
+El problema del desbalanceo dado un conjunto de datos que conforman un dataset
+ se presenta cuando las categorías de clasificación no son aproximadamente
+ representadas de manera equitativa dentro del mismo.
+ Al aplicar machine learning para resolver problemas del 
+\begin_inset Quotes eld
+\end_inset
+
+mundo real
+\begin_inset Quotes erd
+\end_inset
+
+, muchas de las veces se encuentra con que estos problemas están caracterizados
+ por la presencia de desbalanceo en los datos.
 \end_layout
 
-\begin_layout Paragraph
-Undersampling
+\begin_layout Standard
+La pregunta que se presenta entonces es cual sería la distribución correcta
+ de los datos para alimentar un algoritmo de aprendizaje.
+ Del trabajo realizado por Weist y Provost (Weiss and Provost, 2003) se
+ llega a la conclusión de que la distribución natural de los datos no es
+ usualmente la mejor distribución para que un clasificador aprenda.
+ Por lo tanto, a la hora de entrenar un clasificador, se presenta con importante
+ relevancia el hecho de analizar la distribución de los datos para encontrar
+ el punto óptimo de rendimiento, sometiéndolo a su vez a un conjunto de
+ métricas invariantes a la presencia de desbalanceo.
 \end_layout
 
-\begin_layout Paragraph
-Oversampling
+\begin_layout Standard
+Al momento de enfrentar un problema de desbalanceo en los datos, nos encontramos
+ con la posibilidad de aplicar dos estrategias: Undersampling y Oversampling.
+ Con Undersampling lo que se busca es disminuir la cantidad de muestras
+ de la categoria con mayor elementos hasta equiparar con la categoría contraria.
+ Por otro lado, Oversampling busca incrementar la cantidad de muestras de
+ la categoría con menos elementos hasta equipar a la categoría superior.
+ 
+\end_layout
+
+\begin_layout Standard
+Entre los casos particulares de aplicación de cada estrategia, el estudio
+ se centrará en las dos técnicas más simples, denominados Random Undersampling
+ y Random Oversampling.
+ Con Random Undersampling se eliminan aleatoriamente muestras de la categoría
+ con mayor cantidad de muestras, mientras que con Random Oversampling se
+ repiten aleatoriamente muestras de la categoría con menor cantidad de muestras
+ hasta equiparar las cantidades.
+ Si bien estas dos estrategias representan la forma más simple de balancear
+ los datos, ambas presentan una serie de limitaciones.
+ En el caso de Random Undersampling, el método podría potencialmente remover
+ ciertas muestras importantes, mientras que el caso de Random oversampling
+ podría derivar en un problema de sobreajuste o 
+\emph on
+overfitting
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Como se puede observar, tanto la aplicación de técnicas de sampling como
+ la utilización de los datos con su distribución natural presentan ciertas
+ problemáticas que se deben abordar al momento de realizar el análisis.
+ El uso correcto de métricas de evaluación así como la utilización de técnicas
+ de validación de los experimentos representan entonces un tema crucial
+ a la hora de evaluar el rendimiento de un clasificador.
 \end_layout
 
 \begin_layout Subsubsection
@@ -808,7 +1183,7 @@ El objetivo de este experimento fue probar distintas técnicas de sampling
 \end_layout
 
 \begin_layout Standard
-Para este experimento se utilizó el dataset 22 y se aplicó Stratified K-Fold
+Para este experimento se utilizó el dataset A y se aplicó Stratified K-Fold
  Cross Validation en cada corrida del algoritmo.
  La decisión de utilizar no más de 10 estados iniciales se debió a que la
  mayoría de las muestras del dataset tenían entre 1 y 10 estados.
@@ -816,44 +1191,102 @@ Para este experimento se utilizó el dataset 22 y se aplicó Stratified K-Fold
  los resultados obtenidos.
 \end_layout
 
-\begin_layout Paragraph
-Resultados
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_1_barplot.png
+	lyxscale 50
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Subparagraph
-No Sampling
+\end_inset
+
+
 \end_layout
 
-\begin_layout Subparagraph
-Oversampling
+\end_inset
+
+
 \end_layout
 
-\begin_layout Subparagraph
+\begin_layout Standard
+En general, se puede ver que los valores de ADR observados no muestran una
+ variación significativa entre los 3 casos sometidos a análisis.
+ No utilizar un método de muestreo presenta el mejor ADR, con un 98% de
+ los ejemplos correctamente clasificados, mientras que Undersampling muestra
+ un ratio del 96,8%, seguido de Oversampling con un rate del 96%.
+ Como se puede ver, se presenta una pequeña pérdida de rendimiento al aplicar
+ alguna de las 2 técnicas de muestreo.
+ Para el caso de Undersampling, este comportamiento se puede explicar con
+ el hecho de que una cantidad mucho menor de conexiones maliciosas han sido
+ utilizadas para entrenar la red LSTM.
+ Por lo tanto, el modelo de detección obtenido puede no haber tenido la
+ oportunidad de aprender información potencialmente valiosa de estas conexiones
+ perdidas.
+ El caso de Oversampling es más complejo de explicar, dado que no ha habido
+ una pérdida de información por parte de la red.
+ Sin embargo, es probable que el incremento de muestras normales haya influido
+ en la capacidad de detección del modelo aprendido.
+ En otras palabras, se podría decir que el borde de decisión se ha movido
+ de tal manera que la red toma mucho mas problable que una muestra pertenezca
+ al conjunto normal dado el incremento de muestras normales que presentan
+ un comportamiento parecido.
+ En contrapartida, a su vez esto reduce el ADR al utilizar esta técnica,
+ puesto que las muestras de Botnet que se encontraban cercanas a este comportami
+ento ahora son consideradas erróneamente como normales, aunque se debe tener
+ en cuenta que algunos comportamientos, como por ejemplo una conexión HTTP
+ a Google para probar conectividad o la descarga de un archivo, actividades
+ que usualmente son realizadas por una Botnet, no difieren de comportamientos
+ que tendría una conexión normal.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Esto no me parece que es así en este caso.
+ Lo que está pasando es que al sacar muestras del entrenamiento, se están
+ moviendo los bordes de decisión.
+ Las conexiones removidas empujarían al conjunto de muestras de botnet de
+ conexiones establecidas mas cerca de los límites de las conexiones establecidas
+ normales.
+ Una forma de probarlo es remover muestras 
+\emph on
+Attempt
+\emph default
+ del conjunto para hacer un 
+\begin_inset Quotes eld
+\end_inset
+
 Undersampling
+\begin_inset Quotes erd
+\end_inset
+
+ y analizar los resultados obtenidos.
 \end_layout
 
-\begin_layout Paragraph
-Análisis
-\end_layout
+\end_inset
 
-\begin_layout Standard
-Del análisis de los resultados se desprende que:
-\end_layout
 
-\begin_layout Standard
-No utilizar un método de muestreo incrementa considerablemente el ratio
- de falsas alarmas.
 \end_layout
 
 \begin_layout Standard
-No utilizar un método de muestreo presenta el mejor Attack Detection Rate,
- con un 98% de los ejemplos correctamente clasificados.
- Undersampling muestra un ratio del 96,8%, seguido de Oversampling con un
- rate del 96%.
- En cuanto al ratio de falsas alarmas, no utilizar un método de muestreo
+En cuanto al ratio de falsas alarmas, no utilizar un método de muestreo
  muestra 3,7% de muestras normales clasificadas como Botnet, mientras que
  undersampling se ubica en el 2% y oversampling presenta el menor valor
  con un 1,1%.
+ Del análisis de los resultados se desprende que no utilizar un método de
+ muestreo incrementa considerablemente el ratio de falsas alarmas.
  A partir de estos datos podemos inferir que el hecho de que el dataset
  se encuentre desbalanceado podría generar un incremento en la cantidad
  de falsas alarmas, dado que en su mayoría las muestras pertenecen al conjunto
@@ -877,7 +1310,7 @@ En este experimento se buscó encontrar la cantidad de estados que se requiere
  Utilizando submuestreo aleatorio como técnica de muestreo, se buscó probar
  la capacidad de discriminación del algoritmo al variar el número de estados
  iniciales a tener en cuenta en cada muestra.
- Para este experimento se utilizó el dataset 22 y se aplicó Stratified K-Fold
+ Para este experimento se utilizó el dataset A y se aplicó Stratified K-Fold
  Cross Validation en cada corrida del algoritmo.
  La cantidad de estados tenidos en cuenta para realizar la evaluación fue
  de 2, 4, 5, 6, 10, 25, 50, y 100 respectivamente.
@@ -889,8 +1322,52 @@ En este experimento se buscó encontrar la cantidad de estados que se requiere
 Resultados
 \end_layout
 
-\begin_layout Paragraph
-Análisis
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename exp_2_img_1.png
+	lyxscale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como se puede observar, los mejores resultados de ADR se obtienen en el
+ caso de 25 estados.
+ Más allá de este punto se nota una caída en los valores.
+ Para el caso de FAR, el óptimo se encuentra al utilizar 50 estados.
+ Sin embargo, si tomamos en cuenta la desviación estándar, no hay una diferencia
+ significativa en términos de ADR y FAR cuando consideramos más de 10 estados,
+ a excepción del caso de 100 estados donde la performance de la red parece
+ decaer.
 \end_layout
 
 \begin_layout Standard
@@ -900,40 +1377,51 @@ A partir de los resultados obtenidos podemos deducir que con 10 estados
  tomar en cuenta en cada muestra.
  Una de las razones que podrían explicar este fenómeno esta dada por la
  composición del dataset, puesto que como se puede ver en el histograma
- de frecuencia por cantidad de estados, la mayoría de las muestras tienen
- entre 2 y 10 caracteres, lo que genera que el peso que puedan tener muestras
- de mayor longitud sea mucho menor.
+ de frecuencia por cantidad de estados para el dataset A 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dataset_A_len_botnet"
+
+\end_inset
+
+, la mayoría de las muestras tienen entre 2 y 10 caracteres, lo que genera
+ que el peso que puedan tener muestras de mayor longitud sea mucho menor.
+ Es interesante resaltar además que la mayoría de las conexiones con hasta
+ 6 estados han sido etiquetadas como Botnet.
 \end_layout
 
 \begin_layout Standard
-En cuanto al ratio de falsas alarmas, se puede apreciar que el porcentaje
- se mantiene casi invariable, fluctuando entre 1,7% y 2,4%
+En conclusión, dado que la diferencia en performance entre 10 y 25 estados
+ es despreciable (aproximadamente 0,5% ADR y 0,2% FAR), una longitud de
+ 10 estados sería de preferencia para asignar como óptimo, dada la reducción
+ en costo computacional que requiere el entrenamiento de la red LSTM, junto
+ con el hecho de que una menor cantidad de estados requeridos para tomar
+ una decisión favorece a la toma de decisiones en un escenario real, aportando
+ una mayor velocidad de respuesta.
 \end_layout
 
 \begin_layout Subsubsection
 Evaluación del algoritmo contra muestras desconocidas de misma botnet
 \end_layout
 
-\begin_layout Paragraph
-Objetivo
+\begin_layout Standard
+El experimento fue llevado a cabo con el objetivo de evaluar la capacidad
+ de generalización del algoritmo contra un dataset compuesto por muestras
+ nunca antes vistas provenientes de un mismo tipo de botnet.
+ Para este experimento se utilizó el dataset A en el entrenamiento aplicando
+ Random Undersampling y utilizando un máximo de 10 estados por muestra,
+ para posteriormente proceder a la evaluación contra el dataset B.
 \end_layout
 
 \begin_layout Standard
-Evaluar la capacidad de generalización del algoritmo contra un dataset compuesto
- por muestras nunca antes vistas provenientes de un mismo tipo de botnet.
-\end_layout
-
-\begin_layout Paragraph
-Descripción
+A modo de garantizar una evaluación justa e independiente, la red LSTM se
+ entrenó una única vez.
+ De esta manera la evaluación del dataset B se aproxima lo máximo posible
+ a un escenario real.
 \end_layout
 
 \begin_layout Standard
-Para este experimento se utilizó el dataset 22 en el entrenamiento y se
- evaluó contra el dataset 45.
-\end_layout
-
-\begin_layout Paragraph
-Resultados
+Del experimento se desprenden los siguientes resultados:
 \end_layout
 
 \begin_layout Standard
@@ -1051,8 +1539,16 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:exp_3_barplot"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename exp_3_img_1.png
+	lyxscale 50
 
 \end_inset
 
@@ -1067,46 +1563,37 @@ status open
 \end_inset
 
 
-\end_layout
-
-\begin_layout Paragraph
-Análisis
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Analizar si conviene agregar los gráficos de PCA/MCA para explicar las muestras
- incorrectamente clasificadas
+Se observa que la red LSTM ha sido capaz de detectar correctamente el 89,2%
+ de las muestras de Botnet presentes en el dataset B.
+ A su vez, se observa que sólo el 0,9% de las muestras Normal han sido incorrect
+amente clasificadas como Botnet.
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Paragraph
-Análisis de las muestras clasificadas
+\begin_layout Standard
+El gráfico a continuación muestra un análisis de la detección llevada a
+ cabo por la red, donde se visualiza en el eje horizontal las etiquetas
+ de tipo de tráfico de las muestras presentes en el dataset B.
+ Se ha identificado con color azul la proporción de muestras correctamente
+ clasificadas como Botnet, y se ha utilizado el color verde para identificar
+ aquellas muestras de Botnet que la red ha sido incapaz de detectar.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename exp_3_labels_analysis.png
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_3_labels_analysis_botnet_10.png
+	lyxscale 50
 
 \end_inset
 
@@ -1127,26 +1614,25 @@ status open
 Evaluación del algoritmo contra muestras desconocidas de diferentes botnets
 \end_layout
 
-\begin_layout Paragraph
-Objetivo
+\begin_layout Standard
+En este experimento el objetivo fue evaluar la capacidad de generalización
+ del algoritmo contra un dataset compuesto por muestras nunca antes vistas
+ provienientes de otro tipo de botnet.
+ Para este experimento se utilizó el dataset A en el entrenamiento aplicando
+ Random Undersampling y utilizando un máximo de 10 estados por muestra,
+ para posteriormente proceder a la evaluación contra el dataset C .
 \end_layout
 
 \begin_layout Standard
-Evaluar la capacidad de generalización del algoritmo contra un dataset compuesto
- por muestras nunca antes vistas provienientes de otro tipo de botnet.
-\end_layout
-
-\begin_layout Paragraph
-Descripción
+A modo de garantizar una evaluación justa e independiente, la red LSTM se
+ entrenó una única vez.
+ De esta manera la evaluación del dataset C se aproxima lo máximo posible
+ a un escenario real.
 \end_layout
 
 \begin_layout Standard
-Para este experimento se utilizó el dataset 22 en el entrenamiento y se
- evaluó contra el dataset 87.
-\end_layout
-
-\begin_layout Paragraph
-Resultados
+A continuación se pueden visualizar los resultados obtenidos después de
+ realizar el proceso de clasificación utilizando la red LSTM entrenada:
 \end_layout
 
 \begin_layout Standard
@@ -1257,15 +1743,12 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename exp_4_img_1.png
+	lyxscale 50
 
 \end_inset
 
@@ -1277,21 +1760,28 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
-\begin_layout Paragraph
-Análisis
+\begin_layout Standard
+El modelo muestra un 0.809 de ADR, mientras que para el caso de FAR el valor
+ observado es de 0.030.
+ Como se puede observar, el modelo ha sufrido una pérdida de rendimiento
+ en torno al 15% sobre el ADR y 1% sobre FAR respectivamente, a comparación
+ de la evaluación realizada en el experimento {cita al experimento 2}.
 \end_layout
 
-\begin_layout Paragraph
-Análisis de las muestras clasificadas
+\begin_layout Standard
+A continuación se puede observar dos gráfico de barras mostrando el análisis
+ de las muestras clasificadas por la red LSTM.
+ El primer gráfico hace referencia a todas las muestras de Botnet que se
+ encuentran presentes en el dataset C.
+ Se han representado con color azul la proporción de muestras correctamente
+ clasificadas como Botnet.
+ Así mismo, se representaron con color verde todas aquellas muestras donde
+ la red no fue capaz de clasificarlas como Botnet.
 \end_layout
 
 \begin_layout Standard
@@ -1301,15 +1791,116 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Análisis de etiquetas de las muestras clasificadas como Botnet sobre el
+ dataset C.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dataset_c_labels_analysis_botnet"
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename exp_4_labels_analysis_stacked.png
+	lyxscale 50
+
+\end_inset
+
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Así como se puede observar en el análisis de frecuencias de muestras por
+ etiquetas realizado sobre el dataset C 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:histogram_c_labels_botnet"
+
+\end_inset
+
+, la mayoría de las muestras del dataset C son del tipo 
+\emph on
+Unknown-Attempt
+\emph default
+.
+ Se puede observar una clara capacidad de la red LSTM para identificar este
+ tipo de comportamiento, siendo capaz de identificar como Botnet a aquellas
+ muestras identificadas como 
+\emph on
+SMTP-Attempt_SPAM
+\emph default
+ y 
+\emph on
+Other-Attempt
+\emph default
+.
+ Sin embargo, cabe resaltar que la red ha fallado en clasificar la mayoría
+ del tráfico 
+\emph on
+HTTP
+\emph default
+ y 
+\emph on
+HTTPS
+\emph default
+ proveniente de Botnet, así como el tráfico etiquetado como 
+\emph on
+Established
+\emph default
+, incluyendo las etiquetas de 
+\emph on
+SMTP-Established_SPAM
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+El segundo gráfico hace referencia a todas las muestras Normales que se
+ encuentran presentes en el dataset C.
+ La proporción de muestras correctamente clasificadas como Normal han sido
+ representadas con color azul, mientras que las muestras que no fue capaz
+ de clasificar como Normal han sido representadas con color verde.
+ Éstas últimas son de particular interés ya que representan a casos de detección
+ de falsos ataques.
+ Para la implementación en escenarios reales, es de extrema necesidad que
+ la proporción de estos casos sea lo mas cercana a cero.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+Análisis de etiquetas de las muestras clasificadas como Botnet sobre el
+ dataset C.
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dataset_c_labels_analysis_normal"
+
+\end_inset
+
+
 \begin_inset Graphics
-	filename exp_4_labels_analysis.png
+	filename exp_4_labels_analysis_normal_stacked.png
+	lyxscale 50
 
 \end_inset
 
@@ -1320,9 +1911,104 @@ status open
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se puede ver que la mayoría de las muestras en el dataset C corresponden
+ a conexiones 
+\emph on
+HTTP
+\emph default
+ y 
+\emph on
+HTTPS.
+ 
+\emph default
+Se observa que la red ha sido capaz de clasificar correctamente casi todo
+ el tráfico Normal, con excepción de algunas muestras 
+\emph on
+HTTP
+\emph default
+ y 
+\emph on
+HTTP-IM
+\emph default
+ (servicio de mensajería instantánea por HTTP).
+\end_layout
+
+\begin_layout Standard
+A partir de los resultados obtenidos surge la necesidad de llevar a cabo
+ un análisis más exhaustivo sobre los errores de clasificación cometidos
+ por la red a la hora de realizar la discriminación de las muestras.
+ Una de las conjeturas es que estas fallas de detección podrían estar relacionad
+as con la composición del dataset de entrenamiento (Dataset A).
+ Analizando su composición , se puede ver que en su mayoría las muestras
+ de Botnet disponibles han sido etiquetadas como 
+\emph on
+Spam-Attempt
+\emph default
+.
+ De aquí se evidencia el por qué la red LSTM clasifica correctamente éste
+ comportamiento.
+ Analizando las muestras normales del dataset, no se encuentra ninguna etiqueta
+ que haga referencia a este tipo de comportamiento, por lo que claramente
+ hay una diferenciación entre este tipo de muestras y aquellas muestras
+ que hacen referencia a conexiones establecidas.
+ En el caso de las muestras incorrectamente clasificadas, la falta de muestras
+ de entrenamiento con comportamiento malicioso de del tipo 
+\emph on
+Established
+\emph default
+, sobre todo las muestras etiquetadas como 
+\emph on
+CC, 
+\emph default
+podría ser uno de los factores por los cuales la red es incapaz de discriminarlo
+, ya que en contrapartida, se observa que las muestras etiquetadas como
+ Normal son en su mayoría conexiones 
+\emph on
+Established
+\emph default
+ 
+\emph on
+HTTP.
+\end_layout
+
+\begin_layout Standard
+Otra de las razones que podrían explicar por qué la red es incapaz de clasificar
+ correctamente algunas de las muestras de Botnet es el comportamiento inherente
+ de cada tipo de tráfico.
+ En el caso de las muestras que modelan un intento de conexión, hay una
+ clara distinción cuando se habla de comportamiento anómalo.
+ El hecho de que un sistema esté generando intentos de conexión de manera
+ masiva pone en evidencia una situación anormal.
+ En contrapartida, para el caso de las conexiones establecidas a través
+ del protocolo HTTP, no resulta simple hacer una división entre el tráfico
+ generado por Botnet y el tráfico Normal.
+ Esto pone en evidencia que para poder encontrar un comportamiento inherente
+ a las Botnet frente a este tipo de tráfico se podrían requerir grandes
+ volúmenes de datos que permitan encontrar un patrón en común a este comportamie
+nto.
+\end_layout
+
+\begin_layout Standard
+**Frente a los casos de 
+\emph on
+Attempt, 
+\emph default
+sería de particular interés realizar posteriores experimentos que analicen
+ si es posible determinar cuándo este comportamiento se debe a un error
+ de conexión y cuándo se debe a un intento agresivo de establecer conexiones,
+ comúnmente relacionado a algún intento malicioso.
+\begin_inset Note Note
+status open
 
 \begin_layout Plain Layout
-
+Experimentos a futuro que estaría bueno realizar.
 \end_layout
 
 \end_inset

@@ -1,0 +1,24 @@
+,Detected Botnets,Not detected Botnets
+Custom-Encryption,,1.0
+HTTP-Ad,,1.0
+HTTP-Binary_Download,,2.0
+HTTP-CC12_Not_Encrypted,,1.0
+HTTP-CC1_Not_Encrypted,,4.0
+HTTP-CC5_Plain_HTTP_Encrypted_Data,,1.0
+HTTP-Established,,5.0
+HTTP-Established_To_Microsoft,1.0,2.0
+HTTP-Established_microsoft_live,1.0,2.0
+HTTP-Google_Net_Established,1.0,2.0
+HTTP-HTTP_To_Microsoft,1.0,
+HTTPS-Attempt,,1.0
+HTTPS-Established,,7.0
+HTTPS-Established_To_Microsoft,4.0,1.0
+HTTPS-Established_to_microsoft,,1.0
+Other-Attempt,8.0,
+Other-Established,,1.0
+SMTP-Attempt_SPAM,8.0,
+SMTP-Established_SPAM,,4.0
+SMTP-NotEncryptedSMTP_PrivateProxy1,,1.0
+Unknown-Attempt,125.0,
+Unknown-CC7_Custom_Encryption,,1.0
+Unknown-Established_Custom_Encryption,,1.0
