@@ -72,70 +72,17 @@
 Experimentos
 \end_layout
 
-\begin_layout Subsection
-Plataforma de experimentación
-\end_layout
-
 \begin_layout Standard
-* Esta sección debería ir en Detección de comportamiento?
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-si, va aca, pero no aporta nada.
+Introducción al capitulo!
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsubsection
-HARDWARE
-\end_layout
-
-\begin_layout Itemize
-Intel i7 4770k @4Ghz
-\end_layout
-
-\begin_layout Itemize
-16GB RAM
-\end_layout
-
-\begin_layout Itemize
-
-\lang spanish-mexico
-NVIDIA
-\lang english
- 680 GTX
-\end_layout
-
-\begin_layout Subsubsection
-SOFTWARE
-\end_layout
-
-\begin_layout Itemize
-Python 2.7
-\end_layout
-
-\begin_layout Itemize
-Theano 0.7.0
-\end_layout
-
-\begin_layout Itemize
-Keras Framework 0.1.2
-\end_layout
-
-\begin_layout Itemize
-SkLearn
-\end_layout
-
-\begin_layout Itemize
-Numpy
-\end_layout
-
-\begin_layout Itemize
-CUDA 7.5
 \end_layout
 
 \begin_layout Subsection
@@ -160,17 +107,35 @@ Citar "An empirical comparison of botnet detection methods"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Identificar donde poner la explicación de las etiquetas (Attempt, Established,
- Unknown, etc)
+Cada dataset ha sido ensamblado a través de Stratosphere Testing Framework,
+ a través del cual se ha generado el modelo de comportamiento de cada netflow
+ así como el etiquetado de los mismos que identifica el tipo de muestra
+ (Normal o Botnet), el tipo de protocolo (TCP, UDP), el tipo de tráfico
+ (HTTP, HTTPS, SMTP, Unknown, etc) y el estado de la conexión (Attempt,
+ Established).
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+Es importante mencionar que para el objeto de estudio de este trabajo solo
+ se han considerado las conexiones basadas en el protocolo TCP.
+ En cuanto al estado de la conexión, cabe definir el significado de los
+ dos tipos de etiquetas.
+ Las muestras que han sido identificadas con 
+\emph on
+Attempt 
+\emph default
+hacen referencia a un intento de establecer una conexión TCP, mientras que
+ las muestras identificadas como 
+\emph on
+Established
+\emph default
+ hacen referencia a conexiones establecidas.
+ Respecto del tipo de tráfico, n el caso particular de 
+\emph on
+Unknown, 
+\emph default
+se hace referencia a que es una conexión realizada a un puerto que no es
+ comunmente asociado a un servicio estándar de aplicación.
 \end_layout
 
 \begin_layout Subsubsection
@@ -454,14 +419,14 @@ Histograma de frecuencia por longitud de estados
 
 \begin_layout Standard
 A continuación se puede observar el gráfico correspondiente al histograma
- de frecuencia en base a la cantidad de estados que componen cada muestr
+ de frecuencia en base a la cantidad de estados que componen cada muestra.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -497,7 +462,7 @@ name "fig:dataset_B_len_botnet"
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -543,7 +508,7 @@ A continuación se puede observar el gráfico correspondiente al histograma
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -575,10 +540,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -596,13 +557,22 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+En el caso de las muestras de Botnet, la mayoría de las muestras son del
+ tipo Attempt, con dos etiquetas muy predominantes catalogadas como SMTP-SPAM-At
+tempt y Unknown-Attempt.
+ El resto de las muestras de Botnet son conexiones HTTP, HTTPS y SMTP establecid
+as, con un volumen muy bajo de conexiones del tipo CC.
+\end_layout
+
+\begin_layout Standard
+Las conexiones etiquetadas como Normal en su mayoría son conexiones establecidas
+ por HTTP y HTTPS, con algunas conexiones de Jabber.
 \end_layout
 
 \begin_layout Subsubsection
@@ -623,6 +593,9 @@ Composición
 \begin_layout Standard
 El Dataset está compuesto por 488 muestras, de las cuales 188 corresponden
  a tráfico etiquetado como Botnet (38,52%).
+ De los 3 datasets utilizados en los experimentos, este es el único en el
+ cual la cantidad de muestras normales supera a la cantidad de muestras
+ de Botnet.
 \end_layout
 
 \begin_layout Paragraph
@@ -639,10 +612,6 @@ A continuación se puede observar el gráfico correspondiente al histograma
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -673,10 +642,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -690,10 +655,6 @@ status open
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -1585,7 +1546,7 @@ El gráfico a continuación muestra un análisis de la detección llevada a
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1608,6 +1569,55 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Un análisis más exhaustivo de la clasificación revela que la red LSTM es
+ capaz de discriminar los intentos de conexión de la botnet (etiquetas 
+\emph on
+Attempt
+\emph default
+) con gran efectividad.
+ Sin embargo frente a las muestras de conexiones establecidas sólo logra
+ clasificar como Botnet a una porción minúscula de las conexiones.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_3_labels_analysis_normal_10.png
+	lyxscale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el caso de las muestras normales, las únicas muestras incorrectamente
+ clasificadas son conexiones HTTP.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1823,6 +1833,15 @@ name "fig:dataset_c_labels_analysis_botnet"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
 Así como se puede observar en el análisis de frecuencias de muestras por
  etiquetas realizado sobre el dataset C 
 \begin_inset CommandInset ref
@@ -1941,9 +1960,20 @@ HTTP-IM
 \end_layout
 
 \begin_layout Standard
-A partir de los resultados obtenidos surge la necesidad de llevar a cabo
- un análisis más exhaustivo sobre los errores de clasificación cometidos
- por la red a la hora de realizar la discriminación de las muestras.
+A partir de los resultados obtenidos tanto en el experimento 3 como en el
+ experimento 4
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Poner referencia a los experimentos 3 y 4
+\end_layout
+
+\end_inset
+
+ surge la necesidad de llevar a cabo un análisis más exhaustivo sobre los
+ errores de clasificación cometidos por la red a la hora de realizar la
+ discriminación de las muestras.
  Una de las conjeturas es que estas fallas de detección podrían estar relacionad
 as con la composición del dataset de entrenamiento (Dataset A).
  Analizando su composición , se puede ver que en su mayoría las muestras
@@ -1995,25 +2025,71 @@ Otra de las razones que podrían explicar por qué la red es incapaz de clasific
 nto.
 \end_layout
 
+\begin_layout Subsection
+Conclusiones
+\end_layout
+
 \begin_layout Standard
-**Frente a los casos de 
+A lo largo de este capítulo se ha puesto a prueba la capacidad de una red
+ LSTM para detectar el comportamiento de una Botnet dentro de un conjunto
+ de conexiones bajo distintos escenarios.
+ Además se han analizado los inconvenientes que puede presentar el desbalanceo
+ al momento de entrenar un clasificador y se han presentado algunas técnicas
+ simples para superar dichos inconvenientes, así como métodos de evaluación
+ frente a tales escenarios.
+ Frente a los resultados obtenidos se ha llegado a la conclusión de que
+ si no se utiliza un método de muestreo, FAR podría llega a ser un problema
+ mayor.
+ Si bien la técnica de Oversampling pareciera generar mayor conveniencia
+ al momento de mejorar los resultados, se decidió utilizar Undersampling
+ apoyado en el hecho de que el objetivo de este trabajo es disminuir la
+ brecha entre la investigación de un método de detección y la aplicación
+ en escenarios de la vida real.
+ El mismo enfoque se utilizó para evaluar la cantidad óptima de estados
+ a analizar, donde un máximo de 10 estados fueron utilizados para entrenar
+ la red LSTM.
+ Frente a los escenarios de prueba, se analizaron dos casos puntualmente
+ diferentes.
+ En el primero, se evaluó el clasificador contra un dataset compuesto por
+ muestras de la misma Botnet, mientras que en el segundo caso se evaluó
+ un dataset cuya composición provenía de un tipo diferente de Botnet con
+ una distribución en la cantidad de muestras de uno y otro tipo totalmente
+ contrapuesta tanto al dataset de entrenamiento como al primer dataset evaluado,
+ presentando un tipo de desbalanceo que se aproxima en mayor medida a un
+ escenario real, donde la cantidad de conexiones de Botnet es considerablemente
+ menor a la cantidad de conexiones normales.
+ En general, tanto los resultados de ADR como los resultados de FAR han
+ sido promisorios.
+ Particular énfasis se hace sobre los valores de FAR, que se han mantenido
+ casi invariantes en los casos de prueba frente a los resultados obtenidos
+ por Cross Validation.
+ Los valores obtenidos de FAR obtienen una gran relevancia frente a la posibilid
+ad de acercarse a una evaluación de un escenario de la vida real.
+ Un análisis más exhaustivo deja en evidencia que la red LSTM es capaz de
+ detectar correctamente aquellos comportamientos de Botnet que son significativa
+mente diferentes al comportamiento normal, tal es el caso de los continuos
+ intentos de conexión identificados como 
+\emph on
+Attempt
+\emph default
+.
+ En contraposición, cuando esta diferencia no se puede apreciar a simple
+ vista, la clase que contiene la mayor cantidad de muestras de este comportamien
+to es tomada como la clase correcta por la red LSTM; tal es el caso de las
+ muestras del tipo HTTP.
+ Frente a los casos de 
 \emph on
 Attempt, 
 \emph default
-sería de particular interés realizar posteriores experimentos que analicen
+sería de particular interés realizar posteriores investigaciones que analicen
  si es posible determinar cuándo este comportamiento se debe a un error
  de conexión y cuándo se debe a un intento agresivo de establecer conexiones,
  comúnmente relacionado a algún intento malicioso.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Experimentos a futuro que estaría bueno realizar.
-\end_layout
-
-\end_inset
-
-
+ Por otro lado, se debería profundizar el estudio del comportamiento de
+ Botnet con conexiones establecidas, tomando como punto de partida que se
+ requiere una mayor cantidad de muestras de este tipo para poder obtener
+ conclusiones más definitivas respecto de la capacidad de clasificación
+ de la red frente a este tipo de tráfico.
 \end_layout
 
 \end_body
