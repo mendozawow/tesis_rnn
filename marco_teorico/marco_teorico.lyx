@@ -1,5 +1,5 @@
-#LyX 2.0 created this file. For more info see http://www.lyx.org/
-\lyxformat 413
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
-
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -29,15 +29,24 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_amsmath 1
-\use_esint 1
-\use_mhchem 1
-\use_mathdots 1
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
+\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -198,6 +207,268 @@ status open
 
 \begin_layout Plain Layout
 Hay que hablar del desbalanceo como uno de los problemas de las RNN
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Una red neuronal recurrente (RNN) es una clase de red neuronal artificial
+ donde la red contiene al menos una conexión de retroalimentación, de tal
+ manera que las activaciones pueden fluir alrededor en un bucle.
+ Esto le da a la red la capacidad para realizar procesamiento temporal y
+ a su vez la capacidad para aprender secuencias.
+ Esta es una diferencia fundamental al compararlas con redes neuronales
+ tradicionales (ej.
+ Perceptrón Multicapa), donde tanto las entradas como las salidas se encuentran
+ restringidas a vectores de tamaño fijo previamente definidos.
+ A continuación se presentan un conjunto de ejemplos para reforzar este
+ concepto:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rnn_examples.jpeg
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cada rectángulo es un vector y las flechas representan funciones.
+ Los vectores de entrada están representados con rojo, los vectores de salida
+ con azul y los vectores verdes mantienen el estado de la red.
+ De izquierda a derecha: (1) red tradicional sin RNN, desde una entrada
+ fija a una salida fija (ej.
+ clasificación de imágenes).(2) Salida secuencial (ej.
+ subtitulado de imágenes, toma una imagen como entrada y obtiene como salida
+ un conjunto de palabras que la describen).
+ (3) Secuencia de entrada (ej.
+ análisis de sentimientos, donde una frase es clasificada como una expresión
+ sentimental positiva o negativa).
+ (4) Secuencia de entrada y secuencia de salida (ej.
+ traducción automática, una RNN lee una frase en inglés y emite una frase
+ en francés).
+ (5) Secuencia sincronizada de entrada y salida (ej.
+ clasificación de video donde se quiere etiquetar cada cuadro de video).
+ Nótese que en cada caso no hay restricciones preestablecidas en la longitud
+ de las secuencias debido a que la transformación recurrente (verde) es
+ fija y puede ser aplicada tantas veces como se quiera.
+ Como ejemplos concretos de la aplicación exitosa de RNN en la resolución
+ de problemas que involucran el análisis de datos secuenciales podemos nombrar
+ los trabajos de Mikolov et.
+ al.
+ (2010) sobre modelado de lenguaje, reconocimiento y generación de escritura
+ a mano Graves (2013), traducción automática Sutskever et al.
+ (2014); Bahdanau et al.
+ (2014), reconocimiento de voz Graves et al.
+ (2013), análisis de video Donahue et al.
+ (2015) y subtitulado de imágenes Vinyals et al.
+ (2015); Karpathy & Fei-Fei (2015).
+\end_layout
+
+\begin_layout Standard
+Es importante resaltar que no existe gran diferencia entre una implementación
+ de RNN y una implementación de una red tradicional.
+ De hecho una RNN puede ser convertida a una red tradicional desplegándola
+ en el tiempo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename rnn/rnn_unfolding.png
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Esto significa que toda la teoría sobre el aprendizaje de la redes tradicionales
+ también aplica en cierto sentido a las RNN.
+ Se define entonces el algoritmo de backpropagation (BP) aplicado a RNN,
+ el cual se ha denominado como 
+\emph on
+backpropagation through time 
+\emph default
+(BPTT)
+\emph on
+.
+ 
+\emph default
+Puesto de manera simple, BPTT es una extensión del estándar BP que realiza
+ descenso de gradiente (más conocido como 
+\emph on
+gradient descent
+\emph default
+) en una red completamente desplegada.
+ Si la secuencia de una red empieza en un tiempo 
+\emph on
+
+\begin_inset Formula $t_{0}$
+\end_inset
+
+
+\emph default
+y termina en un tiempo 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+, el total de la función de costo o error es simplemente la suma en el tiempo
+ de la función de error estándar 
+\begin_inset Formula $E_{sse/ce}(t)$
+\end_inset
+
+ para cada paso de tiempo:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $E_{total}(t_{0,}t_{1})=\sum_{t=t_{0}}^{t_{1}}E_{sse/ce}(t)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Terminar de escribir la definición de BPTT.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Consideraciones prácticas de BPTT, incluyendo los problemas con exploding
+ gradient y banishing gradient
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Long Short Term Memory (LSTM) 
+\end_layout
+
+\begin_layout Paragraph
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+VISUALIZING AND UNDERSTANDING RECURRENT NETWORKS (Andrew Karpathy) arXiv:1506.020
+78v2 [cs.LG] 17 Nov 2015
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Long Short-Term Memory (LSTM) Hochreiter & Schmidhuber (1997) fue diseñada
+ con el objetivo de mitigar las dificultades al momento de entrenar RNNs
+ Bengio et al.
+ (1994).
+ En particular, se observó que la dinámica de backpropagation producía que
+ los gradientes desaparecieran o explotaran (fenómenos conocidos como 
+\emph on
+vanishing gradient
+\emph default
+ y 
+\emph on
+exploding gradient
+\emph default
+).
+ Se descubrió más tarde que la preocupación por la explosión del gradiente
+ podía ser mitigada si se restringía los gradientes a un valor maximo a
+ través de heurística Pascanu et al.
+ (2012).
+ Por otro lado, LSTM fue diseñada para mitigar el problema del desvanecimiento
+ del gradiente.
+ Además de un vector de estado oculto 
+\begin_inset Formula $h_{t}^{l}$
+\end_inset
+
+, LSTMs también mantienen un vector de memoria 
+\begin_inset Formula $c_{t}^{l}$
+\end_inset
+
+.
+ En cada paso de tiempo la red LSTM puede elegir leer, escribir, o reinicializar
+ la celda utilizando mecanismos explícitos de compuerta.
+ La forma precisa de la actualización es la siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+LSTM, definición, consideraciones de diseño, soluciones a los problemas
+ inherentes a las RNN
 \end_layout
 
 \end_inset
