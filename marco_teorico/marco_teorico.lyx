@@ -60,11 +60,12 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 1676965437 "Harpo Maxx" 
 \end_header
 
 \begin_body
@@ -160,10 +161,52 @@ Tipos
 
 \begin_layout Subsubsection
 C&C Channel
+\change_inserted 1676965437 1462907665
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 1676965437 1462907670
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1676965437 1462907689
+C&C channel, es lo comun a todas la botnets
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
 Detection approaches
+\change_inserted 1676965437 1462907569
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1676965437 1462907626
+Enfoques anteriores por mal uso o basados en firmas y los enfoques por comportam
+iento, entre los que se destaca STF
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -224,8 +267,13 @@ Una red neuronal recurrente (RNN) es una clase de red neuronal artificial
  tradicionales (ej.
  Perceptrón Multicapa), donde tanto las entradas como las salidas se encuentran
  restringidas a vectores de tamaño fijo previamente definidos.
- A continuación se presentan un conjunto de ejemplos para reforzar este
- concepto:
+ A continuación
+\change_inserted 1676965437 1462885861
+, en la Figura [referencia]
+\change_deleted 1676965437 1462885856
+ 
+\change_unchanged
+se presentan un conjunto de ejemplos para reforzar este concepto:
 \end_layout
 
 \begin_layout Standard
@@ -264,15 +312,52 @@ status open
 Cada rectángulo es un vector y las flechas representan funciones.
  Los vectores de entrada están representados con rojo, los vectores de salida
  con azul y los vectores verdes mantienen el estado de la red.
- De izquierda a derecha: (1) red tradicional sin RNN, desde una entrada
- fija a una salida fija (ej.
- clasificación de imágenes).(2) Salida secuencial (ej.
+ De izquierda a derecha: (1) 
+\change_inserted 1676965437 1462885895
+se observar una 
+\change_unchanged
+red tradicional sin 
+\change_inserted 1676965437 1462885900
+recurrencia
+\change_deleted 1676965437 1462885898
+RNN,
+\change_unchanged
+ desde una 
+\change_inserted 1676965437 1462885958
+unica 
+\change_unchanged
+entrada fija a una salida fija (
+\change_inserted 1676965437 1462885908
+E
+\change_deleted 1676965437 1462885907
+e
+\change_unchanged
+j.
+ clasificación de imágenes).
+
+\change_inserted 1676965437 1462885915
+ 
+\change_unchanged
+(2) 
+\change_deleted 1676965437 1462885982
+Salida secuencial
+\change_inserted 1676965437 1462885994
+Una secuencia en la salida de la red.
+
+\change_unchanged
+ (ej.
  subtitulado de imágenes, toma una imagen como entrada y obtiene como salida
  un conjunto de palabras que la describen).
  (3) Secuencia de entrada (ej.
  análisis de sentimientos, donde una frase es clasificada como una expresión
  sentimental positiva o negativa).
- (4) Secuencia de entrada y secuencia de salida (ej.
+ (4) 
+\change_inserted 1676965437 1462886002
+Una s
+\change_deleted 1676965437 1462886002
+S
+\change_unchanged
+ecuencia de entrada y secuencia de salida (ej.
  traducción automática, una RNN lee una frase en inglés y emite una frase
  en francés).
  (5) Secuencia sincronizada de entrada y salida (ej.
@@ -297,7 +382,14 @@ Cada rectángulo es un vector y las flechas representan funciones.
 Es importante resaltar que no existe gran diferencia entre una implementación
  de RNN y una implementación de una red tradicional.
  De hecho una RNN puede ser convertida a una red tradicional desplegándola
- en el tiempo:
+ en el tiempo
+\change_inserted 1676965437 1462886164
+.
+ Como se puede observar en la Figura [referencia]
+\change_deleted 1676965437 1462886151
+:
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -364,6 +456,10 @@ en una matriz bidimensional, donde
 \begin_inset Formula $x_{t}$
 \end_inset
 
+
+\change_inserted 1676965437 1462886824
+ 
+\change_unchanged
 y cada vector en la fila superior
 \begin_inset Formula $\left\{ h_{t}^{L}\right\} $
 \end_inset
@@ -434,7 +530,7 @@ Donde se asume que todo
 
 .
  La matriz de parámetros en cada capa tiene dimensiones 
-\begin_inset Formula $\left[n\,x\,2n\right]$
+\begin_inset Formula $\left[n\, x\,2n\right]$
 \end_inset
 
  y la función
@@ -457,8 +553,13 @@ Donde se asume que todo
 \begin_inset Formula $\left(h_{t-1}^{l}\right)$
 \end_inset
 
- son transformadas e interactuan a través de interacción aditiva antes de
- ser procesadas por 
+ son transformadas e 
+\change_deleted 1676965437 1462886213
+interactuan
+\change_inserted 1676965437 1462886213
+interactúan
+\change_unchanged
+ a través de interacción aditiva antes de ser procesadas por 
 \begin_inset Formula $\tanh$
 \end_inset
 
@@ -493,6 +594,24 @@ gradient descent
 \end_inset
 
  para cada intervalo de tiempo:
+\change_inserted 1676965437 1462906041
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1676965437 1462906045
+Explicar SSE y CE
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -539,14 +658,35 @@ Las derivadas parciales constituidas
 
 \begin_layout Standard
 Entre las consideraciones prácticas al momento de entrenar una RNN tradicional,
- existen un problema fundamental que atenta contra la capacidad de aprendizaje
- de la red: las RNN tradicionales tienen grandes dificultades a la hora
- de aprender dependencias a largo plazo (ej.
+ existe
+\change_deleted 1676965437 1462886261
+n
+\change_unchanged
+ un problema fundamental que atenta contra la capacidad de aprendizaje de
+ la red: las RNN tradicionales tienen grandes dificultades a la hora de
+ aprender dependencias a largo plazo (ej.
  dependencias entre intervalos que se encuentran a gran distancia, como
  podría ser en el análisis de secuencias de texto la incidencia que puede
  tener la primer palabra con la última de una misma secuencia).
- Este problema se presenta debido al desvanecimiento del gradiente, y por
- otro lado debido a la explosión del gradiente.
+ Este problema se presenta debido a
+\change_inserted 1676965437 1462887264
+ lo que se conoce como 
+\change_deleted 1676965437 1462887260
+l 
+\change_unchanged
+
+\series bold
+desvanecimiento
+\series default
+ 
+\series bold
+del gradiente
+\series default
+, y por otro lado debido a la 
+\series bold
+explosión del gradiente
+\series default
+.
 \end_layout
 
 \begin_layout Standard
@@ -579,7 +719,7 @@ nto del gradiente se vuelve realmente complejo, principalmente porque no
  cuales se destaca el modelo conocido como LSTM.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Subsubsection
 Long Short Term Memory (LSTM) 
 \end_layout
 
@@ -598,9 +738,16 @@ VISUALIZING AND UNDERSTANDING RECURRENT NETWORKS (Andrew Karpathy) arXiv:1506.02
 \end_layout
 
 \begin_layout Standard
-Long Short-Term Memory (LSTM) Hochreiter & Schmidhuber (1997) fue diseñada
- con el objetivo de mitigar las dificultades al momento de entrenar RNNs
- Bengio et al.
+
+\change_inserted 1676965437 1462890383
+La red 
+\change_unchanged
+Long Short-Term Memory (LSTM) 
+\change_inserted 1676965437 1462890393
+propuesta por 
+\change_unchanged
+Hochreiter & Schmidhuber (1997) fue diseñada con el objetivo de mitigar
+ las dificultades al momento de entrenar RNNs Bengio et al.
  (1994).
  En particular, se observó que la dinámica de backpropagation producía que
  los gradientes desaparecieran o explotaran (fenómenos conocidos como 
@@ -677,7 +824,7 @@ tangente hiperbólica
 \end_inset
 
 es una matriz 
-\begin_inset Formula $\left[4n\,x\,2n\right]$
+\begin_inset Formula $\left[4n\, x\,2n\right]$
 \end_inset
 
 .
