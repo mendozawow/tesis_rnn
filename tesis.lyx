@@ -59,7 +59,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -100,6 +100,16 @@ filename "experimentos/experimentos.lyx"
 \begin_inset CommandInset include
 LatexCommand include
 filename "conclusiones/conclusiones.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand include
+filename "bibliografia.lyx"
 
 \end_inset
 

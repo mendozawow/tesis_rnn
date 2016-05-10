@@ -59,12 +59,11 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author 1676965437 "Harpo Maxx" 
 \end_header
 
 \begin_body
@@ -74,16 +73,36 @@ Experimentos
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Introducción al capitulo!
+El presente capítulo aborda el objetivo de probar la factibilidad de entrenar
+ una RNN para discriminar tráfico de Botnet de tráfico normal.
+ Entre las tareas necesarias para la conclusión de dicho objetivo se plantearán
+ las problemáticas relacionadas con el entrenamiento de un algoritmo de
+ clasificacíon, tales como la distribución desigual de clases dentro de
+ los datos de entrenamiento, la metodología de evaluación a la que se someterán
+ los resultados para asegurar su veracidad y la capacidad de generalización
+ del algoritmo frente a muestras nunca antes vistas, tanto para el caso
+ de datos provenientes de un mismo tipo de Botnet como para el caso conexiones
+ provenientes de una Botnet diferente.
 \end_layout
 
-\end_inset
+\begin_layout Standard
+Para ilustrar mejor los resultados obtenidos y realizar un estudio más profundo
+ de los mismos se comenzará realizando un análisis de los datasets a ser
+ utilizados en el presente trabajo.
+ Se buscará no solo analizar la distribución de los datos frente a las dos
+ clases, Botnet y normal, sino también como se agrupan estos datos en función
+ de las etiquetas que identifican a cada conexión, así como la distribución
+ de las muestras en función de la longitud de estados con la que están compuesta
+s.
+ Creemos que este análisis es fundamental al momento de entender los resultados.
+\end_layout
 
-
+\begin_layout Standard
+Con la información provista del análisis de los datos, se continuará la
+ exploración de los experimentos, concluyendo con una crítica objetiva que
+ explique de manera objetiva los resultados obtenidos y brinde información
+ que permita trazar el camino a seguir en la búsqueda de un sistema de detección
+ de Botnets basado en comportamiento.
 \end_layout
 
 \begin_layout Subsection
@@ -108,23 +127,12 @@ Citar "An empirical comparison of botnet detection methods"
 \end_layout
 
 \begin_layout Standard
-Cada dataset ha sido 
-\change_deleted 1676965437 1462368295
-ensamblado
-\change_inserted 1676965437 1462368297
-procesado
-\change_unchanged
- a través de
-\change_inserted 1676965437 1462368321
- 
-\change_deleted 1676965437 1462368319
- 
-\change_unchanged
-Stratosphere Testing Framework, a través del cual se ha generado el modelo
- de comportamiento de cada netflow así como el etiquetado de los mismos
- que identifica el tipo de muestra (Normal o Botnet), el tipo de protocolo
- (TCP, UDP), el tipo de tráfico (HTTP, HTTPS, SMTP, Unknown, etc) y el estado
- de la conexión (Attempt, Established).
+Cada dataset ha sido procesado a través de Stratosphere Testing Framework,
+ a través del cual se ha generado el modelo de comportamiento de cada netflow
+ así como el etiquetado de los mismos que identifica el tipo de muestra
+ (Normal o Botnet), el tipo de protocolo (TCP, UDP), el tipo de tráfico
+ (HTTP, HTTPS, SMTP, Unknown, etc) y el estado de la conexión (Attempt,
+ Established).
 \end_layout
 
 \begin_layout Standard
@@ -155,14 +163,8 @@ Dataset A
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462368511
-Este dataset c
-\change_deleted 1676965437 1462368511
-C
-\change_unchanged
-orresponde a la captura identificada en el CTU-13 como CTU-MALWARE-CAPTURE-BOTNE
-T-42.
+Este dataset corresponde a la captura identificada en el CTU-13 como CTU-MALWARE
+-CAPTURE-BOTNET-42.
  El malware fue identificado como Neris y el dispositivo infectado fue una
  máquina virtual de Windows XP corriendo sobre VirtualBox.
 \end_layout
@@ -187,53 +189,15 @@ Enviar SPAM.
 Realizar click-fraud utilizando un servicio de publicidad.
 \end_layout
 
-\begin_layout Paragraph
-
-\change_deleted 1676965437 1462368419
-Composición
-\change_unchanged
-
-\end_layout
-
 \begin_layout Standard
 El Dataset está compuesto por 2814 muestras, de las cuales 2101 corresponden
- a tráfico etiquetado como Botnet
-\change_inserted 1676965437 1462368387
-.
- Es decir que un
-\change_unchanged
- 
-\change_deleted 1676965437 1462368389
-(
-\change_unchanged
-74,66%
-\change_deleted 1676965437 1462368393
-)
-\change_inserted 1676965437 1462368400
- de las muestras corresponden a trafico malicioso.
-\change_deleted 1676965437 1462368393
-.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Paragraph
-
-\change_deleted 1676965437 1462368422
-Histograma de frecuencia por longitud de estados
-\change_unchanged
-
+ a tráfico etiquetado como Botnet.
+ Es decir que un 74,66% de las muestras corresponden a trafico malicioso.
 \end_layout
 
 \begin_layout Standard
 A continuación se puede observar el gráfico correspondiente al histograma
- de frecuencia en base 
-\change_deleted 1676965437 1462368449
-a la cantidad 
-\change_inserted 1676965437 1462368454
-al numero 
-\change_unchanged
-de estados que componen cada muestra.
+ de frecuencia en base al número de estados que componen cada muestra.
 \end_layout
 
 \begin_layout Standard
@@ -303,23 +267,13 @@ name "fig:dataset_A_len_normal"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 1676965437 1462369933
-En 
-\change_inserted 1676965437 1462369936
-Para 
-\change_unchanged
-el caso de tráfico de botnet, como se puede observar en la figura 
+Para el caso de tráfico de botnet, como se puede observar en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:dataset_A_len_botnet"
@@ -331,13 +285,7 @@ reference "fig:dataset_A_len_botnet"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462369954
-Por otro lado, e
-\change_deleted 1676965437 1462369954
-E
-\change_unchanged
-n el caso de tráfico normal, en la figura 
+Por otro lado, en el caso de tráfico normal, en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:dataset_A_len_normal"
@@ -350,27 +298,11 @@ reference "fig:dataset_A_len_normal"
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462370001
-Finalmente, s
-\change_deleted 1676965437 1462370001
-S
-\change_unchanged
-e observa una diferencia importante entre la cantidad de muestras etiquetadas
- como Botnet y la cantidad de muestras etiquetadas como normal.
-\end_layout
-
-\begin_layout Paragraph
-
-\change_deleted 1676965437 1462370157
-Histograma de frecuencias por etiqueta
-\change_unchanged
-
+Finalmente, se observa una diferencia importante entre la cantidad de muestras
+ etiquetadas como Botnet y la cantidad de muestras etiquetadas como normal.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462370293
 En la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -378,18 +310,9 @@ reference "fig:histogram_c_labels_botnet"
 
 \end_inset
 
-, presetnada a continuacion
-\change_deleted 1676965437 1462370296
-A continuación
-\change_unchanged
- se puede observar 
-\change_deleted 1676965437 1462370302
-el gráfico correspondiente al 
-\change_inserted 1676965437 1462370304
-el 
-\change_unchanged
-histograma de frecuencia en base a la etiqueta que identifica la actividad
- realizada en el flujo de red.
+, presetnada a continuacion se puede observar el histograma de frecuencia
+ en base a la etiqueta que identifica la actividad realizada en el flujo
+ de red.
 \end_layout
 
 \begin_layout Standard
@@ -423,36 +346,20 @@ name "fig:histogram_a_labels_botnet"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Como se puede observar,
-\change_inserted 1676965437 1462370359
- en el caso de las muestras identificadas como Botnet,
-\change_unchanged
+Como se puede observar, en el caso de las muestras identificadas como Botnet,
  la mayoría de las muestras corresponden a flujos de red que corresponden
  a intentos de conexión, de los cuales la mayoría fueron identificados para
  enviar SPAM, mientras que un número menor representaron intentos de conexion
  a servidores HTTP.
- El resto de 
-\change_deleted 1676965437 1462370381
-mas
-\change_inserted 1676965437 1462370381
-las
-\change_unchanged
- muestras 
-\change_inserted 1676965437 1462370389
-identificadas como 
-\change_unchanged
-Botnet pertenecientes al dataset son en general conexiones HTTP establecidas,
- de las cuales se destacan aquellas etiquetadas como
+ El resto de las muestras identificadas como Botnet pertenecientes al dataset
+ son en general conexiones HTTP establecidas, de las cuales se destacan
+ aquellas etiquetadas como
 \emph on
  CC.
 \end_layout
@@ -481,32 +388,16 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462370746
-Para el caso de l
-\change_deleted 1676965437 1462370747
-L
-\change_unchanged
-as muestras Normal
-\change_inserted 1676965437 1462370805
-, el histograma de frecuencia por etiquetas se muestra en la Figura
-\change_unchanged
- 
-\change_inserted 1676965437 1462370927
-[REF].
- En dicha figura, se puede observar que 
-\change_unchanged
-son casi en su totalidad conexiones establecidas HTTP y HTTPS.
+Para el caso de las muestras Normal, el histograma de frecuencia por etiquetas
+ se muestra en la Figura [REF].
+ En dicha figura, se puede observar que son casi en su totalidad conexiones
+ establecidas HTTP y HTTPS.
 \end_layout
 
 \begin_layout Subsubsection
@@ -514,70 +405,17 @@ Dataset B
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462370942
-El dataset B c
-\change_deleted 1676965437 1462370942
-C
-\change_unchanged
-orresponde a la captura identificada 
-\change_inserted 1676965437 1462371153
-dentro del conjunto
-\change_deleted 1676965437 1462371131
-en el 
-\change_unchanged
-CTU-13 como CTU-MALWARE-CAPTURE-BOTNET-43.
- Así como en el dataset 
-\change_deleted 1676965437 1462370608
-1
-\change_inserted 1676965437 1462370608
-A
-\change_unchanged
-, el malware fue identificado como Neris y el dispositivo infectado fue
- una máquina virtual de Windows XP corriendo sobre VirtualBox.
-\end_layout
-
-\begin_layout Paragraph
-
-\change_deleted 1676965437 1462371163
-Composición
-\change_unchanged
-
+El dataset B corresponde a la captura identificada dentro del conjunto CTU-13
+ como CTU-MALWARE-CAPTURE-BOTNET-43.
+ Así como en el dataset A, el malware fue identificado como Neris y el dispositi
+vo infectado fue una máquina virtual de Windows XP corriendo sobre VirtualBox.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462371171
-En este caso, e
-\change_deleted 1676965437 1462371171
-E
-\change_unchanged
-l Dataset está compuesto por 1795 muestras, de las cuales 1678 corresponden
- a tráfico etiquetado como Botnet
-\change_inserted 1676965437 1462371193
-.
- Es decir, que las muestras etiquetadas como botnet representan el
-\change_unchanged
- 
-\change_deleted 1676965437 1462371194
-(
-\change_unchanged
-93,48%
-\change_deleted 1676965437 1462371196
-).
-
-\change_inserted 1676965437 1462371201
+En este caso, el Dataset está compuesto por 1795 muestras, de las cuales
+ 1678 corresponden a tráfico etiquetado como Botnet.
+ Es decir, que las muestras etiquetadas como botnet representan el 93,48%
  de los datos.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Paragraph
-
-\change_deleted 1676965437 1462371289
-Histograma de frecuencia por longitud de estados
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -655,45 +493,20 @@ name "fig:dataset_B_len_normal"
 \end_inset
 
 
-\change_inserted 1676965437 1462371313
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462371476
 De manera similar a lo observado en el dataset A, las muestras con un numero
  de estados entre 1 5 son las de mayor presentation en el dataset.
  Esto ultimo, se puede observar no solo para el caso de muestras etiquetadas
  como Botnets [Figura], sino tambien en aquellas etiquetadas como Normal.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Paragraph
-
-\change_deleted 1676965437 1462371480
-Histograma de frecuencias por etiqueta
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462371504
-Por ultimo, en la Figura [REF}, 
-\change_deleted 1676965437 1462371508
-A continuación se puede observar el
-\change_inserted 1676965437 1462371510
-se presenta el
-\change_unchanged
- gráfico correspondiente al histograma de frecuencia en base a la etiqueta
- que identifica la actividad realizada en el flujo de red.
-
-\change_inserted 1676965437 1462371378
+Por ultimo, en la Figura [REF}, se presenta el gráfico correspondiente al
+ histograma de frecuencia en base a la etiqueta que identifica la actividad
+ realizada en el flujo de red.
  
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -772,98 +585,26 @@ Dataset C
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462371559
-El Dataset C, c
-\change_deleted 1676965437 1462371559
-C
-\change_unchanged
-orresponde a la captura identificada
-\change_deleted 1676965437 1462371564
- en el
-\change_inserted 1676965437 1462371569
- dentro del conjunto
-\change_unchanged
+El Dataset C, corresponde a la captura identificada dentro del conjunto
  CTU-13 como CTU-MALWARE-CAPTURE-BOTNET-47.
  El malware fue identificado como DonBot y el dispositivo infectado fue
  una máquina virtual de Windows XP corriendo sobre VirtualBox.
 \end_layout
 
-\begin_layout Paragraph
-
-\change_deleted 1676965437 1462371573
-Composición
-\change_unchanged
-
-\end_layout
-
 \begin_layout Standard
 El Dataset está compuesto por 488 muestras, de las cuales 188 corresponden
- a tráfico etiquetado como Botnet
-\change_inserted 1676965437 1462371877
-.
+ a tráfico etiquetado como Botnet.
  Es decir que para este dataset las muestran etiquetadas como Botnet represetan
- el
-\change_unchanged
- 
-\change_deleted 1676965437 1462371874
-(
-\change_unchanged
-38,52%
-\change_deleted 1676965437 1462371880
-)
-\change_unchanged
-.
- 
-\change_inserted 1676965437 1462372158
-Es importante Destacar que, d
-\change_deleted 1676965437 1462372158
-D
-\change_unchanged
-e los 3 datasets utilizados en los experimentos, este es el único en el
- cual la cantidad de muestras normales supera a la cantidad de muestras
- de Botnet.
-\end_layout
-
-\begin_layout Paragraph
-
-\change_deleted 1676965437 1462372176
-Histograma de frecuencia por longitud de estados
-\change_unchanged
-
+ el 38,52%.
+ Es importante Destacar que, de los 3 datasets utilizados en los experimentos,
+ este es el único en el cual la cantidad de muestras normales supera a la
+ cantidad de muestras de Botnet.
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 1676965437 1462372562
-A continuación
-\change_inserted 1676965437 1462372574
-En las Figuras [Ref] y [Ref]
-\change_unchanged
- se puede observar 
-\change_deleted 1676965437 1462372578
-el
-\change_inserted 1676965437 1462372578
-los
-\change_unchanged
- gráfico
-\change_inserted 1676965437 1462372581
-s
-\change_unchanged
- correspondiente
-\change_inserted 1676965437 1462372585
-s
-\change_unchanged
- a
-\change_inserted 1676965437 1462372586
- 
-\change_unchanged
-l
-\change_inserted 1676965437 1462372588
-s
-\change_unchanged
- histograma de frecuencia en base a la cantidad de estados que componen
- cada muestra.
+A continuación en las Figuras [Ref] y [Ref] se puede observar los gráficos
+ correspondientes a los histograma de frecuencia en base a la cantidad de
+ estados que componen cada muestra.
 \end_layout
 
 \begin_layout Standard
@@ -920,42 +661,12 @@ status collapsed
 \end_inset
 
 
-\change_inserted 1676965437 1462372651
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462372657
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 1676965437 1462372673
-Aca habria que poner algo para explicar los graficos...
- como se ha hecho en todos los otros datasets
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Paragraph
-
-\change_deleted 1676965437 1462372200
-Histograma de frecuencias por etiqueta
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-A continuación se puede observar el gráfico correspondiente al histograma
+De la misma manera que en los datasets anteriores, existe una clara predominanci
+a de muestras compuestas por solo 1 estado.
+ Paralelamente se puede observar el gráfico correspondiente al histograma
  de frecuencia en base a la etiqueta que identifica la actividad realizada
  en el flujo de red.
 \end_layout
@@ -1061,44 +772,15 @@ name "fig:histogram_c_labels_normal"
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462372271
-Por otro lado, 
-\change_deleted 1676965437 1462372276
-Como se puede observar
-\change_inserted 1676965437 1462372280
-para el caso de 
-\change_deleted 1676965437 1462372283
-, 
-\change_unchanged
-las conexiones 
-\change_inserted 1676965437 1462372292
-etiquedatas como 
-\change_unchanged
-Normal
-\change_inserted 1676965437 1462372297
-, se puede observar que
-\change_unchanged
- en su mayoría son conexiones establecidas por HTTP, con algunas muestras
- de 
-\change_inserted 1676965437 1462372307
-connexiones a servicios como 
-\change_unchanged
-Jabber y Matlab
-\change_inserted 1676965437 1462372312
- server
-\change_unchanged
-.
+Por otro lado, para el caso de las conexiones etiquedatas como Normal, se
+ puede observar que en su mayoría son conexiones establecidas por HTTP,
+ con algunas muestras de connexiones a servicios como Jabber y Matlab server.
 \end_layout
 
 \begin_layout Subsection
@@ -1108,14 +790,8 @@ Métricas de rendimiento para modelado predictivo
 \begin_layout Standard
 En problemas de clasificación, la fuente principal de métricas de rendimiento
  es una matriz de clasificación (también conocida como matriz de confusión).
- 
-\change_deleted 1676965437 1462372707
-A continuación
-\change_inserted 1676965437 1462372713
-En la Tabla [ref]
-\change_unchanged
- se puede ver el formato de la matriz de confusión para el objeto actual
- de estudio:
+ En la Tabla [ref] se puede ver el formato de la matriz de confusión para
+ el objeto actual de estudio:
 \end_layout
 
 \begin_layout Standard
@@ -1300,20 +976,12 @@ Técnicas de muestreo (DATA MINING FOR IMBALANCED DATASETS: AN OVERVIEW -
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462372895
 Como se desprende de las secciones anteriores, los 3 conjuntos de datos
  utilizados presentan un desbalanceo en las clases.
- 
-\change_unchanged
-El problema del desbalanceo dado un conjunto de datos que conforman un dataset
- se presenta cuando las categorías de clasificación no son aproximadamente
- representadas de manera equitativa dentro del mismo.
- Al aplicar 
-\change_inserted 1676965437 1462372921
-algoritmos de 
-\change_unchanged
-machine learning para resolver problemas del 
+ El problema del desbalanceo dado un conjunto de datos que conforman un
+ dataset se presenta cuando las categorías de clasificación no son aproximadamen
+te representadas de manera equitativa dentro del mismo.
+ Al aplicar algoritmos de machine learning para resolver problemas del 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1348,18 +1016,9 @@ Al momento de enfrentar un problema de desbalanceo en los datos, nos encontramos
 \end_layout
 
 \begin_layout Standard
-Entre los casos particulares de aplicación de cada estrategia, el 
-\change_inserted 1676965437 1462372937
-presente trabajo 
-\change_deleted 1676965437 1462372943
-estudio
-\change_unchanged
- se centrará en las dos técnicas más simples, denominados Random Undersampling
- y Random
-\change_deleted 1676965437 1462372940
- 
-\change_unchanged
-Oversampling.
+Entre los casos particulares de aplicación de cada estrategia, el presente
+ trabajo estudio se centrará en las dos técnicas más simples, denominados
+ Random Undersampling y Random Oversampling.
  Con Random Undersampling se eliminan aleatoriamente muestras de la categoría
  con mayor cantidad de muestras, mientras que con Random Oversampling se
  repiten aleatoriamente muestras de la categoría con menor cantidad de muestras
@@ -1388,60 +1047,18 @@ Como se puede observar, tanto la aplicación de técnicas de sampling como
 Técnicas de validación
 \end_layout
 
-\begin_layout Paragraph
-
-\change_deleted 1676965437 1462372982
-Stratified K-Fold Cross Validation
-\change_inserted 1676965437 1462373350
-
-\end_layout
-
 \begin_layout Standard
-
-\change_inserted 1676965437 1462373504
 Las metricas de rendimiento mencionadas en la seccion [Refe] se obtienen
  a partir de los resultados obtenidos al aplicar una metodologia denominada
  Stratified K-Fold Cross Validation.
- Esta metodologia permite 
-\change_deleted 1676965437 1462373462
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 1676965437 1462373468
-A manera de
-\change_unchanged
- minimizar el sesgo asociado con el muestreo aleatorio de las muestras de
- entrenamiento y 
-\change_inserted 1676965437 1462373239
-su posterior 
-\change_unchanged
-evaluación al comparar la precisión predictiva de dos o más métodos,
-\change_deleted 1676965437 1462373458
- uno puede utilizar una metodología de muestreo llamada K-Fold Cross Validation
-\change_unchanged
-.
+ Esta metodologia permite minimizar el sesgo asociado con el muestreo aleatorio
+ de las muestras de entrenamiento y evaluación al comparar la precisión
+ predictiva de dos o más métodos,.
  En K-Fold Cross Validation el dataset completo es dividido aleatoriamente
  en K subsets mutuamente excluyentes de aproximadamente igual tamaño.
  El modelo de clasificación es entrenado y evaluado K veces.
- 
-\change_deleted 1676965437 1462373261
-En cada vez
-\change_inserted 1676965437 1462373263
-El metodo elegido
-\change_unchanged
- es entrenado con todos menos uno de los folds y evaluado sobre 
-\change_deleted 1676965437 1462373273
-este
-\change_inserted 1676965437 1462373273
-el
-\change_unchanged
- fold
-\change_inserted 1676965437 1462373277
- previaemente excluido
-\change_unchanged
-.
+ El metodo elegido es entrenado con todos menos uno de los folds y evaluado
+ sobre el fold previaemente excluido.
  El estimador de precisión del conjunto total de cross validation de un
  modelo es calculado promediando las K medidas individuales de precisión.
 \end_layout
@@ -1489,12 +1106,7 @@ Experimentos
 \begin_layout Standard
 Debido a la complejidad que presenta el entrenamiento de una RNN, se han
  realizado una serie de experimentos para delimitar los parámetros frente
- a los cuales se incrementa la probabilidad de obtener resultados 
-\change_deleted 1676965437 1462373519
-concisos
-\change_inserted 1676965437 1462373522
-robustos
-\change_unchanged
+ a los cuales se incrementa la probabilidad de obtener resultados robustos
  en la evaluación del algoritmo.
  Entre los pasos a seguir se determinó en primer lugar la necesidad de determina
 r en que medida utilizar o no una técnica de muestreo y qué técnica de muestreo
@@ -1522,59 +1134,19 @@ Análisis de técnicas de muestreo
 \end_layout
 
 \begin_layout Standard
-El objetivo de este experimento 
-\change_deleted 1676965437 1462373558
-fue
-\change_inserted 1676965437 1462373558
-es
-\change_unchanged
- probar distintas técnicas de sampling utilizando no más de los 10 estados
- iniciales de cada muestra.
+El objetivo de este experimento es probar distintas técnicas de sampling
+ utilizando no más de los 10 estados iniciales de cada muestra.
 \end_layout
 
 \begin_layout Standard
-Para este experimento se 
-\change_deleted 1676965437 1462373567
-utilizó
-\change_inserted 1676965437 1462373568
-utiliza
-\change_unchanged
- el dataset A 
-\change_inserted 1676965437 1462373575
-, sobre el cual 
-\change_deleted 1676965437 1462373572
-y
-\change_unchanged
- se aplicó Stratified K-Fold Cross Validation en cada corrida del algoritmo.
- La decisión de utilizar no más de 10 estados iniciales
-\change_deleted 1676965437 1462373584
- se debió a
-\change_inserted 1676965437 1462373610
-responde a que, como se discution en la seccion [REF],
-\change_unchanged
- 
-\change_deleted 1676965437 1462373608
-que
-\change_unchanged
- la mayoría de las muestras del dataset tenían entre 1 y 10 estados.
- Se 
-\change_deleted 1676965437 1462373618
-ejecutaron
-\change_inserted 1676965437 1462373619
-ejecutan
-\change_unchanged
- 50 
-\change_deleted 1676965437 1462373627
-corridas
-\change_inserted 1676965437 1462373628
-repeticiones
-\change_unchanged
- del algoritmo para incrementar la confianza en los resultados obtenidos.
-
-\change_inserted 1676965437 1462373671
+Para este experimento se utiliza el dataset A , sobre el cual se aplicó
+ Stratified K-Fold Cross Validation en cada corrida del algoritmo.
+ La decisión de utilizar no más de 10 estados inicialesresponde a que, como
+ se discution en la seccion [REF], la mayoría de las muestras del dataset
+ tenían entre 1 y 10 estados.
+ Se ejecutan 50 repeticiones del algoritmo para incrementar la confianza
+ en los resultados obtenidos.
  Los resultados obtenidos se presentan en la Figura [Ref]
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -1690,14 +1262,9 @@ Análisis de cantidad de estados
 \end_layout
 
 \begin_layout Standard
-En este experimento se busc
-\change_inserted 1676965437 1462374562
-a
-\change_deleted 1676965437 1462374562
-ó
-\change_unchanged
- encontrar la cantidad de estados que se requiere analizar para poder clasificar
- con la mayor exactitud posible un modelo de comportamiento.
+En este experimento se busca encontrar la cantidad de estados que se requiere
+ analizar para poder clasificar con la mayor exactitud posible un modelo
+ de comportamiento.
  Utilizando submuestreo aleatorio como técnica de muestreo, se buscó probar
  la capacidad de discriminación del algoritmo al variar el número de estados
  iniciales a tener en cuenta en cada muestra.
@@ -1706,28 +1273,11 @@ a
  La cantidad de estados tenidos en cuenta para realizar la evaluación fue
  de 2, 4, 5, 6, 10, 25, 50, y 100 respectivamente.
  
-\change_deleted 1676965437 1462374609
-Se ejecutaron 50 corridas del algoritmo para incrementar la confianza en
- los resultados obtenidos.
-\change_inserted 1676965437 1462374539
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462374638
 La Figura [Ref] muestra los valores en ADR y FAR luego de 50 repeticiones
  del algoritmo a fin de incrementar la confianza en los resultados obtenidos.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Paragraph
-
-\change_deleted 1676965437 1462374536
-Resultados
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -1735,10 +1285,6 @@ Resultados
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1758,10 +1304,6 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -1770,26 +1312,12 @@ status open
 \begin_layout Standard
 Como se puede observar, los mejores resultados de ADR se obtienen en el
  caso de 25 estados.
- Más allá de este punto se nota una 
-\change_inserted 1676965437 1462374656
-ligera 
-\change_unchanged
-caída en los valores.
+ Más allá de este punto se nota una ligera caída en los valores.
  Para el caso de FAR, el óptimo se encuentra al utilizar 50 estados.
- Sin embargo, si tomamos en cuenta la desviación estándar, no 
-\change_deleted 1676965437 1462374670
-hay
-\change_inserted 1676965437 1462374672
-es posible observar
-\change_unchanged
- una diferencia significativa en términos de ADR y FAR cuando 
-\change_deleted 1676965437 1462374675
-consideramos
-\change_inserted 1676965437 1462374678
-se consideran
-\change_unchanged
- más de 10 estados, a excepción del caso de 100 estados donde la performance
- de la red parece decaer.
+ Sin embargo, si tomamos en cuenta la desviación estándar, no es posible
+ observar una diferencia significativa en términos de ADR y FAR cuando se
+ consideran más de 10 estados, a excepción del caso de 100 estados donde
+ la performance de la red parece decaer.
 \end_layout
 
 \begin_layout Standard
@@ -1827,28 +1355,12 @@ Evaluación del algoritmo contra muestras desconocidas de misma botnet
 \end_layout
 
 \begin_layout Standard
-El 
-\change_inserted 1676965437 1462374722
-presente 
-\change_unchanged
-experimento 
-\change_deleted 1676965437 1462374728
-fue llevado a cabo con el
-\change_inserted 1676965437 1462374729
-tiene como
-\change_unchanged
- objetivo de evaluar la capacidad de generalización del algoritmo contra
- un dataset compuesto por muestras nunca antes vistas provenientes de un
- mismo tipo de botnet.
- Para este experimento se 
-\change_deleted 1676965437 1462374736
-utilizó
-\change_inserted 1676965437 1462374740
-utiliza
-\change_unchanged
- el dataset A en el entrenamiento aplicando Random Undersampling y utilizando
- un máximo de 10 estados por muestra, para posteriormente proceder a la
- evaluación contra el dataset B.
+El presente experimento tiene como objetivo de evaluar la capacidad de generaliz
+ación del algoritmo contra un dataset compuesto por muestras nunca antes
+ vistas provenientes de un mismo tipo de botnet.
+ Para este experimento se utiliza el dataset A en el entrenamiento aplicando
+ Random Undersampling y utilizando un máximo de 10 estados por muestra,
+ para posteriormente proceder a la evaluación contra el dataset B.
 \end_layout
 
 \begin_layout Standard
@@ -1859,13 +1371,8 @@ A modo de garantizar una evaluación justa e independiente, la red LSTM se
 \end_layout
 
 \begin_layout Standard
-Del experimento se desprenden los siguientes resultados
-\change_inserted 1676965437 1462374773
- presentados en la Tabla [Ref]
-\change_deleted 1676965437 1462374764
-:
-\change_unchanged
-
+Del experimento se desprenden los siguientes resultados presentados en la
+ Tabla [Ref]
 \end_layout
 
 \begin_layout Standard
@@ -1970,50 +1477,6 @@ Botnet
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 1676965437 1462374786
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:exp_3_barplot"
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename exp_3_img_1.png
-	lyxscale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
 Se observa que la red LSTM ha sido capaz de detectar correctamente el 89,2%
  de las muestras de Botnet presentes en el dataset B.
  A su vez, se observa que sólo el 0,9% de las muestras Normal han sido incorrect
@@ -2093,10 +1556,6 @@ status collapsed
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2112,57 +1571,24 @@ Evaluación del algoritmo contra muestras desconocidas de diferentes botnets
 \end_layout
 
 \begin_layout Standard
-En este experimento el objetivo 
-\change_deleted 1676965437 1462374830
-fue evaluar 
-\change_inserted 1676965437 1462374833
-es evaluar 
-\change_unchanged
-la capacidad de generalización del algoritmo contra un dataset compuesto
- por muestras nunca antes vistas provienientes de otro tipo de botnet.
- Para este experimento se 
-\change_deleted 1676965437 1462374840
-utilizó
-\change_inserted 1676965437 1462374841
-utiliza
-\change_unchanged
- el dataset A en el entrenamiento aplicando Random Undersampling y utilizando
- un máximo de 10 estados por muestra, para posteriormente proceder a la
- evaluación contra el dataset C .
+En este experimento el objetivo es evaluar la capacidad de generalización
+ del algoritmo contra un dataset compuesto por muestras nunca antes vistas
+ provienientes de otro tipo de botnet.
+ Para este experimento se utiliza el dataset A en el entrenamiento aplicando
+ Random Undersampling y utilizando un máximo de 10 estados por muestra,
+ para posteriormente proceder a la evaluación contra el dataset C .
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 1676965437 1462374856
-Al igual que en el experimento anterior, 
-\change_deleted 1676965437 1462374863
-A modo d
-\change_inserted 1676965437 1462374865
-para
-\change_deleted 1676965437 1462374863
-e
-\change_unchanged
- garantizar una evaluación justa e independiente, la red LSTM se entrenó
- una única vez.
+Al igual que en el experimento anterior, para garantizar una evaluación
+ justa e independiente, la red LSTM se entrenó una única vez.
  De esta manera la evaluación del dataset C se aproxima lo máximo posible
  a un escenario real.
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 1676965437 1462374879
-A
-\change_unchanged
- 
-\change_deleted 1676965437 1462374875
-continuación
-\change_unchanged
- 
-\change_inserted 1676965437 1462374896
-En la Tabla [Ref] 
-\change_unchanged
-se pueden visualizar los resultados obtenidos después de realizar el proceso
- de clasificación utilizando la red LSTM entrenada:
+En la Tabla [Ref] se pueden visualizar los resultados obtenidos después
+ de realizar el proceso de clasificación utilizando la red LSTM entrenada:
 \end_layout
 
 \begin_layout Standard
@@ -2267,39 +1693,6 @@ Botnet
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 1676965437 1462374905
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename exp_4_img_1.png
-	lyxscale 50
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
 El modelo muestra un 0.809 de ADR, mientras que para el caso de FAR el valor
  observado es de 0.030.
  Como se puede observar, el modelo ha sufrido una pérdida de rendimiento
@@ -2357,15 +1750,6 @@ name "fig:dataset_c_labels_analysis_botnet"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
 Así como se puede observar en el análisis de frecuencias de muestras por
  etiquetas realizado sobre el dataset C 
 \begin_inset CommandInset ref

@@ -339,56 +339,167 @@ status open
 \begin_layout Standard
 Esto significa que toda la teoría sobre el aprendizaje de la redes tradicionales
  también aplica en cierto sentido a las RNN.
- Se define entonces el algoritmo de backpropagation (BP) aplicado a RNN,
- el cual se ha denominado como 
-\emph on
-backpropagation through time 
-\emph default
-(BPTT)
-\emph on
+\end_layout
+
+\begin_layout Standard
+La arquitectura más simple de una RNN organiza los vectores ocultos de estado
+ 
+\begin_inset Formula $h_{t}^{l}$
+\end_inset
+
+en una matriz bidimensional, donde 
+\begin_inset Formula $t=1\ldots T$
+\end_inset
+
+ es visto como tiempo y 
+\begin_inset Formula $l=1\ldots L$
+\end_inset
+
+ es visto como profundidad.
+ La fila inferior de vectores 
+\begin_inset Formula $h_{t}^{0}=x_{t}$
+\end_inset
+
+ a profundidad cero contiene los vectores de entrada 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+y cada vector en la fila superior
+\begin_inset Formula $\left\{ h_{t}^{L}\right\} $
+\end_inset
+
+se utiliza para predecir un vector de salida 
+\begin_inset Formula $y_{t}$
+\end_inset
+
 .
+ Todos los vectores intermedios 
+\begin_inset Formula $h_{t}^{l}$
+\end_inset
+
+se computan con una formula de recurrencia basada en 
+\begin_inset Formula $h_{t-1}^{l}$
+\end_inset
+
+y 
+\begin_inset Formula $h_{t}^{l-1}$
+\end_inset
+
+.
+ A través de estos vectores ocultos, cada salida 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+ para un tiempo 
+\begin_inset Formula $t$
+\end_inset
+
+ se convierte en una función de todos los vectores de entrada hasta 
+\begin_inset Formula $t,\left\{ x1,\ldots,x_{t}\right\} $
+\end_inset
+
+.
+ La forma matemática precisa de la recurrencia 
+\begin_inset Formula $\left(h_{t-1}^{l},h_{t}^{l-1}\right)\rightarrow h_{t}^{l}$
+\end_inset
+
+ varía dependiendo del modelo de implementación.
+ Para los objetos de este trabajo se analizará el detalle de implementación
+ para una RNN original así como la implementación para el modelo de red
+ LSTM.
+\end_layout
+
+\begin_layout Standard
+La RNN original tiene una recurrencia de la forma
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+h_{t}^{l}=\tanh W^{l}\left(\begin{array}{c}
+h_{t}^{l-1}\\
+h_{t-1}^{l}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Donde se asume que todo 
+\begin_inset Formula $h\in\mathbb{R^{\eta}}$
+\end_inset
+
+.
+ La matriz de parámetros en cada capa tiene dimensiones 
+\begin_inset Formula $\left[n\,x\,2n\right]$
+\end_inset
+
+ y la función
+\begin_inset Formula $\tanh$
+\end_inset
+
+ es aplicada elemento por elemento.
+ Nótese que 
+\begin_inset Formula $W^{l}$
+\end_inset
+
+ varía entre las capas pero es compartida a través del tiempo.
+ Se omiten los vectores de polarización por razones de brevedad.
+ Interpretando la ecuación anterior, se puede ver que las entradas de la
+ capa anterior en profundidad 
+\begin_inset Formula $\left(h_{t}^{l-1}\right)$
+\end_inset
+
+ y anterior en tiempo 
+\begin_inset Formula $\left(h_{t-1}^{l}\right)$
+\end_inset
+
+ son transformadas e interactuan a través de interacción aditiva antes de
+ ser procesadas por 
+\begin_inset Formula $\tanh$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En cuanto al aprendizaje en la red, esta tarea es llevada a cabo mediante
+ el algoritmo de aprendizaje denominado 
+\emph on
+Backpropagation through time (BPTT o propagación hacia atrás a través del
+ tiempo).
  
 \emph default
-Puesto de manera simple, BPTT es una extensión del estándar BP que realiza
+Este algoritmo es una extensión de standard backpropagation que realiza
  descenso de gradiente (más conocido como 
 \emph on
 gradient descent
 \emph default
 ) en una red completamente desplegada.
- Si la secuencia de una red empieza en un tiempo 
-\emph on
-
+ Dada una secuencia de entrenamiento que empieza en un tiempo 
 \begin_inset Formula $t_{0}$
 \end_inset
 
-
-\emph default
-y termina en un tiempo 
+ y termina en un tiempo 
 \begin_inset Formula $t_{1}$
 \end_inset
 
-, el total de la función de costo o error es simplemente la suma en el tiempo
- de la función de error estándar 
+ , la función de costo total es simplemente la suma en el tiempo del error
+ estándar 
 \begin_inset Formula $E_{sse/ce}(t)$
 \end_inset
 
- para cada paso de tiempo:
+ para cada intervalo de tiempo:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $E_{total}(t_{0,}t_{1})=\sum_{t=t_{0}}^{t_{1}}E_{sse/ce}(t)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Terminar de escribir la definición de BPTT.
-\end_layout
+\begin_inset Formula 
+\[
+E_{total}(t_{0,}t_{1})=\sum_{t=t_{0}}^{t_{1}}E_{sse/ce}\left(t\right)
+\]
 
 \end_inset
 
@@ -396,17 +507,76 @@ Terminar de escribir la definición de BPTT.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Consideraciones prácticas de BPTT, incluyendo los problemas con exploding
- gradient y banishing gradient
+y los cambios de peso de descenso de gradiente tienen contribuciones de
+ cada intervalo de tiempo
 \end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\triangle w_{ij}=-\eta\frac{\partial E_{total}\left(t_{0,}t_{1}\right)}{\partial w_{ij}}=-\eta\sum_{t=t_{0}}^{t_{1}}\frac{\partial E_{sse/ce}\left(t\right)}{\partial w_{ij}}
+\]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Las derivadas parciales constituidas 
+\begin_inset Formula $\partial E_{sse/ce}\left(t\right)/\partial w_{ij}$
+\end_inset
+
+ tienen aportes de las múltiples instancias de cada peso 
+\begin_inset Formula $w_{ij}\in\left\{ W_{IH},W_{HH}\right\} $
+\end_inset
+
+ y dependen de las entradas y de las activaciones de las unidades ocultas
+ en los intervalos de tiempo previos.
+ Los errores por tanto ahora han de ser retropropagados a través del tiempo
+ así como a través de la red.
+\end_layout
+
+\begin_layout Standard
+Entre las consideraciones prácticas al momento de entrenar una RNN tradicional,
+ existen un problema fundamental que atenta contra la capacidad de aprendizaje
+ de la red: las RNN tradicionales tienen grandes dificultades a la hora
+ de aprender dependencias a largo plazo (ej.
+ dependencias entre intervalos que se encuentran a gran distancia, como
+ podría ser en el análisis de secuencias de texto la incidencia que puede
+ tener la primer palabra con la última de una misma secuencia).
+ Este problema se presenta debido al desvanecimiento del gradiente, y por
+ otro lado debido a la explosión del gradiente.
+\end_layout
+
+\begin_layout Standard
+Este fenómeno se debe parcialmente al hecho de que la información que fluye
+ a través de la red es sometida a múltiples etapas de multiplicación.
+ Sabiendo que cualquier número multiplicado frecuentemente por un número
+ ligeramente mayor a uno puede llegar a ser inmensamente grande.
+ Por otro lado, su inversa, esto es, multiplicar por un número menor a uno,
+ también es verdadera.
+ Debido a que las capas e intervalos de tiempo de la RNN se relacionan entre
+ sí mediante multiplicación, las derivadas son susceptibles a desvanecer
+ o explotar.
+ Para el caso de la explosión del gradiente, los valores que toma se encuentran
+ tan saturados en un extremo que terminan generando una incidencia demasiado
+ grande.
+ Por otro lado, los gradientes desvanecientes pueden volverse demasiado
+ pequeños, generando que prácticamente no tengan ninguna incidencia en el
+ aprendizaje; en síntesis, la red se vuelve incapaz de aprender dependencias
+ a largo plazo.
+\end_layout
+
+\begin_layout Standard
+Mientras que el problema de la explosión del gradiente se puede resolver
+ de manera simple, truncando o aplastando el valor, el problema del desvanecimie
+nto del gradiente se vuelve realmente complejo, principalmente porque no
+ es evidente cuando ocurre y porque cuando ocurre, resolver el problema
+ no es una tarea simple.
+ Es por esto que para solventar estas limitaciones se han propuesto nuevos
+ modelos de RNN capaces de aprender dependencias a largo plazo, entre los
+ cuales se destaca el modelo conocido como LSTM.
 \end_layout
 
 \begin_layout Paragraph
@@ -457,9 +627,127 @@ exploding gradient
 \end_inset
 
 .
- En cada paso de tiempo la red LSTM puede elegir leer, escribir, o reinicializar
- la celda utilizando mecanismos explícitos de compuerta.
+ En cada intervalo de tiempo la red LSTM puede elegir leer, escribir, o
+ reinicializar la celda utilizando mecanismos explícitos de compuerta.
  La forma precisa de la actualización es la siguiente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left(\begin{array}{c}
+i\\
+f\\
+o\\
+g
+\end{array}\right)=\left(\begin{array}{c}
+sigm\\
+sigm\\
+sigm\\
+tanh
+\end{array}\right)W^{l}\left(\begin{array}{c}
+h_{t}^{l-1}\\
+h_{t-1}^{l}
+\end{array}\right)$
+\end_inset
+
+ 
+\begin_inset Formula $\mathllap{}\begin{array}{c}
+c_{t}^{l}=f\odot c_{t-1}^{l}+i\odot g\\
+h_{t}^{l}=o\odot tanh(c_{t}^{l})
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Aquí, las funciones sigmoideas sigm y tanh son aplicadas elemento por elemento,
+ y 
+\begin_inset Formula $W^{l}$
+\end_inset
+
+es una matriz 
+\begin_inset Formula $\left[4n\,x\,2n\right]$
+\end_inset
+
+.
+ Los tres vectores 
+\begin_inset Formula $i,f,o\in\mathbb{R^{\eta}}$
+\end_inset
+
+son considerados como compuertas binarias que controlan si cada celda de
+ memoria es actualizada, si es puesta a cero, y si su estado local se revela
+ en el vector oculto, respectivamente.
+ Las activaciones de estas compuertas se basan en la función sigmoide y
+ por tanto se permiten variar suavemente entre cero y uno para mantener
+ al modelo diferenciable.
+ El vector 
+\begin_inset Formula $g\in\mathbb{R^{\eta}}$
+\end_inset
+
+oscila entre -1 y 1, y se utiliza para modificar los contenidos de la memoria
+ de forma aditiva.
+ Esta interacción aditiva es una característica crítica del diseño de LSTM,
+ debido a que durante backpropagation una operación de suma simplemente
+ distribuye gradientes.
+ Esto permite que los gradientes en las células de memoria c fluyan hacia
+ atrás a través del tiempo sin interrupción durante largos periodos de tiempo,
+ o al menos hasta que el flujo es interrumpido con la interacción multiplicativa
+ de una compuerta activa de olvido.
+ Por último, ha de observarse que una implementación de LSTM requiere que
+ se mantengan dos vectores (
+\begin_inset Formula $h_{t}^{l}$
+\end_inset
+
+ y 
+\begin_inset Formula $c_{t}^{l}$
+\end_inset
+
+) en cada punto de la red.
+\end_layout
+
+\begin_layout Standard
+Evidentemente la mayor ventaja que ofrece la arquitectura de red LSTM es
+ la capacidad de unir dependencias que se encuentran separadas por grandes
+ intervalos de tiempo.
+ Por otro lado se debe resaltar que LSTM es capaz de lidiar con ruido, represent
+aciones distribuidas y valores continuos.
+ En contraste con autómatas de estados finitos o modelos ocultos de Markov,
+ LSTM no requiere una elección a 
+\emph on
+priori
+\emph default
+ del número finito de estados; en principio es capaz de lidiar con un número
+ ilimitado de estados.
+\end_layout
+
+\begin_layout Standard
+Otra de las ventajas aparentes de esta arquitectura es la falta de necesidad
+ de un ajuste fino de parámetros.
+ LSTM trabaja bien sobre un amplio rango de parámetros como el ratio de
+ aprendizaje (
+\emph on
+learning rate
+\emph default
+), polarización de la compuerta de entrada (
+\emph on
+input gate bias
+\emph default
+) y polarización de la compuerta de salida (
+\emph on
+output gate bias
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+En síntesis, se puede concluir que frente a un problema de análisis de secuencia
+s donde exista un interés latente de analizar las relaciones entre los component
+es de las secuencias, la utilización de una red LSTM se puede considerar
+ como una alternativa viable, probada y eficiente.
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
