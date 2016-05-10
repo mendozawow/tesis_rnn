@@ -660,8 +660,19 @@ h_{t}^{l}=o\odot tanh(c_{t}^{l})
 \end_layout
 
 \begin_layout Standard
-Aquí, las funciones sigmoideas sigm y tanh son aplicadas elemento por elemento,
- y 
+Aquí, las funciones sigmoideas sigm (
+\emph on
+fun
+\emph default
+ción 
+\emph on
+logística
+\emph default
+) y tanh (
+\emph on
+tangente hiperbólica
+\emph default
+) son aplicadas elemento por elemento, y 
 \begin_inset Formula $W^{l}$
 \end_inset
 
@@ -744,10 +755,6 @@ En síntesis, se puede concluir que frente a un problema de análisis de secuenc
 s donde exista un interés latente de analizar las relaciones entre los component
 es de las secuencias, la utilización de una red LSTM se puede considerar
  como una alternativa viable, probada y eficiente.
-\end_layout
-
-\begin_layout Standard
-
 \end_layout
 
 \begin_layout Standard
