@@ -99,14 +99,7 @@ Ciclo de vida
 Las Botnets en general siguen un conjunto de etapas a lo largo de su existencia.
  Cada etapa ofrece un conjunto de alternativas para tratar de poder responder
  ante la amenaza que representan.
- Se pueden definir las siguientes etapas 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Hachem2011"
-
-\end_inset
-
-:
+ Se pueden definir las siguientes etapas [Botnets: Lifecycle and Taxonomy]:
 \end_layout
 
 \begin_layout Enumerate
@@ -147,16 +140,14 @@ ento parecido entre distintas Botnets.
 Ejecución de órdenes: 
 \series default
 Entre las órdenes más comunes se pueden encontrar: Ataques distribuidos
- de denegación de servicio, spamming, distribución de malware, espionaje
- y phising.
+ de denegación de servicio, spamming, distribución de malware, espionaje,
+ phising, 
 \end_layout
 
 \begin_layout Enumerate
 
 \series bold
-Ofuscación y actualización: 
-\series default
-A medida que surgen nuevas tecnologías, criminales buscan la forma 
+Ofuscación y actualización
 \end_layout
 
 \begin_layout Subsubsection
@@ -176,7 +167,7 @@ Detection approaches
 \end_layout
 
 \begin_layout Subsection
-Stratosphere Testing Framework
+Stratosphere Testing Framework (modelo de comportamiento y modelo de detección)
 \end_layout
 
 \begin_layout Standard
@@ -204,160 +195,6 @@ Mencionar como se va el modelo de markov a medida se analiza un mayor numero
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Stratosphere IPS (Sistema de prevención de intrusiones), es una iniciativa
- creada con el objeto de proveer a la comunidad un IPS de última generación
- basado en comportamiento.
- La metodología actual de detección de Stratosphere está basada en Modelos
- de Markov de primer orden.
- Si bien los resultados han sido prometedores y se están desarrollando mejoras
- continuamente, los modelos de primer orden de Markov sufren inconvenientes
- al momento de memorizar largas secuencias de estados.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Estrategia-de-asignación"
-
-\end_inset
-
-Estrategia de asignación de símbolos para construir modelos de comportamiento
- de acuerdo al proyecto Stratosphere
-\begin_inset Graphics
-	filename images/letter-assignment-behavioral-models.png
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Los modelos de comportamiento de conexiones maliciosas en la red son creados
- a través del estudio de parámetros del tráfico de red a lo largo de un
- intervalo de tiempo.
- Este tipo de modelos han sido implementados dentro del sistema de prevención
- de intrusiones Stratosphere, a través del esfuerzo colaborativo realizado
- por dos universidades (CVUT y Universidad nacional de Cuyo) junto con otras
- organizaciones.
- El enfoque utilizado por Stratosphere IPS para modelar el comportamiento
- de una conexión comienza con la agrupación de los flujos de red de acuerdo
- a una 4-tupla compuesta por la dirección IP origen, dirección IP destino,
- el puerto de destino y el protocolo.
- De una captura de tráfico se pueden crear varias conexiones, cada una con
- su grupo de flujos.
- Para cada flujo coincidente se le aplican los siguientes pasos para computar
- su comportamiento: 1) Se extraen tres parámetros de cada flujo: tamaño,
- duración y periodicidad.
- 2) Se le asigna a cada flujo un símbolo de estado de acuerdo a los parámetros
- extraídos y a la estrategia de asignación mostrada en la tabla 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Estrategia-de-asignación"
-
-\end_inset
-
-.
- 3) Todos los estados (símbolos) de la conexión son representados como una
- cadena de caracteres y almacenados como parte del modelo de comportamiento.
- Cada conexión posee un conjunto de estados que representan el comportamiento
- tenido por la conexión en la red.
- Un ejemplo de modelo de comportamiento se muestra en la figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "Ejemplo-de-modelo"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "Ejemplo-de-modelo"
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\emph on
-4.R*R.R.R*a*b*a*a*b*b*a*R.R*R.R*a*a*b*a*a*a*a*
-\end_layout
-
-\end_inset
-
-Ejemplo de modelo de comportamiento para una conexión con dirección IP origen
- 10.0.2.103, con destino a la dirección 8.8.8.8 y puerto 53, a través del protocolo
- UDP.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Aún sin considerar un método de detección, los modelos de comportamiento
- basados en símbolos mostrados en la figura 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Estrategia-de-asignación"
-
-\end_inset
-
- han probado ser un buen enfoque de visualización para ayudar a analistas
- de seguridad en sus tareas diarias.
- Para realizar la detección de comportamiento malicioso, la estrategia actual
- seguida por Stratosphere IPS es llevar a cabo un análisis basado en cadenas
- de Markov de la probabilidad de transición de un símbolo a otro.
- Más allá de que esta técnica ha probado ser efectiva en varios escenarios
- de la vida real, es un hecho de que en el análisis de cadenas de Markov,
- cada estado depende únicamente del estado anterior.
- En la sección siguiente se procederá a describir lo que se conoce como
- redes neuronales recurrentes (RNN), y un caso especial de RNN denominado
- LSTM (Long Short Term Memory).
- Las redes LSTM han probado ser capaces de construir modelos de clasificación
- sobre secuencias con dependencias a largo plazo de una manera computacionalment
-e eficiente.
 \end_layout
 
 \begin_layout Subsection
@@ -761,22 +598,10 @@ VISUALIZING AND UNDERSTANDING RECURRENT NETWORKS (Andrew Karpathy) arXiv:1506.02
 \end_layout
 
 \begin_layout Standard
-Long Short-Term Memory (LSTM) 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Hochreiter1997"
-
-\end_inset
-
- fue diseñada con el objetivo de mitigar las dificultades al momento de
- entrenar RNNs 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bengio1994"
-
-\end_inset
-
-.
+La red Long Short-Term Memory propuesta por (LSTM) Hochreiter & Schmidhuber (1997) fue diseñada
+ con el objetivo de mitigar las dificultades al momento de entrenar RNNs
+ Bengio et al.
+ (1994).
  En particular, se observó que la dinámica de backpropagation producía que
  los gradientes desaparecieran o explotaran (fenómenos conocidos como 
 \emph on
