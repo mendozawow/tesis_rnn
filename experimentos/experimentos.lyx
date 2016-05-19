@@ -5,7 +5,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language spanish-mexico
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -25,6 +25,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -55,7 +56,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -77,7 +78,7 @@ El presente capítulo aborda el objetivo de probar la factibilidad de entrenar
  una RNN para discriminar tráfico de Botnet de tráfico normal.
  Entre las tareas necesarias para la conclusión de dicho objetivo se plantearán
  las problemáticas relacionadas con el entrenamiento de un algoritmo de
- clasificacíon, tales como la distribución desigual de clases dentro de
+ clasificación, tales como la distribución desigual de clases dentro de
  los datos de entrenamiento, la metodología de evaluación a la que se someterán
  los resultados para asegurar su veracidad y la capacidad de generalización
  del algoritmo frente a muestras nunca antes vistas, tanto para el caso
@@ -87,8 +88,11 @@ El presente capítulo aborda el objetivo de probar la factibilidad de entrenar
 
 \begin_layout Standard
 Para ilustrar mejor los resultados obtenidos y realizar un estudio más profundo
- de los mismos se comenzará realizando un análisis de los datasets a ser
- utilizados en el presente trabajo.
+ de los mismos se comenzará realizando un análisis de los 
+\lang english
+datasets
+\lang spanish-mexico
+ a ser utilizados en el presente trabajo.
  Se buscará no solo analizar la distribución de los datos frente a las dos
  clases, Botnet y normal, sino también como se agrupan estos datos en función
  de las etiquetas que identifican a cada conexión, así como la distribución
@@ -113,17 +117,14 @@ Datasets
 Los datasets utilizados en el presente trabajo corresponden a capturas de
  tráfico realizadas por el Malware Capture Facility Project en la Universidad
  Técnica de República Checa (CTU), en 2011, y que son parte del denominado
- Dataset CTU-13.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Citar "An empirical comparison of botnet detection methods"
-\end_layout
+ Dataset CTU-13, producto del trabajo realizado en 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Garcia2014"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -155,7 +156,7 @@ Established
 Unknown, 
 \emph default
 se hace referencia a que es una conexión realizada a un puerto que no es
- comunmente asociado a un servicio estándar de aplicación.
+ comúnmente asociado a un servicio estándar de aplicación.
 \end_layout
 
 \begin_layout Subsubsection
@@ -172,7 +173,7 @@ Este dataset corresponde a la captura identificada en el CTU-13 como CTU-MALWARE
 \begin_layout Standard
 La captura tuvo una duración de 6.15 horas, en las que se capturó la actividad
  de la máquina virtual infectada junto con la actividad dentro del departamento
- de investigacíon en la CTU.
+ de investigación en la CTU.
  La botnet utilizó un canal C&C basado en HTTP y las acciones realizadas
  fueron:
 \end_layout
@@ -310,7 +311,7 @@ reference "fig:histogram_c_labels_botnet"
 
 \end_inset
 
-, presetnada a continuacion se puede observar el histograma de frecuencia
+, presentada a continuación se puede observar el histograma de frecuencia
  en base a la etiqueta que identifica la actividad realizada en el flujo
  de red.
 \end_layout
@@ -355,7 +356,7 @@ name "fig:histogram_a_labels_botnet"
 Como se puede observar, en el caso de las muestras identificadas como Botnet,
  la mayoría de las muestras corresponden a flujos de red que corresponden
  a intentos de conexión, de los cuales la mayoría fueron identificados para
- enviar SPAM, mientras que un número menor representaron intentos de conexion
+ enviar SPAM, mientras que un número menor representaron intentos de conexión
  a servidores HTTP.
  El resto de las muestras identificadas como Botnet pertenecientes al dataset
  son en general conexiones HTTP establecidas, de las cuales se destacan
@@ -374,6 +375,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:histogram_a_labels_normal"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_22_labels_normal.png
 	lyxscale 50
@@ -497,9 +505,9 @@ name "fig:dataset_B_len_normal"
 
 \begin_layout Standard
 De manera similar a lo observado en el dataset A, las muestras con un numero
- de estados entre 1 5 son las de mayor presentation en el dataset.
+ de estados entre 1 y 5 son las de mayor representación en el dataset.
  Esto ultimo, se puede observar no solo para el caso de muestras etiquetadas
- como Botnets [Figura], sino tambien en aquellas etiquetadas como Normal.
+ como Botnets [Figura], sino también en aquellas etiquetadas como Normal.
 \end_layout
 
 \begin_layout Standard
@@ -519,6 +527,13 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:histogram_b_labels_botnet"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename histo_dataset45_labelsBotnet.png
 	lyxscale 50
@@ -542,15 +557,22 @@ status collapsed
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "histogram_b_labels_normal"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename histo_dataset45_labelsNormales.png
-	lyxscale 20
+	lyxscale 50
 
 \end_inset
 
@@ -594,7 +616,7 @@ El Dataset C, corresponde a la captura identificada dentro del conjunto
 \begin_layout Standard
 El Dataset está compuesto por 488 muestras, de las cuales 188 corresponden
  a tráfico etiquetado como Botnet.
- Es decir que para este dataset las muestran etiquetadas como Botnet represetan
+ Es decir que para este dataset las muestran etiquetadas como Botnet representan
  el 38,52%.
  Es importante Destacar que, de los 3 datasets utilizados en los experimentos,
  este es el único en el cual la cantidad de muestras normales supera a la
@@ -611,12 +633,19 @@ A continuación en las Figuras [Ref] y [Ref] se puede observar los gráficos
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dataset_b_len_botnet"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename dataset_87_len_botnet.png
 
@@ -645,6 +674,13 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dataset_b_len_normal"
+
+\end_inset
+
+
 \begin_inset Graphics
 	filename dataset_87_len_normal.png
 
@@ -675,7 +711,7 @@ a de muestras compuestas por solo 1 estado.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -729,7 +765,7 @@ hacen referencia a un intento de establecer una conexión TCP.
 \emph on
 Unknown, 
 \emph default
-se hace referencia a un puerto que no es comunmente asociado a un servicio
+se hace referencia a un puerto que no es comúnmente asociado a un servicio
  estándar de aplicación.
  Las muestras etiquetadas como 
 \emph on
@@ -778,13 +814,20 @@ name "fig:histogram_c_labels_normal"
 \end_layout
 
 \begin_layout Standard
-Por otro lado, para el caso de las conexiones etiquedatas como Normal, se
+Por otro lado, para el caso de las conexiones etiquetadas como Normal, se
  puede observar que en su mayoría son conexiones establecidas por HTTP,
- con algunas muestras de connexiones a servicios como Jabber y Matlab server.
+ con algunas muestras de conexiones a servicios como Jabber y Matlab server.
 \end_layout
 
 \begin_layout Subsection
 Métricas de rendimiento para modelado predictivo
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Métricas-de-rendimiento"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -978,7 +1021,14 @@ Técnicas de muestreo (DATA MINING FOR IMBALANCED DATASETS: AN OVERVIEW -
 \begin_layout Standard
 Como se desprende de las secciones anteriores, los 3 conjuntos de datos
  utilizados presentan un desbalanceo en las clases.
- El problema del desbalanceo dado un conjunto de datos que conforman un
+ De acuerdo con 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Chawla"
+
+\end_inset
+
+, el problema del desbalanceo dado un conjunto de datos que conforman un
  dataset se presenta cuando las categorías de clasificación no son aproximadamen
 te representadas de manera equitativa dentro del mismo.
  Al aplicar algoritmos de machine learning para resolver problemas del 
@@ -996,9 +1046,15 @@ mundo real
 \begin_layout Standard
 La pregunta que se presenta entonces es cual sería la distribución correcta
  de los datos para alimentar un algoritmo de aprendizaje.
- Del trabajo realizado por Weist y Provost (Weiss and Provost, 2003) se
- llega a la conclusión de que la distribución natural de los datos no es
- usualmente la mejor distribución para que un clasificador aprenda.
+ Del trabajo realizado por Weist y Provost 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Weiss2003"
+
+\end_inset
+
+ se llega a la conclusión de que la distribución natural de los datos no
+ es usualmente la mejor distribución para que un clasificador aprenda.
  Por lo tanto, a la hora de entrenar un clasificador, se presenta con importante
  relevancia el hecho de analizar la distribución de los datos para encontrar
  el punto óptimo de rendimiento, sometiéndolo a su vez a un conjunto de
@@ -1009,7 +1065,7 @@ La pregunta que se presenta entonces es cual sería la distribución correcta
 Al momento de enfrentar un problema de desbalanceo en los datos, nos encontramos
  con la posibilidad de aplicar dos estrategias: Undersampling y Oversampling.
  Con Undersampling lo que se busca es disminuir la cantidad de muestras
- de la categoria con mayor elementos hasta equiparar con la categoría contraria.
+ de la categoría con mayor elementos hasta equiparar con la categoría contraria.
  Por otro lado, Oversampling busca incrementar la cantidad de muestras de
  la categoría con menos elementos hasta equipar a la categoría superior.
  
@@ -1027,7 +1083,7 @@ Entre los casos particulares de aplicación de cada estrategia, el presente
  los datos, ambas presentan una serie de limitaciones.
  En el caso de Random Undersampling, el método podría potencialmente remover
  ciertas muestras importantes, mientras que el caso de Random oversampling
- podría derivar en un problema de sobreajuste o 
+ podría derivar en un problema de sobre-ajuste o 
 \emph on
 overfitting
 \emph default
@@ -1048,9 +1104,15 @@ Técnicas de validación
 \end_layout
 
 \begin_layout Standard
-Las metricas de rendimiento mencionadas en la seccion [Refe] se obtienen
- a partir de los resultados obtenidos al aplicar una metodologia denominada
- Stratified K-Fold Cross Validation.
+Las métricas de rendimiento mencionadas en la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Métricas-de-rendimiento"
+
+\end_inset
+
+ se obtienen a partir de los resultados obtenidos al aplicar una metodologia
+ denominada Stratified K-Fold Cross Validation.
  Esta metodologia permite minimizar el sesgo asociado con el muestreo aleatorio
  de las muestras de entrenamiento y evaluación al comparar la precisión
  predictiva de dos o más métodos,.
@@ -1076,8 +1138,15 @@ es que el dataset original.
 \end_layout
 
 \begin_layout Standard
-K-Fold cross validation es usualmente también llamado 10-fold cross validation,
- debido a que K con el valor de 10 ha sido la práctica más común.
+K-Fold cross validation es usualmente también llamado 10-fold 
+\lang english
+cross
+\lang spanish-mexico
+ 
+\lang english
+validation
+\lang spanish-mexico
+, debido a que K con el valor de 10 ha sido la práctica más común.
  De hecho, estudios empíricos han mostrado que 10 parece ser el valor óptimo
  de folds (en relación al tiempo que lleva completar el test versus el sesgo
  y varianza asociados al proceso de validación).
@@ -1095,8 +1164,13 @@ n con el método tradicional de experimentación de división única (⅔ para
 \end_layout
 
 \begin_layout Standard
-* Advanced Data Mining Techniques - David L.
- Olson,Dursun Delen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Olson2008"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1112,10 +1186,10 @@ Debido a la complejidad que presenta el entrenamiento de una RNN, se han
 r en que medida utilizar o no una técnica de muestreo y qué técnica de muestreo
  podía afectar el rendimiento del algoritmo.
  La motivación para llevar a cabo estas pruebas vienen por el hecho de que
- el rendimiento de las NN cae notoriamente al ser entrenadas con conjuntos
- de datos desbalanceados, y es una situación que se presenta para el caso
- de análisis de tráfico de Botnet, ya que del tráfico total de una red se
- estima que solo un 1% podría ser tráfico malicioso.
+ el rendimiento de las redes neuronales cae notoriamente al ser entrenadas
+ con conjuntos de datos desbalanceados, y es una situación que se presenta
+ para el caso de análisis de tráfico de Botnet, ya que del tráfico total
+ de una red se estima que solo un 1% podría ser tráfico malicioso.
 \end_layout
 
 \begin_layout Standard
@@ -1141,8 +1215,8 @@ El objetivo de este experimento es probar distintas técnicas de sampling
 \begin_layout Standard
 Para este experimento se utiliza el dataset A , sobre el cual se aplicó
  Stratified K-Fold Cross Validation en cada corrida del algoritmo.
- La decisión de utilizar no más de 10 estados inicialesresponde a que, como
- se discution en la seccion [REF], la mayoría de las muestras del dataset
+ La decisión de utilizar no más de 10 estados iniciales responde a que,
+ como se discutió en la sección [REF], la mayoría de las muestras del dataset
  tenían entre 1 y 10 estados.
  Se ejecutan 50 repeticiones del algoritmo para incrementar la confianza
  en los resultados obtenidos.
@@ -1372,7 +1446,7 @@ A modo de garantizar una evaluación justa e independiente, la red LSTM se
 
 \begin_layout Standard
 Del experimento se desprenden los siguientes resultados presentados en la
- Tabla [Ref]
+ siguiente Tabla:
 \end_layout
 
 \begin_layout Standard
@@ -1587,7 +1661,7 @@ Al igual que en el experimento anterior, para garantizar una evaluación
 \end_layout
 
 \begin_layout Standard
-En la Tabla [Ref] se pueden visualizar los resultados obtenidos después
+En la siguiente Tabla se pueden visualizar los resultados obtenidos después
  de realizar el proceso de clasificación utilizando la red LSTM entrenada:
 \end_layout
 
