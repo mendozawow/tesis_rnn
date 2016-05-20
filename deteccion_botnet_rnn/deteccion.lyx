@@ -72,46 +72,228 @@
 Detección de comportamiento de botnet mediante RNN
 \end_layout
 
+\begin_layout Standard
+La idea propuesta en este trabajo consiste en utilizar una red LSTM para
+ construir modelos de deteccion basados en el comportamiento de las conexiones.
+ La estrategia utilizada sigue el enfoque clásico de aprendizaje automático
+ supervisado para construir modelos de clasificación.
+ Tal enfoque se basa en el uso de datos históricos previamente etiquetados
+ como Botnet o Normal para entrenar la red LSTM y finalmente obtener un
+ modelo de detección capaz de reconocer y discriminar el comportamiento
+ de las conexiones entre las dos posibles alternativas.
+\end_layout
+
 \begin_layout Subsection
 Vectorización de las entradas
 \end_layout
 
 \begin_layout Standard
-Se Aleatorizó y mapeó el conjunto de ejemplos (en formato cadena de caracteres,
- donde cada caracter corresponde a un estado/tiempo) a una matriz binaria
- de dimensión m x 50, utilizando la siguiente cardinalidad: 
-\end_layout
+La estrategia utilizada para codificar los modelos de comportamiento a unidades
+ de entrada de la red LSTM consiste en transformar cada estado en un vector
+ binario.
+ De acuerdo a la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Estrategia-de-asignación"
 
-\begin_layout Standard
-{'+': 1, '*': 2, ',': 3, '.': 4, '1': 5, '0': 6, '3': 7, '2': 8, '5': 9,
- '4': 10, '7': 11, '6': 12, '9': 13, '8': 14, 'A': 15, 'C': 16, 'B': 17,
- 'E': 18, 'D': 19, 'G': 20, 'F': 21, 'I': 22, 'H': 23, 'S': 24, 'R': 25,
- 'U': 26, 'T': 27, 'W': 28, 'V': 29, 'Y': 30, 'X': 31, 'Z': 32, 'a': 33,
- 'c': 34, 'b': 35, 'e': 36, 'd': 37, 'g': 38, 'f': 39, 'i': 40, 'h': 41,
- 's': 42, 'r': 43, 'u': 44, 't': 45, 'w': 46, 'v': 47, 'y': 48, 'x': 49,
- 'z': 50}
-\end_layout
-
-\begin_layout Standard
-Donde cada fila corresponde a un ejemplo y cada caracter es mapeado a un
- vector Vi binario de dimensión 50, donde i= 1 y el resto de sus componentes
- 0.
- Los ejemplos cuyo largo en caracteres fuera menor al valor máximo establecido
- para cada experimento se rellenaron con ceros (
-\begin_inset Formula $V_{i}=0\;\forall\;i$
 \end_inset
 
- ).
+ hay 50 posibles estados a utilizar en un modelo de comportamiento.
+ Por lo tanto, esposible representar cada uno de estos símbolos en un vector
+ binario 50-dimensional.
+ Cada elemento en este vector representa un estado.
+ Dado un estado, solo el elemento que representa a este estado estará activo
+ en el vector, mientras que el resto permanecerá inactivo.
+ Un ejemplo del esquema de representación se puede ver en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:binary_vector_a"
+
+\end_inset
+
+ para el caso del estado 
+\emph on
+a
+\emph default
+ y en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:binary_vector_b"
+
+\end_inset
+
+ para el caso del estado 
+\emph on
+b
 \end_layout
 
 \begin_layout Standard
-Se utilizaron los 5, 10, 25 y 50 primeros caracteres de cada ejemplo en
- cada experimento.
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:binary_vector_a"
+
+\end_inset
+
+
+\begin_inset Formula $a=\begin{bmatrix}1 & 0 & 0 & 0 & \cdots & 0 & 0 & 0\end{bmatrix}$
+\end_inset
+
  
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:binary_vector_b"
+
+\end_inset
+
+
+\begin_inset Formula $b=\begin{bmatrix}0 & 1 & 0 & 0 & \cdots & 0 & 0 & 0\end{bmatrix}$
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La secuencia completa del modelo de comportamiento es codificada en la forma
+ de una matriz (ver 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:binary_matrix"
+
+\end_inset
+
+) donde cada fila representa un estado del modelo.
+ Además, el subíndice de la matriz indicando el número de fila es utilizado
+ para garantizar la línea de tiempo correcta de cada símbolo dentro del
+ modelo de comportamiento.
+ Posteriormente la capa de entrada de la red es alimentada por la matriz
+ una fila por vez.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:binary_matrix"
+
+\end_inset
+
+
+\begin_inset Formula $\begin{bmatrix}1 & 0 & 0 & 0 & \cdots & 0 & 0 & 0\\
+\vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots\\
+0 & 1 & 0 & 0 & \cdots & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & \cdots & 0 & 0 & 1
+\end{bmatrix}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
 Otros detalles de implementación...(???)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Arquitectura de la red LSTM?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+50 input units
+\end_layout
+
+\begin_layout Standard
+1 LSTM layer with 128 hidden units
+\end_layout
+
+\begin_layout Standard
+0.1 dropout layer 
+\end_layout
+
+\begin_layout Standard
+sigmoid activation, 1 output unit
+\end_layout
+
+\begin_layout Standard
+binary crossentropy loss function
+\end_layout
+
+\begin_layout Standard
+rmsprop optimizacion function
 \end_layout
 
 \end_body
