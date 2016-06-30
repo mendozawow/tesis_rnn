@@ -1,24 +1,24 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language spanish-mexico
+\language english
 \language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -29,24 +29,15 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -60,11 +51,12 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -1874138591 "Harpo Maxx,,," 
 \end_header
 
 \begin_body
@@ -89,9 +81,7 @@ El presente capítulo aborda el objetivo de probar la factibilidad de entrenar
 \begin_layout Standard
 Para ilustrar mejor los resultados obtenidos y realizar un estudio más profundo
  de los mismos se comenzará realizando un análisis de los 
-\lang english
 datasets
-\lang spanish-mexico
  a ser utilizados en el presente trabajo.
  Se buscará no solo analizar la distribución de los datos frente a las dos
  clases, Botnet y normal, sino también como se agrupan estos datos en función
@@ -208,7 +198,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Histograma de longitud de estados del dataset A para muestras Botnet.
@@ -244,7 +234,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Histograma de longitud de estados del dataset A para muestras Normal.
@@ -323,7 +313,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -372,7 +362,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -403,7 +393,25 @@ name "fig:histogram_a_labels_normal"
 
 \begin_layout Standard
 Para el caso de las muestras Normal, el histograma de frecuencia por etiquetas
- se muestra en la Figura [REF].
+ se muestra en la Figura [REF]
+\change_inserted -1874138591 1467314760
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467314767
+TODO: Poner referencia
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+.
  En dicha figura, se puede observar que son casi en su totalidad conexiones
  establecidas HTTP y HTTPS.
 \end_layout
@@ -438,7 +446,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Histograma de longitud de estados del dataset B para muestras Botnet.
@@ -474,7 +482,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Histograma de longitud de estados del dataset A para muestras Normal.
@@ -507,14 +515,78 @@ name "fig:dataset_B_len_normal"
 De manera similar a lo observado en el dataset A, las muestras con un numero
  de estados entre 1 y 5 son las de mayor representación en el dataset.
  Esto ultimo, se puede observar no solo para el caso de muestras etiquetadas
- como Botnets [Figura], sino también en aquellas etiquetadas como Normal.
+ como Botnets [Figura]
+\change_inserted -1874138591 1467314811
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467314812
+TODO: Poner referencia
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+, sino también en aquellas etiquetadas como Normal.
 \end_layout
 
 \begin_layout Standard
-Por ultimo, en la Figura [REF}, se presenta el gráfico correspondiente al
- histograma de frecuencia en base a la etiqueta que identifica la actividad
- realizada en el flujo de red.
+Por ultimo, en la Figura [REF
+\change_inserted -1874138591 1467314795
+]
+\change_deleted -1874138591 1467314791
+}
+\change_inserted -1874138591 1467314802
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467314803
+TODO: Poner referencia
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+, se presenta el gráfico correspondiente al histograma de frecuencia en
+ base a la etiqueta que identifica la actividad realizada en el flujo de
+ red.
  
+\change_inserted -1874138591 1467314823
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1874138591 1467314825
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467314844
+TODO: Las figuras tienen los labels muy chicos.
+ No se alcanza a leer.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -524,7 +596,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -560,7 +632,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -627,6 +699,29 @@ El Dataset está compuesto por 488 muestras, de las cuales 188 corresponden
 A continuación en las Figuras [Ref] y [Ref] se puede observar los gráficos
  correspondientes a los histograma de frecuencia en base a la cantidad de
  estados que componen cada muestra.
+\change_inserted -1874138591 1467314856
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1874138591 1467314858
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467314872
+TODO: Pasar figuras al espaniol
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -636,7 +731,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -671,7 +766,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -714,7 +809,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -784,7 +879,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -840,10 +935,10 @@ En problemas de clasificación, la fuente principal de métricas de rendimiento
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -1139,13 +1234,9 @@ es que el dataset original.
 
 \begin_layout Standard
 K-Fold cross validation es usualmente también llamado 10-fold 
-\lang english
 cross
-\lang spanish-mexico
  
-\lang english
 validation
-\lang spanish-mexico
 , debido a que K con el valor de 10 ha sido la práctica más común.
  De hecho, estudios empíricos han mostrado que 10 parece ser el valor óptimo
  de folds (en relación al tiempo que lleva completar el test versus el sesgo
@@ -1230,7 +1321,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1355,13 +1446,34 @@ La Figura [Ref] muestra los valores en ADR y FAR luego de 50 repeticiones
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -1874138591 1467314669
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467314679
+TODO:Esta figura puede convertirse en una tabla.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1452,10 +1564,10 @@ Del experimento se desprenden los siguientes resultados presentados en la
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -1573,7 +1685,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1613,7 +1725,7 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -1668,10 +1780,10 @@ En la siguiente Tabla se pueden visualizar los resultados obtenidos después
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
-<features rotate="0" tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
 <row>
 <cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
@@ -1783,6 +1895,30 @@ A continuación se puede observar dos gráfico de barras mostrando el análisis
  clasificadas como Botnet.
  Así mismo, se representaron con color verde todas aquellas muestras donde
  la red no fue capaz de clasificarlas como Botnet.
+\change_inserted -1874138591 1467314904
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1874138591 1467314909
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467314928
+TODO: Pasar figura al espaniol.
+ Quizas aumentar el size de los labels.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -1792,7 +1928,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Análisis de etiquetas de las muestras clasificadas como Botnet sobre el
@@ -1878,6 +2014,28 @@ El segundo gráfico hace referencia a todas las muestras Normales que se
  de falsos ataques.
  Para la implementación en escenarios reales, es de extrema necesidad que
  la proporción de estos casos sea lo mas cercana a cero.
+\change_inserted -1874138591 1467314939
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1874138591 1467314939
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467314939
+TODO: Pasar figura al espaniol.
+ Quizas aumentar el size de los labels.
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -1887,7 +2045,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 Análisis de etiquetas de las muestras clasificadas como Botnet sobre el
@@ -1948,6 +2106,10 @@ A partir de los resultados obtenidos tanto en el experimento 3 como en el
 status open
 
 \begin_layout Plain Layout
+
+\change_inserted -1874138591 1467314712
+TODO: 
+\change_unchanged
 Poner referencia a los experimentos 3 y 4
 \end_layout
 

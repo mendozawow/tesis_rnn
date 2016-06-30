@@ -1,5 +1,5 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
@@ -12,13 +12,13 @@
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -28,24 +28,15 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -64,6 +55,7 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -1874138591 "Harpo Maxx,,," 
 \end_header
 
 \begin_body
@@ -88,9 +80,12 @@ Vectorización de las entradas
 \end_layout
 
 \begin_layout Standard
-La estrategia utilizada para codificar los modelos de comportamiento a unidades
- de entrada de la red LSTM consiste en transformar cada estado en un vector
- binario.
+La estrategia utilizada para codificar los modelos de comportamiento
+\change_inserted -1874138591 1467314401
+ descriptos en la seccion XXX
+\change_unchanged
+ a unidades de entrada de la red LSTM consiste en transformar cada estado
+ en un vector binario.
  De acuerdo a la tabla 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -104,105 +99,58 @@ reference "fig:Estrategia-de-asignación"
  Cada elemento en este vector representa un estado.
  Dado un estado, solo el elemento que representa a este estado estará activo
  en el vector, mientras que el resto permanecerá inactivo.
- Un ejemplo del esquema de representación se puede ver en 
+ Un ejemplo del esquema de representación se puede ver en la formula (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "alg:binary_vector_a"
+reference "eq:binary_vector_a"
 
 \end_inset
 
- para el caso del estado 
+) para el caso del estado 
 \emph on
 a
 \emph default
- y en 
+ y en la formula (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "alg:binary_vector_b"
+reference "eq:binary_vector_b"
 
 \end_inset
 
- para el caso del estado 
+) para el caso del estado 
 \emph on
-b
+b.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:binary_vector_a"
+\begin_inset Formula 
+\begin{equation}
+a=\begin{bmatrix}1 & 0 & 0 & 0 & \cdots & 0 & 0 & 0\end{bmatrix}\label{eq:binary_vector_a}
+\end{equation}
 
 \end_inset
 
 
-\begin_inset Formula $a=\begin{bmatrix}1 & 0 & 0 & 0 & \cdots & 0 & 0 & 0\end{bmatrix}$
+\begin_inset Formula 
+\begin{equation}
+b=\begin{bmatrix}0 & 1 & 0 & 0 & \cdots & 0 & 0 & 0\end{bmatrix}\label{eq:binary_vector_b}
+\end{equation}
+
 \end_inset
 
  
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:binary_vector_b"
-
-\end_inset
-
-
-\begin_inset Formula $b=\begin{bmatrix}0 & 1 & 0 & 0 & \cdots & 0 & 0 & 0\end{bmatrix}$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 La secuencia completa del modelo de comportamiento es codificada en la forma
- de una matriz (ver 
+ de una matriz (ver la formula (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "alg:binary_matrix"
+reference "eq:binary_matrix"
 
 \end_inset
 
-) donde cada fila representa un estado del modelo.
+)) donde cada fila representa un estado del modelo.
  Además, el subíndice de la matriz indicando el número de fila es utilizado
  para garantizar la línea de tiempo correcta de cada símbolo dentro del
  modelo de comportamiento.
@@ -211,47 +159,21 @@ reference "alg:binary_matrix"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:binary_matrix"
-
-\end_inset
-
-
-\begin_inset Formula $\begin{bmatrix}1 & 0 & 0 & 0 & \cdots & 0 & 0 & 0\\
+\begin_inset Formula 
+\begin{equation}
+\begin{bmatrix}1 & 0 & 0 & 0 & \cdots & 0 & 0 & 0\\
 \vdots & \vdots & \vdots & \vdots & \ddots & \vdots & \vdots & \vdots\\
 0 & 1 & 0 & 0 & \cdots & 0 & 0 & 0\\
 0 & 0 & 0 & 0 & \cdots & 0 & 0 & 1
-\end{bmatrix}$
-\end_inset
-
-
-\end_layout
+\end{bmatrix}\label{eq:binary_matrix}
+\end{equation}
 
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
+\begin_layout Standard
 
 \end_layout
 
@@ -264,7 +186,34 @@ Otros detalles de implementación...(???)
 status open
 
 \begin_layout Plain Layout
+
+\change_inserted -1874138591 1467314440
+TODO: 
+\change_unchanged
 Arquitectura de la red LSTM?
+\change_inserted -1874138591 1467314457
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467314470
+Seccion 3.2 Hablar de la capa Oculta y su configuracion
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467316084
+Seccion 3.3 Hablar de la capa de salida (etiqueta convertida en ceros y unos).
+ Funcion de activacion
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467316093
+Seccion 3.4 Otros como el tipo de entrenamiento y demas.
+\change_unchanged
+
 \end_layout
 
 \end_inset

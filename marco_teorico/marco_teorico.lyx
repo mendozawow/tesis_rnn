@@ -1,24 +1,28 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
 \begin_document
 \begin_header
 \textclass article
+\begin_preamble
+% Added by lyx2lyx
+\usepackage{mathtools}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
-\language spanish-mexico
+\language english
 \language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman default
 \font_sans default
 \font_typewriter default
-\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
 \font_sf_scale 100
 \font_tt_scale 100
+
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -29,24 +33,15 @@
 \use_hyperref false
 \papersize default
 \use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
-\use_package cancel 1
-\use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
-\use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
 \cite_engine basic
-\cite_engine_type default
-\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
-\justification true
 \use_refstyle 1
 \index Index
 \shortcut idx
@@ -65,6 +60,7 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -1874138591 "Harpo Maxx,,," 
 \end_header
 
 \begin_body
@@ -78,7 +74,10 @@ Marco Teórico
 status open
 
 \begin_layout Plain Layout
-temas a abordar (botnets, STF, RNN, LSTM)
+TODO: Enumerar los temas a abordar en el contexto del marco teorico ((botnets,
+ STF, RNN, LSTM).
+ Como regla general despues de un titulo, siempre tiene que ir algun texto.
+ 
 \end_layout
 
 \end_inset
@@ -90,6 +89,23 @@ temas a abordar (botnets, STF, RNN, LSTM)
 Botnets y Malware
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Lo mismo en este caso.
+ Un titulo seguido inmediatamente de un subtitulo.
+ Se menciona la palabra Malware pero no se la ha definido en ningun lado.
+ Yo aprovecharia este espacio para hablar de software malicioso y botnet
+ como un caso particular, para luego dar pie a la definicion.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Definición de Botnet
 \end_layout
@@ -98,27 +114,62 @@ Definición de Botnet
 Se define como Botnet al conjunto de dispositivos infectados por un bot
  que conforman una red controlada por un nodo central, denominado BotMaster,
  quien tiene la capacidad de comunicarse con cada bot y ordenar la ejecución
- de órdenes específicas, tales como scans de las redes asociadas al host
- infectado por el bot, ataques distribuidos de denegación de servicio (DDOS),
- spamming, bitcoin mining, procesamiento distribuido orientado a desencriptación
-, entre otras.
+ de órdenes específicas, tales como
+\change_inserted -1874138591 1467309080
+:
+\change_unchanged
+ scan
+\change_inserted -1874138591 1467309058
+eo
+\change_unchanged
+s de las redes asociadas al host infectado por el bot, ataques distribuidos
+ de denegación de servicio (DDOS), spamming, bitcoin mining, procesamiento
+ distribuido orientado a desencriptación, entre otras.
 \end_layout
 
 \begin_layout Subsubsection
 Ciclo de vida
+\change_inserted -1874138591 1467309088
+ de un Botnet
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Las Botnets en general siguen un conjunto de etapas a lo largo de su existencia.
- Cada etapa ofrece un conjunto de alternativas para tratar de poder responder
- ante la amenaza que representan.
- Se pueden definir las siguientes etapas 
+ Cada etapa ofrece un conjunto de alternativas para tratar de 
+\change_deleted -1874138591 1467309100
+poder
+\change_unchanged
+ responder ante la amenaza que representan.
+
+\change_inserted -1874138591 1467309139
+ De acuerdo a lo expuesto en 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hachem2011"
 
 \end_inset
 
+,
+\change_unchanged
+ 
+\change_inserted -1874138591 1467309140
+s
+\change_deleted -1874138591 1467309140
+S
+\change_unchanged
+e pueden definir las siguientes etapas 
+\change_deleted -1874138591 1467309125
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hachem2011"
+
+\end_inset
+
+
+\change_unchanged
 :
 \end_layout
 
@@ -135,8 +186,18 @@ En general utilizan enfoques comunes vistos en otros tipos de malware.
  adjuntos comprometidos, la explotación de vulnerabilidades en alguna aplicación
  corriendo en el host remoto, la propagación de malware a través de redes
  de compartición de archivos P2P, etc.
- Habiendo infectado, el bot buscará propagarse buscando vulnerabilidades
- en otros hosts adyacentes al infectado.
+ Habiendo
+\change_inserted -1874138591 1467309175
+ finalizado el proceso de
+\change_unchanged
+ infecta
+\change_inserted -1874138591 1467309202
+cion en un host
+\change_deleted -1874138591 1467309178
+do
+\change_unchanged
+, el bot buscará propagarse buscando vulnerabilidades en otros hosts adyacentes
+ al infectado.
  
 \end_layout
 
@@ -145,8 +206,12 @@ En general utilizan enfoques comunes vistos en otros tipos de malware.
 \series bold
 Command & Control (C&C): 
 \series default
-Se denomina canal C&C al conducto al conducto de comunicación mediante el
- cual el Bot Master envía órdenes al bot.
+Se denomina canal C&C 
+\change_deleted -1874138591 1467309212
+al conducto
+\change_unchanged
+ al conducto de comunicación mediante el cual el Bot Master envía órdenes
+ al bot.
  Si bien existen diferentes modelos y topologías (IRC, HTTP, P2P, etc),
  éstos son invariantes entre los bots y hasta cierto punto ofrecen un comportami
 ento parecido entre distintas Botnets.
@@ -189,8 +254,13 @@ El canal utilizado para ejecutar comandos puede ser implementado utilizando
  diferentes modelos, topologías y una variedad de aplicaciones (ej, HTTP,
  P2P, IRC, etc).
  El foco de atención se centra sobre el canal C&C por dos razones principales.
- Primero, los C&Cs de una botnet son únicos e improbable que cambien entre
- los bots y sus variantes.
+ Primero, los C&Cs de una botnet son únicos 
+\change_inserted -1874138591 1467309285
+y resulta 
+\change_deleted -1874138591 1467309284
+e
+\change_unchanged
+ improbable que cambien entre los bots y sus variantes.
  Segundo, el canal C&C de una botnet es escencial para mantener a una botnet
  operativa y efectiva.
 \end_layout
@@ -201,16 +271,43 @@ Una forma de categorizar los modelos de C&C es separar los modelos centralizados
  Un modelo de topología centralizada se caracteriza por tener un punto central
  que envia y publica mensajes hacia y entre sus clientes.
  En este modelo centralizado, el BotMaster selecciona un host a ser el punto
- de concacto de todos los bots (servidor C&C).
+ de con
+\change_inserted -1874138591 1467309317
+t
+\change_deleted -1874138591 1467309317
+c
+\change_unchanged
+acto de todos los bots (servidor C&C).
  Cuando la víctima es infectada, se conectará al servidor C&C y luego esperará
  y comprobará si hay comandos pendientes del BotMaster.
  Estos servidores corren ciertos servicios como IRC y HTTP, y además cuentan
  con mecanismos para proteger sus comunicaciones.
  Por ejemplo, los canales IRC pueden ser protegidos por contraseña tanto
- por los bots como por el master para evitar ser espiados.
- La mayoría de las botnets utilizan este modelo dada la simplicidad de implement
-ación y customización, y un BotMaster puede fácilmente controlar miles de
- bots utilizando el modelo centralizado.
+ por los bots como por el 
+\change_inserted -1874138591 1467309341
+Bot 
+\change_unchanged
+master para evitar ser espiados.
+ La mayoría de las botnets utilizan este modelo dada 
+\change_inserted -1874138591 1467309351
+su
+\change_deleted -1874138591 1467309350
+la
+\change_unchanged
+ simplicidad de implementación y customización
+\change_inserted -1874138591 1467309366
+.
+\change_deleted -1874138591 1467309366
+,
+\change_unchanged
+ 
+\change_inserted -1874138591 1467309370
+De esta manera,
+\change_deleted -1874138591 1467309368
+y
+\change_unchanged
+ un BotMaster puede fácilmente controlar miles de bots utilizando el modelo
+ centralizado.
  Asimismo, la latencia de mensajes en este modelo es baja, por lo tanto
  los BotMasters pueden coordinar y lanzar ataques de manera fácil.
  Por otro lado, el modelo centralizado tiene dos grandes debilidades: el
@@ -312,17 +409,61 @@ key "Karim2014"
 \end_inset
 
 , las técnicas de detección de botnets son clasificadas en dos grandes categoría
-s, IDS (sistemas de detección de intrusiones) y honeynets (Provos, 2004;
- Stinson and Mitchell, 2007).
- Los IDS se subdividen además en detectores de anomalías y detectores basados
- en firmas.
+s,
+\change_inserted -1874138591 1467311957
+ las denominadas
+\change_deleted -1874138591 1467311887
+ 
+\change_inserted -1874138591 1467311964
+honeynets (Provos, 2004; Stinson and Mitchell, 2007)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467311887
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+y los 
+\change_deleted -1874138591 1467311970
+IDS (
+\change_inserted -1874138591 1467311973
+S
+\change_deleted -1874138591 1467311970
+s
+\change_unchanged
+istemas de 
+\change_inserted -1874138591 1467311977
+D
+\change_deleted -1874138591 1467311976
+d
+\change_unchanged
+etección de 
+\change_inserted -1874138591 1467311979
+I
+\change_deleted -1874138591 1467311979
+i
+\change_unchanged
+ntrusiones
+\change_inserted -1874138591 1467311986
+ (IDS)
+\change_deleted -1874138591 1467311982
+)
+\change_inserted -1874138591 1467311917
+.
 \end_layout
 
 \begin_layout Standard
-Una honeynet constituye una red construida con vulnerabilidades intencionales,
- cuyo propósito es invitar a ser atacada de tal manera que tanto las actividades
- del atacante como sus métodos puedan ser estudiados y a través de esa informaci
-ón incrementar la seguridad de red.
+
+\change_inserted -1874138591 1467311939
+En el caso de las honeynets, se trata de una infraestructura de red construida
+ con vulnerabilidades intencionales, cuyo propósito es invitar a ser atacada
+ de tal manera que tanto las actividades del atacante como sus métodos puedan
+ ser estudiados y a través de esa información incrementar la seguridad de
+ red.
  Una honeynet recolecta información de los bots para sus análisis posterior
  para medir la tecnología utilizada, las características de la botnet y
  la intensidad del ataque.
@@ -331,10 +472,24 @@ Una honeynet constituye una red construida con vulnerabilidades intencionales,
 s utilizadas por el atacante y la motivación del atacante.
  Una honeynet es además utilizada para recolectar binarios de bots, los
  cuales penetran las botnets (Freiling et al., 2005; Abu Rajab et al., 2006;
- Stinson and Mitchell, 2007).
+ Stinson and Mitchell, 2007) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467311918
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -1874138591 1467311918
 Mas allá de su utilidad, hay cierto aspectos críticos que limitan la capacidad
  de las honeynets.
  Por un lado, sus escalabilidad es limitada, dado que se requiere desplegar
@@ -344,7 +499,21 @@ Mas allá de su utilidad, hay cierto aspectos críticos que limitan la capacidad
  también es un desafío.
  Por último, un riesgo siempre latente es que el atacante pueda tomar control
  de los honeybots para dañar otros sistemas o equipos fuera de la honeynet
- (Bethencourt et al., 2005; Zou and Cunningham, 2006).
+ (Bethencourt et al., 2005; Zou and Cunningham, 2006) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467311918
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -362,7 +531,23 @@ te, utiliza un esquema de detección basado en firmas.
  Sin embargo, existen varias limitaciones para este tipo de enfoque.
  Una de estas limitaciones es que el IDS requiere actualizaciones frecuentes
  al repositorio de firmas para detectar botnets nuevas (Kugisaki et al.,
- 2007), mientras que el ratio de actualización de firmas es considerablemente
+ 2007)
+\change_inserted -1874138591 1467311725
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467311725
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+, mientras que el ratio de actualización de firmas es considerablemente
  bajo dado que la cantidad de anomalías va en incremento y el diagnóstico
  es un trabajo que lleva tiempo.
  Otra de las limitaciones es su incapacidad para detectar ataques de botnet
@@ -396,7 +581,23 @@ En contraste con la detección de firmas, el enfoque del IDS basado en anomalía
  En el monitoreo activo, se inyectan paquetes en la red para medir los tiempos
  de respuesta de la red.
  Como ejemplo de un sistema de detección de monitoreo activo se puede nombrar
- a BotProbe (Wikipedia, 2013b).
+ a BotProbe (Wikipedia, 2013b)
+\change_inserted -1874138591 1467311770
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467311770
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+.
  En el monitoreo pasivo el tráfico de red pasa por equipos especializado
  que que detectan la actividad sospechosa.
  El tráfico de red observado es analizado aplicando distintas técnicas de
@@ -413,15 +614,25 @@ En contraste con la detección de firmas, el enfoque del IDS basado en anomalía
  la arquitectura desplegada (cliente-servidor o peer-to-peer), ya que en
  cada bot de la botnet se es instalado un programa preconfigurado que responde
  de una manera similar.
+\change_inserted -1874138591 1467309646
+
 \end_layout
 
 \begin_layout Subsection
-Stratosphere Testing Framework
+Stratosphere 
+\change_deleted -1874138591 1467311827
+Testing Framework
+\change_inserted -1874138591 1467312177
+Intrusion Prevention System
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -1874138591 1467312094
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Mencionar el problema de los modelos de markov para mirar hacia atrás.
@@ -429,6 +640,8 @@ Mencionar el problema de los modelos de markov para mirar hacia atrás.
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -447,28 +660,52 @@ Mencionar como se va el modelo de markov a medida se analiza un mayor numero
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -1874138591 1467312106
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467312129
+TODO:Mencionar el concepto de IPS vs IDS y luego largar la explicaciond
+ e STRATOSPHERE
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Stratosphere IPS (Sistema de prevención de intrusiones), es una iniciativa
  creada con el objeto de proveer a la comunidad un IPS de última generación
  basado en comportamiento.
- La metodología actual de detección de Stratosphere está basada en Modelos
+ 
+\change_deleted -1874138591 1467312198
+La metodología actual de detección de Stratosphere está basada en Modelos
  de Markov de primer orden.
  Si bien los resultados han sido prometedores y se están desarrollando mejoras
  continuamente, los modelos de primer orden de Markov sufren inconvenientes
  al momento de memorizar largas secuencias de estados.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -562,7 +799,7 @@ name "Ejemplo-de-modelo"
 \end_inset
 
 
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 
@@ -596,12 +833,34 @@ reference "fig:Estrategia-de-asignación"
  Para realizar la detección de comportamiento malicioso, la estrategia actual
  seguida por Stratosphere IPS es llevar a cabo un análisis basado en cadenas
  de Markov de la probabilidad de transición de un símbolo a otro.
- Más allá de que esta técnica ha probado ser efectiva en varios escenarios
+ 
+\change_inserted -1874138591 1467312474
+A partir de un modelo de comportamiento, se construye una matriz de transicion
+ para cada uno de los posibles estados, junto a un vector inicial.
+ Luego dado un nuevo comportamiento, se calcula la probabilidad de que dicho
+ estado haya sido generado por la matriz y el vector inicial.
+ Para una descripcion detalla del mecanismo se sugiere la lectura del trabajo
+ de tesis de Garcia [REFERNCIA]
+\end_layout
+
+\begin_layout Standard
+Más allá de que esta técnica ha probado ser efectiva en varios escenarios
  de la vida real, es un hecho de que en el análisis de cadenas de Markov,
  cada estado depende únicamente del estado anterior.
- En la sección siguiente se procederá a describir lo que se conoce como
- redes neuronales recurrentes (RNN), y un caso especial de RNN denominado
- LSTM (Long Short Term Memory).
+
+\change_inserted -1874138591 1467312892
+ Lo que lo hace inviable a la hora de reconocer comportamientos que dependan
+ de estados que observados a largo plazo.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1874138591 1467312223
+ 
+\change_unchanged
+En la sección siguiente se procederá a describir lo que se conoce como redes
+ neuronales recurrentes (RNN), y un caso especial de RNN denominado LSTM
+ (Long Short Term Memory).
  Las redes LSTM han probado ser capaces de construir modelos de clasificación
  sobre secuencias con dependencias a largo plazo de una manera computacionalment
 e eficiente.
@@ -651,7 +910,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -663,6 +922,8 @@ name "fig:rnn-architectures"
 Múltiples representaciones de arquitecturas de redes neuronales.
 \begin_inset Graphics
 	filename rnn_examples.jpeg
+	BoundingBox 0bp 0bp 1329bp 380bp
+	clip
 
 \end_inset
 
@@ -712,7 +973,24 @@ Cada rectángulo es un vector y las flechas representan funciones.
 Mikolov et.
  al.
  (2010)
+\change_inserted -1874138591 1467313016
+
 \emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467313016
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+.
+
+\change_unchanged
  sobre modelado de lenguaje, reconocimiento y generación de escritura a
  mano 
 \emph on
@@ -722,7 +1000,23 @@ Graves (2013)
 \emph on
 Sutskever et al.
  (2014)
+\change_inserted -1874138591 1467313017
+
 \emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467313017
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
 ; 
 \emph on
 Bahdanau et al.
@@ -732,21 +1026,86 @@ Bahdanau et al.
 \emph on
 Graves et al.
  (2013)
+\change_inserted -1874138591 1467313009
+
 \emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467313009
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
 , análisis de video
 \emph on
  Donahue et al.
  (2015)
+\change_inserted -1874138591 1467313025
+
 \emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467313025
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+.
+
+\change_unchanged
  y subtitulado de imágenes 
 \emph on
 Vinyals et al.
  (2015)
+\change_inserted -1874138591 1467313014
+
 \emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467313014
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
 ; 
 \emph on
 Karpathy & Fei-Fei (2015)
+\change_inserted -1874138591 1467313012
+
 \emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467313012
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
 .
 \end_layout
 
@@ -778,7 +1137,7 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset Caption
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -793,6 +1152,24 @@ Diagrama de una red neuronal recurrente desplegada en el tiempo
 
 \end_inset
 
+
+\change_inserted -1874138591 1467313189
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1874138591 1467313197
+TODO: Hay que pasar esto al INGLES :(
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -904,7 +1281,7 @@ Donde se asume que todo
 
 .
  La matriz de parámetros en cada capa tiene dimensiones 
-\begin_inset Formula $\left[n\,x\,2n\right]$
+\begin_inset Formula $\left[n\, x\,2n\right]$
 \end_inset
 
  y la función
@@ -1152,7 +1529,7 @@ h_{t-1}^{l}
 \end_inset
 
  
-\begin_inset Formula $\mathllap{}\begin{array}{c}
+\begin_inset Formula $\begin{array}{c}
 c_{t}^{l}=f\odot c_{t-1}^{l}+i\odot g\\
 h_{t}^{l}=o\odot tanh(c_{t}^{l})
 \end{array}$
@@ -1179,7 +1556,7 @@ tangente hiperbólica
 \end_inset
 
 es una matriz 
-\begin_inset Formula $\left[4n\,x\,2n\right]$
+\begin_inset Formula $\left[4n\, x\,2n\right]$
 \end_inset
 
 .
@@ -1202,10 +1579,19 @@ oscila entre -1 y 1, y se utiliza para modificar los contenidos de la memoria
  Esta interacción aditiva es una característica crítica del diseño de LSTM,
  debido a que durante backpropagation una operación de suma simplemente
  distribuye gradientes.
- Esto permite que los gradientes en las células de memoria c fluyan hacia
- atrás a través del tiempo sin interrupción durante largos periodos de tiempo,
- o al menos hasta que el flujo es interrumpido con la interacción multiplicativa
- de una compuerta activa de olvido.
+ Esto permite que los gradientes en las células de memoria
+\change_deleted -1874138591 1467314295
+ c
+\change_inserted -1874138591 1467314295
+
+\begin_inset Formula $c$
+\end_inset
+
+
+\change_unchanged
+ fluyan hacia atrás a través del tiempo sin interrupción durante largos
+ periodos de tiempo, o al menos hasta que el flujo es interrumpido con la
+ interacción multiplicativa de una compuerta activa de olvido.
  Por último, ha de observarse que una implementación de LSTM requiere que
  se mantengan dos vectores (
 \begin_inset Formula $h_{t}^{l}$
