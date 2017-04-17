@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +11,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -69,15 +71,105 @@
 \begin_body
 
 \begin_layout Section
-Conclusiones y Trabajos futuros
-\end_layout
 
-\begin_layout Subsection
+\lang spanish
 Conclusiones
 \end_layout
 
+\begin_layout Standard
+
+\lang spanish
+En el presente trabajo se ha abordado el problema de detectar Botnets utilizando
+ los modelos de comportamiento de STF empleando como algoritmo para la clasifica
+ción de las muestras una red neuronal recurrente del tipo LSTM.
+ Dos problemas específicos han surgido al momento de entrenar la red.
+ Para el caso del desbalanceo en la cantidad de muestras de una y otra clase,
+ se evaluaron dos de las técnicas más comunes, Oversampling y Undersampling,
+ sobre un dataset que presentaba mayor cantidad de muestras de Botnet que
+ de tráfico normal.
+ Los resultados mostraron que de no utilizar una técnica de muestreo, los
+ valores de falsos positivos podrían aumentar considerablemente.
+ Al momento de aplicar una técnica de muestreo, no se encontraron diferencias
+ significativas entre las técnicas, determinando que Undersampling podría
+ ser la técnica mas efectiva para aplicar en este caso debido a su costo
+ computacional.
+ De manera similar, la elección de la cantidad de estados a analizar también
+ fue determinada por el costo computacional, dado que no se encontraron
+ evidencias de que incrementar el número de estados a analizar pudiera mejorar
+ tanto los valores de detección como de cantidad de falsas alarmas.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Se realizaron dos experimentos independientes para analizar la capacidad
+ de generalización de la red.
+ En el primer experimento, se evaluó el clasificador contra un conjunto
+ de muestras generadas por un mismo tipo de Botnet.
+ En el segundo experimento, se evaluó al clasificador contra un conjunto
+ de muestras que además de provenir de una captura de tráfico de una Botnet
+ diferente, presentaba una distribución de clases más aproximado al escenario
+ real, donde la cantidad de muestras de tráfico normal sobrepasa considerablemen
+te a la cantidad de muestras de tráfico de Botnet.
+ Se destaca particularmente los resultados obtenidos contra una Botnet distinta,
+ donde se observan valores prometedores en cuanto a detección mientras se
+ han mantenido casi invariables las falsas alarmas en un valor considerablemente
+ bajo.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+El análisis detallado de los resultados muestra que la red LSTM es capaz
+ de detectar correctamente el comportamiento de Botnet cuando presenta una
+ diferencia significativa al tráfico normal.
+ Por otro lado, cuando tales diferencias no se reflejaban de modo evidente,
+ la clase contenedora del mayor número de muestras con comportamiento similar
+ era preferida.
+ En conclusión, se puede dictaminar que es necesario llevar a cabo mayores
+ experimentos en esta dirección, posiblemente con un volumen de datos considerab
+lemente mayor que permita una comparación de los distintos tipos de tráfico
+ en condiciones que permita al algoritmo encontrar un patrón de diferenciación
+ de conducta.
+\end_layout
+
 \begin_layout Subsection
+
+\lang spanish
 Trabajos Futuros
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+A partir del trabajo realizado se abren varios caminos posibles para profundizar
+ en la clasificación de flujos de tráfico de red utilizando los modelos
+ de comportamiento de STF.
+ La primera veta que queda sin explorar es que tal se comporta la red LSTM
+ cuando se entrena con una cantidad de muestras considerablemente mayor.
+ El problema más evidente para recorrer este camino es la necesidad de contar
+ con un analista experto para etiquetar los flujos de red.
+ Por un lado, esto hace que el proceso de etiquetado sea engorroso.
+ Por otro lado, resulta considerablemente complejo poder validar las etiquetas,
+ por lo que no hay una certeza de que cada una de las etiquetas sea correcta.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Alternativamente, se podría utilizar otro tipo de red para realizar el análisis
+ de las secuencias de estados.
+ Una de estas alternativas podría ser utilizar una red neuronal convolucional
+ unidimensional para encontrar aquellos conjuntos de estados que podrían
+ definir a una secuencia de estados como generada por comportamiento inherente
+ a una Botnet.
+ La hipótesis detrás de este experimento partiría del hecho de que durante
+ el ciclo de vida de un flujo de red en cualquier momento se podría producir
+ el mismo patrón y que ese mismo patrón se repite para distintos tipos de
+ Botnet (como podría ser la orden de C&C a través de un canal de HTTP).
+ Este mismo tipo de análisis sería similar a utilizar una RNN con mecanismos
+ de atención, pero con la salvedad de que computacionalmente serían mucho
+ más efectivos.
 \end_layout
 
 \end_body

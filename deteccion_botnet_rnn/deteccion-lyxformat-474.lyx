@@ -1,9 +1,7 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin unavailable
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
@@ -11,16 +9,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100 100
-\font_tt_scale 100 100
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -71,16 +69,12 @@
 \begin_body
 
 \begin_layout Section
-
-\lang spanish
-Detección de comportamiento de Botnet mediante RNN
+Detección de comportamiento de botnet mediante RNN
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La idea propuesta en este trabajo consiste en utilizar una red LSTM para
- construir modelos de detección basados en el comportamiento de las conexiones.
+ construir modelos de deteccion basados en el comportamiento de las conexiones.
  La estrategia utilizada sigue el enfoque clásico de aprendizaje automático
  supervisado para construir modelos de clasificación.
  Tal enfoque se basa en el uso de datos históricos previamente etiquetados
@@ -90,19 +84,15 @@ La idea propuesta en este trabajo consiste en utilizar una red LSTM para
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Vectorización de las entradas
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La estrategia utilizada para codificar los modelos de comportamiento descriptos
  en la seccion 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Stratosphere-Intrusion-Preventio"
+reference "sub:Stratosphere-Intrusion-Preventio"
 
 \end_inset
 
@@ -116,7 +106,7 @@ reference "fig:Estrategia-de-asignación"
 \end_inset
 
  hay 50 posibles estados a utilizar en un modelo de comportamiento.
- Por lo tanto, es posible representar cada uno de estos símbolos en un vector
+ Por lo tanto, esposible representar cada uno de estos símbolos en un vector
  binario 50-dimensional.
  Cada elemento en este vector representa un estado.
  Dado un estado, solo el elemento que representa a este estado estará activo
@@ -145,8 +135,6 @@ b.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \begin{equation}
 a=\begin{bmatrix}1 & 0 & 0 & 0 & \cdots & 0 & 0 & 0\end{bmatrix}\label{eq:binary_vector_a}
@@ -166,8 +154,6 @@ b=\begin{bmatrix}0 & 1 & 0 & 0 & \cdots & 0 & 0 & 0\end{bmatrix}\label{eq:binary
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La secuencia completa del modelo de comportamiento es codificada en la forma
  de una matriz (ver la formula (
 \begin_inset CommandInset ref
@@ -185,8 +171,6 @@ reference "eq:binary_matrix"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \begin{equation}
 \begin{bmatrix}1 & 0 & 0 & 0 & \cdots & 0 & 0 & 0\\
@@ -206,14 +190,10 @@ reference "eq:binary_matrix"
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
-Otros detalles de implementación
+Otros detalles de implementación...(???)
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Note Note
 status open
 
@@ -240,32 +220,27 @@ Seccion 3.4 Otros como el tipo de entrenamiento y demas.
 \end_layout
 
 \begin_layout Standard
+50 input units
+\end_layout
 
-\lang spanish
-La arquitectura de la red propuesta cuenta con 50 unidades de entrada, debido
- al tamaño del vector de estados.
- Éstas unidades se encuentran conectadas a una capa LSTM compuesta por 128
- unidades, seguida de una capa de Dropout (
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Hinton2014"
+\begin_layout Standard
+1 LSTM layer with 128 hidden units
+\end_layout
 
-\end_inset
+\begin_layout Standard
+0.1 dropout layer 
+\end_layout
 
-), cuyo objetivo es reducir la sobrealimentación de la red y favorecer la
- generalización.
- La capa de salida la compone una única unidad con función de activación
- sigmoidea, cuyos valores oscilan entre 0 y 1, y donde una salida mayor
- a 0.5 determina que la muestra será clasificada como Botnet.
- Para el cálculo del error se utilizó la función de entropía cruzada, mientras
- que para la función de optimización se optó por RMSprop (
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Ruder2016"
+\begin_layout Standard
+sigmoid activation, 1 output unit
+\end_layout
 
-\end_inset
+\begin_layout Standard
+binary crossentropy loss function
+\end_layout
 
-).
+\begin_layout Standard
+rmsprop optimizacion function
 \end_layout
 
 \end_body

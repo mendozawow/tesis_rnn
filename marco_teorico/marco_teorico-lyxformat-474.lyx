@@ -1,9 +1,7 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin unavailable
 \textclass article
 \begin_preamble
 % Added by lyx2lyx
@@ -14,16 +12,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman "default" "default"
-\font_sans "default" "default"
-\font_typewriter "default" "default"
-\font_math "auto" "auto"
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100 100
-\font_tt_scale 100 100
+\font_sf_scale 100
+\font_tt_scale 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -65,82 +63,76 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 193492014 "h2o" 
 \end_header
 
 \begin_body
 
 \begin_layout Section
-
-\lang spanish
 Marco Teórico
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
 
-\lang spanish
-A continuación se brindarán algunos conceptos necesarios para entender en
- mayor profundidad qué es una Botnet, cómo funcionan y qué las caracteriza.
- Además, se discutirán varios enfoques utilizados para su detección, finalizando
- en el enfoque sobre el cual se ha basado este trabajo: el modelo de comportamie
-nto de Stratosphere IPS (
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Garcia2015"
-
-\end_inset
-
-).
+\begin_layout Plain Layout
+TODO: Enumerar los temas a abordar en el contexto del marco teorico ((botnets,
+ STF, RNN, LSTM).
+ Como regla general despues de un titulo, siempre tiene que ir algun texto.
+ 
 \end_layout
 
-\begin_layout Standard
-
-\lang spanish
-En cuanto a algoritmos de detección, se brindará una introducción a las
- Redes Neuronales Recurrentes, brindando información acerca de sus fortalezas
- así como sus debilidades, y profundizando sobre un tipo específico de red,
- Long-Short Term Memory (
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Hochreiter1997"
-
 \end_inset
 
-), y los motivos por los cuales es la arquitectura de red elegida para llevar
- a cabo el presente trabajo.
+
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
-Botnet
+Botnets y Malware
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
 
-\lang spanish
+\begin_layout Plain Layout
+Lo mismo en este caso.
+ Un titulo seguido inmediatamente de un subtitulo.
+ Se menciona la palabra Malware pero no se la ha definido en ningun lado.
+ Yo aprovecharia este espacio para hablar de software malicioso y botnet
+ como un caso particular, para luego dar pie a la definicion.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Definición de Botnet
+\end_layout
+
+\begin_layout Standard
 Se define como Botnet al conjunto de dispositivos infectados por un bot
  que conforman una red controlada por un nodo central, denominado BotMaster,
  quien tiene la capacidad de comunicarse con cada bot y ordenar la ejecución
- de órdenes específicas, tales como: escaneo de las redes asociadas al host
+ de órdenes específicas, tales como: scaneos de las redes asociadas al host
  infectado por el bot, ataques distribuidos de denegación de servicio (DDOS),
  spamming, bitcoin mining, procesamiento distribuido orientado a desencriptación
 , entre otras.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Ciclo de vida de una Botnet
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Las Botnets en general siguen un conjunto de etapas a lo largo de su existencia.
  Cada etapa ofrece un conjunto de alternativas para tratar de responder
  ante la amenaza que representan.
@@ -157,7 +149,6 @@ key "Hachem2011"
 \begin_layout Enumerate
 
 \series bold
-\lang spanish
 Distribución e infección: 
 \series default
 En general utilizan enfoques comunes vistos en otros tipos de malware.
@@ -168,7 +159,7 @@ En general utilizan enfoques comunes vistos en otros tipos de malware.
  adjuntos comprometidos, la explotación de vulnerabilidades en alguna aplicación
  corriendo en el host remoto, la propagación de malware a través de redes
  de compartición de archivos P2P, etc.
- Habiendo finalizado el proceso de infectación en un host, el bot buscará
+ Habiendo finalizado el proceso de infectacion en un host, el bot buscará
  propagarse buscando vulnerabilidades en otros hosts adyacentes al infectado.
  
 \end_layout
@@ -176,7 +167,6 @@ En general utilizan enfoques comunes vistos en otros tipos de malware.
 \begin_layout Enumerate
 
 \series bold
-\lang spanish
 Command & Control (C&C): 
 \series default
 Se denomina canal C&C al conducto de comunicación mediante el cual el Bot
@@ -191,7 +181,6 @@ ento parecido entre distintas Botnets.
 \begin_layout Enumerate
 
 \series bold
-\lang spanish
 Ejecución de órdenes: 
 \series default
 Entre las órdenes más comunes se pueden encontrar: Ataques distribuidos
@@ -202,12 +191,11 @@ Entre las órdenes más comunes se pueden encontrar: Ataques distribuidos
 \begin_layout Enumerate
 
 \series bold
-\lang spanish
 Ofuscación y actualización: 
 \series default
 A medida que surgen nuevas tecnologías, criminales buscan la forma para
  adoptarlas o abusarlas, ya sea para facilitar la generación de ganancias,
- para incrementar su escalabilidad y flexibilidad o para proveer un camuflaje
+ para incementar su escalabilidad y flexibilidad o para proveer un camuflaje
  más efectivo.
  Por otro lado, los creadores de Botnets generan nuevas versiones del bot
  con nuevas formas de explotación de vulnerabilidades dado que las técnicas
@@ -217,45 +205,39 @@ A medida que surgen nuevas tecnologías, criminales buscan la forma para
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Canal C&C
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El canal utilizado para ejecutar comandos puede ser implementado utilizando
  diferentes modelos, topologías y una variedad de aplicaciones (ej, HTTP,
  P2P, IRC, etc).
  El foco de atención se centra sobre el canal C&C por dos razones principales.
- Primero, los C&Cs de una Botnet son únicos y resulta improbable que cambien
+ Primero, los C&Cs de una botnet son únicos y resulta improbable que cambien
  entre los bots y sus variantes.
- Segundo, el canal C&C de una Botnet es esencial para mantener a una Botnet
+ Segundo, el canal C&C de una botnet es escencial para mantener a una botnet
  operativa y efectiva.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Una forma de categorizar los modelos de C&C es separar los modelos centralizados
  de los modelos distribuidos.
  Un modelo de topología centralizada se caracteriza por tener un punto central
- que envía y publica mensajes hacia y entre sus clientes.
- En este modelo centralizado, el Bot Master selecciona un host a ser el
- punto de contacto de todos los bots (servidor C&C).
+ que envia y publica mensajes hacia y entre sus clientes.
+ En este modelo centralizado, el BotMaster selecciona un host a ser el punto
+ de contacto de todos los bots (servidor C&C).
  Cuando la víctima es infectada, se conectará al servidor C&C y luego esperará
- y comprobará si hay comandos pendientes del Bot Master.
+ y comprobará si hay comandos pendientes del BotMaster.
  Estos servidores corren ciertos servicios como IRC y HTTP, y además cuentan
  con mecanismos para proteger sus comunicaciones.
  Por ejemplo, los canales IRC pueden ser protegidos por contraseña tanto
- por los bots como por el Bot Master para evitar ser espiados.
- La mayoría de las Botnets utilizan este modelo dada su simplicidad de implement
+ por los bots como por el Bot master para evitar ser espiados.
+ La mayoría de las botnets utilizan este modelo dada su simplicidad de implement
 ación y customización.
- De esta manera, un Bot Master puede fácilmente controlar miles de bots
- utilizando el modelo centralizado.
+ De esta manera, un BotMaster puede fácilmente controlar miles de bots utilizand
+o el modelo centralizado.
  Asimismo, la latencia de mensajes en este modelo es baja, por lo tanto
- los Bot Masters pueden coordinar y lanzar ataques de manera fácil.
+ los BotMasters pueden coordinar y lanzar ataques de manera fácil.
  Por otro lado, el modelo centralizado tiene dos grandes debilidades: el
  riesgo de comprometer el sistema entero dado el descubrimiento del servidor,
  y la facilidad de ser detectado puesto que múltiples clientes se conectan
@@ -264,10 +246,8 @@ ación y customización.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Se puede hablar de las topologías del modelo centralizado: single star topology,
@@ -280,8 +260,6 @@ Se puede hablar de las topologías del modelo centralizado: single star topology
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Al día de hoy, el único modelo que reemplaza al modelo centralizado es el
  modelo distribuido basado en 
 \emph on
@@ -307,17 +285,13 @@ s seleccionados, destruir uno o varios bots no llevará necesariamente a
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Enfoques de detección
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
-Al momento de hablar de los distintos enfoques de detección de Botnets,
+Al momento de hablar de los distintos enfoques de detección de botnets,
  se debe ahondar primero en la diferenciación entre las técnicas de detección
- de anomalías y las técnicas de detección de Botnets.
+ de anomalías y las técnicas de detección de botnets.
  Tal cual como se especifica en 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -339,26 +313,22 @@ detección de anomalías
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
-Por el contrario, la detección Botnet se refiere a la detección de actividades
+Por el contrario, la detección botnet se refiere a la detección de actividades
  maliciosas/anómalas que se rigen en un entorno de red controlado.
- distribuidores de malware consideran a las Botnets como un medio para difundir
+ distribuidores de malware consideran a las botnets como un medio para difundir
  las actividades maliciosas y anómalas en todo el mundo.
- Como resultado, las Botnets se hicieron populares, ya que constituyen redes
+ Como resultado, las botnets se hicieron populares, ya que constituyen redes
  de control remoto de ordenadores secuestrados, donde el objetivo básico
  de esta red distribuida y coordinada es el de iniciar una serie de actividades
  maliciosas sobre la red, tales como phising, click-fraud, generación de
  spam, violaciones de copyright, key logging, y más importante, ataques
  de denegación de servicio.
- Es por ello que las Botnets representan una gran amenaza a los recursos
+ Es por ello que las botnets representan una gran amenaza a los recursos
  de red sobre la internet, puesto que son el medio por el cual se distribuyen
  las anomalías.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Siguiendo la categorización utilizada en 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -366,47 +336,71 @@ key "Karim2014"
 
 \end_inset
 
-, las técnicas de detección de Botnets son clasificadas en dos grandes categoría
-s, las denominadas Honeynets y los Sistemas de Detección de intrusiones
- (IDS).
+, las técnicas de detección de botnets son clasificadas en dos grandes categoría
+s, las denominadashoneynets (Provos, 2004; Stinson and Mitchell, 2007)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+y los Sistemas de Detección de ntrusiones (IDS).
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
-En el caso de las Honeynets, se trata de una infraestructura de red construida
+En el caso de las honeynets, se trata de una infraestructura de red construida
  con vulnerabilidades intencionales, cuyo propósito es invitar a ser atacada
  de tal manera que tanto las actividades del atacante como sus métodos puedan
  ser estudiados y a través de esa información incrementar la seguridad de
  red.
- Una Honeynet recolecta información de los bots para sus análisis posterior
- para medir la tecnología utilizada, las características de la Botnet y
+ Una honeynet recolecta información de los bots para sus análisis posterior
+ para medir la tecnología utilizada, las características de la botnet y
  la intensidad del ataque.
  Asimismo, la información recolectada de los bots es utilizada para descubrir
  el sistema de C&C, susceptibilidades desconocidas, técnicas y otras herramienta
 s utilizadas por el atacante y la motivación del atacante.
- Una Honeynet es además utilizada para recolectar binarios de bots, los
- cuales penetran las Botnets.
+ Una honeynet es además utilizada para recolectar binarios de bots, los
+ cuales penetran las botnets (Freiling et al., 2005; Abu Rajab et al., 2006;
+ Stinson and Mitchell, 2007) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Mas allá de su utilidad, hay cierto aspectos críticos que limitan la capacidad
- de las Honeynets.
+ de las honeynets.
  Por un lado, sus escalabilidad es limitada, dado que se requiere desplegar
  equipamiento de hardware intensivo (gateways de routers y el sistema de
- Honeynet).
- Por otro lado, el descubrimiento de equipos infectados dentro de la Honeynet
+ honeynet).
+ Por otro lado, el descubrimiento de equipos infectados dentro de la honeynet
  también es un desafío.
  Por último, un riesgo siempre latente es que el atacante pueda tomar control
- de los honeybots para dañar otros sistemas o equipos fuera de la Honeynet
- .
+ de los honeybots para dañar otros sistemas o equipos fuera de la honeynet
+ (Bethencourt et al., 2005; Zou and Cunningham, 2006) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En el caso de los IDS, estos se constituyen como una aplicación de software
  o máquina de hardware que tiene el objetivo de monitorear los servicios
  del sistema en búsqueda de actividades maliciosas o violaciones a políticas
@@ -415,26 +409,34 @@ En el caso de los IDS, estos se constituyen como una aplicación de software
  IDS se pueden subclasificar en dos tipos de enfoques, basados en firmas
  y basados en anomalías.
  Las ventajas de un IDS basado en firmas es que contienen las firmas de
- un número conocido de Botnets.
+ un número conocido de botnets.
  Por dar un ejemplo, SNORT (www.snort.org), uno de los IDS más conocidos actualmen
 te, utiliza un esquema de detección basado en firmas.
  Sin embargo, existen varias limitaciones para este tipo de enfoque.
  Una de estas limitaciones es que el IDS requiere actualizaciones frecuentes
- al repositorio de firmas para detectar Botnets nuevas, mientras que el
- ratio de actualización de firmas es considerablemente bajo dado que la
- cantidad de anomalías va en incremento y el diagnóstico es un trabajo que
- lleva tiempo.
- Otra de las limitaciones es su incapacidad para detectar ataques de Botnet
+ al repositorio de firmas para detectar botnets nuevas (Kugisaki et al.,
+ 2007)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+, mientras que el ratio de actualización de firmas es considerablemente
+ bajo dado que la cantidad de anomalías va en incremento y el diagnóstico
+ es un trabajo que lleva tiempo.
+ Otra de las limitaciones es su incapacidad para detectar ataques de botnet
  tipo día-cero (es decir, ataques que explotan una vulnerabilidad desconocida
  para el fabricante del producto), dado es que es imposible que pueda trabajar
- para Botnets desconocidas.
- De la misma manera, la detección de firmas es incapaz de detectar Botnets
+ para botnets desconocidas.
+ De la misma manera, la detección de firmas es incapaz de detectar botnets
  con firmas mínimamente diferentes.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En contraste con la detección de firmas, el enfoque del IDS basado en anomalías
  es totalmente distinto.
  La idea básica viene de analizar varias irregularidades de tráfico de red,
@@ -457,43 +459,53 @@ En contraste con la detección de firmas, el enfoque del IDS basado en anomalía
  En el monitoreo activo, se inyectan paquetes en la red para medir los tiempos
  de respuesta de la red.
  Como ejemplo de un sistema de detección de monitoreo activo se puede nombrar
- a BotProbe .
+ a BotProbe (Wikipedia, 2013b)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+.
  En el monitoreo pasivo el tráfico de red pasa por equipos especializado
  que que detectan la actividad sospechosa.
  El tráfico de red observado es analizado aplicando distintas técnicas de
- detección de anomalías, incluyendo técnicas basadas en distancia, máquinas
+ detecciónde anomalías, incluyendo técnicas basadas en distancia, máquinas
  de vectores de soporte, redes neuronales, análisis de clusters, y reglas
  de asociación aprendidas.
  No requiere inyectar tráfico adicional a la red, como en el enfoque activo.
  Este enfoque monitorea pasivamente el tráfico de red con la idea de que
- el tráfico de Botnet tiene características similares que pueden ser detectadas
+ el tráfico de botnet tiene características similares que pueden ser detectadas
  observando los pedidos y respuestas de tráfico durante un intervalo de
  tiempo.
  La premisa básica detrás del monitoreo pasivo es que el tráfico tiene a
- responder con un mismo patrón de comunicación en la Botnet, más allá de
+ responder con un mismo patrón de comunicación en la botnet, más allá de
  la arquitectura desplegada (cliente-servidor o peer-to-peer), ya que en
- cada bot de la Botnet se es instalado un programa preconfigurado que responde
+ cada bot de la botnet se es instalado un programa preconfigurado que responde
  de una manera similar.
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Stratosphere Intrusion Prevention System
+\change_inserted 193492014 1467642328
+
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Stratosphere-Intrusion-Preventio"
+name "sub:Stratosphere-Intrusion-Preventio"
 
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Mencionar como se va el modelo de markov a medida se analiza un mayor numero
@@ -506,10 +518,8 @@ Mencionar como se va el modelo de markov a medida se analiza un mayor numero
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 TODO:Mencionar el concepto de IPS vs IDS y luego largar la explicaciond
@@ -522,8 +532,6 @@ TODO:Mencionar el concepto de IPS vs IDS y luego largar la explicaciond
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Stratosphere IPS (Sistema de prevención de intrusiones), es una iniciativa
  creada con el objeto de proveer a la comunidad un IPS de última generación
  basado en comportamiento.
@@ -531,8 +539,6 @@ Stratosphere IPS (Sistema de prevención de intrusiones), es una iniciativa
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
@@ -543,8 +549,6 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -579,13 +583,11 @@ Estrategia de asignación de símbolos para construir modelos de comportamiento
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Los modelos de comportamiento de conexiones maliciosas en la red, desarrollados
  en profundidad en 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Garcia2015"
+key "Garcia2014c"
 
 \end_inset
 
@@ -628,16 +630,12 @@ reference "Ejemplo-de-modelo"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset CommandInset label
 LatexCommand label
 name "Ejemplo-de-modelo"
@@ -666,8 +664,6 @@ Ejemplo de modelo de comportamiento para una conexión con dirección IP origen
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Aún sin considerar un método de detección, los modelos de comportamiento
  basados en símbolos mostrados en la figura 
 \begin_inset CommandInset ref
@@ -681,24 +677,25 @@ reference "fig:Estrategia-de-asignación"
  Para realizar la detección de comportamiento malicioso, la estrategia actual
  seguida por Stratosphere IPS es llevar a cabo un análisis basado en cadenas
  de Markov de la probabilidad de transición de un símbolo a otro.
- A partir de un modelo de comportamiento, se construye una matriz de transición
+ A partir de un modelo de comportamiento, se construye una matriz de transicion
  para cada uno de los posibles estados, junto a un vector inicial.
  Luego dado un nuevo comportamiento, se calcula la probabilidad de que dicho
  estado haya sido generado por la matriz y el vector inicial.
- Para una descripción detalla del mecanismo se sugiere la lectura del trabajo
- de tesis 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Garcia2015"
+ Para una descripcion detalla del mecanismo se sugiere la lectura del trabajo
+ de tesis de Garcia 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Insertar referencia
+\end_layout
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Más allá de que esta técnica ha probado ser efectiva en varios escenarios
  de la vida real, es un hecho de que en el análisis de cadenas de Markov,
  cada estado depende únicamente del estado anterior.
@@ -707,8 +704,6 @@ Más allá de que esta técnica ha probado ser efectiva en varios escenarios
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En la sección siguiente se procederá a describir lo que se conoce como redes
  neuronales recurrentes (RNN), y un caso especial de RNN denominado LSTM
  (Long Short Term Memory).
@@ -718,16 +713,12 @@ e eficiente.
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Redes Neuronales Recurrentes (RNN)
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Hay que hablar del desbalanceo como uno de los problemas de las RNN
@@ -739,8 +730,6 @@ Hay que hablar del desbalanceo como uno de los problemas de las RNN
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Una red neuronal recurrente (RNN) es una clase de red neuronal artificial
  donde la red contiene al menos una conexión de retroalimentación, de tal
  manera que las activaciones pueden fluir alrededor en un bucle.
@@ -761,16 +750,12 @@ reference "fig:rnn-architectures"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -802,8 +787,6 @@ Múltiples representaciones de arquitecturas de redes neuronales.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Cada rectángulo es un vector y las flechas representan funciones.
  Los vectores de entrada están representados con rojo, los vectores de salida
  con azul y los vectores verdes mantienen el estado de la red.
@@ -833,84 +816,110 @@ Cada rectángulo es un vector y las flechas representan funciones.
  de problemas que involucran el análisis de datos secuenciales podemos nombrar
  los trabajos de 
 \emph on
+Mikolov et.
+ al.
+ (2010)
+\emph default
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Mikolov2010"
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Convertir a referencia
+\end_layout
 
 \end_inset
 
-
-\emph default
 .
  sobre modelado de lenguaje, reconocimiento y generación de escritura a
- mano
+ mano 
 \emph on
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Graves2013"
-
-\end_inset
-
-
+Graves (2013)
 \emph default
 , traducción automática 
 \emph on
-
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Sutskever2014"
-
-\end_inset
-
-
+Sutskever et al.
+ (2014)
 \emph default
-; 
-\emph on
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "DzmitryBahdana2014"
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Convertir a referencia
+\end_layout
 
 \end_inset
 
-
+.; 
+\emph on
+Bahdanau et al.
+ (2014)
 \emph default
 , reconocimiento de voz 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Graves2013a"
-
-\end_inset
-
-, análisis de video
 \emph on
- 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Donahue2015"
+Graves et al.
+ (2013)
+\emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Convertir a referencia
+\end_layout
 
 \end_inset
 
-
+., análisis de video
+\emph on
+ Donahue et al.
+ (2015)
 \emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
 .
  y subtitulado de imágenes 
 \emph on
+Vinyals et al.
+ (2015)
+\emph default
 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Vinyals2015,Karpathy2015a"
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Convertir a referencia
+\end_layout
 
 \end_inset
 
-.
+.; 
+\emph on
+Karpathy & Fei-Fei (2015)
+\emph default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: Convertir a referencia
+\end_layout
+
+\end_inset
+
+..
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Es importante resaltar que no existe gran diferencia entre una implementación
  de RNN y una implementación de una red tradicional.
  De hecho, como ha sido expuesto en 
@@ -932,16 +941,12 @@ reference "fig:rnn-desplegada"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -981,15 +986,11 @@ TODO: Hay que pasar esto al INGLES :(
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Esto significa que toda la teoría sobre el aprendizaje de la redes tradicionales
  también aplica en cierto sentido a las RNN.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La arquitectura más simple de una RNN organiza los vectores ocultos de estado
  
 \begin_inset Formula $h_{t}^{l}$
@@ -1058,14 +1059,10 @@ y
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La RNN original tiene una recurrencia de la forma
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 h_{t}^{l}=\tanh W^{l}\left(\begin{array}{c}
@@ -1080,8 +1077,6 @@ h_{t-1}^{l}
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Donde se asume que todo 
 \begin_inset Formula $h\in\mathbb{R^{\eta}}$
 \end_inset
@@ -1120,8 +1115,6 @@ Donde se asume que todo
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En cuanto al aprendizaje en la red, esta tarea es llevada a cabo mediante
  el algoritmo de aprendizaje denominado 
 \emph on
@@ -1154,8 +1147,6 @@ gradient descent
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 E_{total}(t_{0,}t_{1})=\sum_{t=t_{0}}^{t_{1}}E_{sse/ce}\left(t\right)
@@ -1167,15 +1158,11 @@ E_{total}(t_{0,}t_{1})=\sum_{t=t_{0}}^{t_{1}}E_{sse/ce}\left(t\right)
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 y los cambios de peso de descenso de gradiente tienen contribuciones de
  cada intervalo de tiempo
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \triangle w_{ij}=-\eta\frac{\partial E_{total}\left(t_{0,}t_{1}\right)}{\partial w_{ij}}=-\eta\sum_{t=t_{0}}^{t_{1}}\frac{\partial E_{sse/ce}\left(t\right)}{\partial w_{ij}}
@@ -1187,8 +1174,6 @@ y los cambios de peso de descenso de gradiente tienen contribuciones de
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Las derivadas parciales constituidas 
 \begin_inset Formula $\partial E_{sse/ce}\left(t\right)/\partial w_{ij}$
 \end_inset
@@ -1204,8 +1189,6 @@ Las derivadas parciales constituidas
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Entre las consideraciones prácticas al momento de entrenar una RNN tradicional,
  existe un problema fundamental que atenta contra la capacidad de aprendizaje
  de la red: las RNN tradicionales tienen grandes dificultades a la hora
@@ -1225,8 +1208,6 @@ explosión del gradiente
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Este fenómeno se debe parcialmente al hecho de que la información que fluye
  a través de la red es sometida a múltiples etapas de multiplicación.
  Sabiendo que cualquier número multiplicado frecuentemente por un número
@@ -1246,8 +1227,6 @@ Este fenómeno se debe parcialmente al hecho de que la información que fluye
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Mientras que el problema de la explosión del gradiente se puede resolver
  de manera simple, truncando o aplastando el valor, el problema del desvanecimie
 nto del gradiente se vuelve realmente complejo, principalmente porque no
@@ -1259,16 +1238,12 @@ nto del gradiente se vuelve realmente complejo, principalmente porque no
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Long Short Term Memory (LSTM) 
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 VISUALIZING AND UNDERSTANDING RECURRENT NETWORKS (Andrew Karpathy) arXiv:1506.020
@@ -1281,8 +1256,6 @@ VISUALIZING AND UNDERSTANDING RECURRENT NETWORKS (Andrew Karpathy) arXiv:1506.02
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La red Long Short-Term Memory (LSTM) propuesta por 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1300,17 +1273,22 @@ key "Bengio1994"
 
 .
  En particular, se observó que la dinámica de backpropagation producía que
- los gradientes desaparecieran o explotaran (fenómenos conocidos como desvanecim
-iento del gradiente y explosión del gradiente).
+ los gradientes desaparecieran o explotaran (fenómenos conocidos como 
+\emph on
+vanishing gradient
+\emph default
+ y 
+\emph on
+exploding gradient
+\emph default
+).
  Se descubrió más tarde que la preocupación por la explosión del gradiente
- podía ser mitigada si se restringía los gradientes a un valor máximo a
+ podía ser mitigada si se restringía los gradientes a un valor maximo a
  través de heurística 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Pascanu2012"
-
-\end_inset
-
+\emph on
+Pascanu et al.
+ (2012)
+\emph default
 .
  Por otro lado, LSTM fue diseñada para mitigar el problema del desvanecimiento
  del gradiente.
@@ -1336,8 +1314,6 @@ key "Karpathy2015"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula $\left(\begin{array}{c}
 i\\
 f\\
@@ -1365,8 +1341,6 @@ h_{t}^{l}=o\odot tanh(c_{t}^{l})
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Aquí, las funciones sigmoideas sigm (
 \emph on
 fun
@@ -1395,7 +1369,7 @@ es una matriz
 son considerados como compuertas binarias que controlan si cada celda de
  memoria es actualizada, si es puesta a cero, y si su estado local se revela
  en el vector oculto, respectivamente.
- Las activaciones de estas compuertas se basan en la función sigmoidea y
+ Las activaciones de estas compuertas se basan en la función sigmoide y
  por tanto se permiten variar suavemente entre cero y uno para mantener
  al modelo diferenciable.
  El vector 
@@ -1424,8 +1398,6 @@ oscila entre -1 y 1, y se utiliza para modificar los contenidos de la memoria
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Como deja en evidencia el trabajo realizado en 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1448,8 +1420,6 @@ priori
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Otra de las ventajas aparentes de esta arquitectura es la falta de necesidad
  de un ajuste fino de parámetros.
  LSTM trabaja bien sobre un amplio rango de parámetros como el ratio de
@@ -1469,23 +1439,31 @@ output gate bias
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En síntesis, se puede concluir que frente a un problema de análisis de secuencia
 s donde exista un interés latente de analizar las relaciones entre los component
 es de las secuencias, la utilización de una red LSTM se puede considerar
  como una alternativa viable, probada y eficiente.
 \end_layout
 
-\begin_layout Paragraph
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
-\lang spanish
+\begin_layout Plain Layout
+LSTM, definición, consideraciones de diseño, soluciones a los problemas
+ inherentes a las RNN
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
 Bibliografía
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Golik2013,Graves2013,Jozefowicz2015,Karpathy2015,Medsker2000,Neural2015"

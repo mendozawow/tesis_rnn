@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +11,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -69,15 +71,221 @@
 \begin_body
 
 \begin_layout Section
+
+\lang spanish
 Introducción
 \end_layout
 
-\begin_layout Subsection
-Descripción del problema de botnet
+\begin_layout Standard
+
+\lang spanish
+De acuerdo a 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hachem2011"
+
+\end_inset
+
+, una 
+\lang english
+Botnet
+\lang spanish
+ se puede definir como un conjunto de computadoras conectadas a Internet
+ y que, generalmente sin el conocimiento del usuario, se encuentran configuradas
+ para transmitir datos (incluyendo 
+\lang english
+spam
+\lang spanish
+ y 
+\lang english
+viruses
+\lang spanish
+) a otras computadoras en Internet.
+ Éstas computadoras son denominadas 
+\begin_inset Quotes eld
+\end_inset
+
+bots
+\begin_inset Quotes erd
+\end_inset
+
+ o 
+\begin_inset Quotes eld
+\end_inset
+
+zombies
+\begin_inset Quotes erd
+\end_inset
+
+, en el sentido de que sirven a las órdenes de un control maestro, denominado
+ 
+\lang english
+Bot
+\lang spanish
+ 
+\lang english
+Master
+\lang spanish
+.
+ La mayoría de las computadoras controladas de este modo son computadoras
+ de hogares.
+ En un momento específico, el Bot Master tiene la capacidad para ordenar
+ a su ejército de bots con un simple comando a través de un protocolo de
+ aplicación, sea un comando de chat (por ejemplo IRC) o a través de un servidor
+ HTTP, programando a los bots para ejecutar una tarea específica, como generar
+ conexiones a un sitio web y por tanto causando el cierre temporal del sitio
+ debido al volumen de tráfico que se ve forzado a manejar en un mismo instante
+ de tiempo, lo que se conoce como ataque distribuido de denegación de servicio
+ (o por las siglas DDoS), o con otro fin específico, como la distribución
+ de spam.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+En los últimos tiempos se ha visto un incremento en la cantidad de Botnets
+ maliciosas.
+ La motivación detrás de este incremento se puede ver en el rédito económico
+ detrás de los ataques de las mismas.
+ Existe un mercado cada vez más amplio en el cual agentes maliciosos ofrecen
+ el poder computacional de sus redes de bots para el beneficio de quienes
+ lo contratan, sea para perjudicar a un competidor, o por ejemplo para robar
+ información confidencial.
+ Es por ello que los Bot Masters aplican una gran cantidad de sus recursos
+ a incrementar el tiempo de preservación de control de sus bots de tal manera
+ de maximizar el beneficio.
+ De ahí se desprende la cantidad de aproximaciones distintas que utilizan
+ para ocultar sus intenciones maliciosas.
+ Por ejemplo, código de malware puede ser ocultado de tal manera de pasar
+ desapercibido para varios programas antivirus basados en detección de firmas.
+ Más aún, los bots utilizan protocolos estándar para llevar a cabo sus comunicac
+iones y tratan de mantener la actividad en el equipo lo más cercana al uso
+ común del usuario para pasar inadvertidos.
 \end_layout
 
 \begin_layout Subsection
+
+\lang spanish
+Complejidad en la detección de Botnets
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Tradicionalmente, las técnicas de detección de aplicaciones maliciosas (también
+ denominadas malware) estaban basadas en dos enfoques.
+ Por un lado los sistemas de reconocimiento basados en reglas que describen
+ características (firmas) de la carga (o payload) del tráfico malicioso
+ y por otro lado los sistemas basados en modelos estadísticos para detección
+ de anomalías.
+ Sin embargo con el incremento en la complejidad de las acciones provocadas
+ por aplicaciones maliciosas, la detección se fue orientando a sistemas
+ basados en detección por comportamiento que sean capaces de capturar los
+ cambios en el comportamiento de la aplicación a lo largo del tiempo.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La hipótesis detrás de estos sistemas es que existe un conjunto de operaciones
+ inherentes a cada aplicación/software que opera en la red.
+ Este conjunto de operaciones es transformado en una secuencia de datos
+ transmitidos por la red.
+ Luego, a partir de la observación y análisis de estas secuencias de datos
+ es posible reconocer un comportamiento propio de la aplicación reconocible
+ a lo largo del tiempo.
+ Este tipo de enfoque ha demostrado poseer ventajas significativas: (i)
+ de manera similar a los enfoques basados en firmas, estos pueden ser fácilmente
+ desplegados y compartidos en otras infraestructuras de red, (ii) al igual
+ que los sistemas de detección por anomalías, estos pueden detectar comportamien
+to malicioso no visto con anterioridad.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+El proceso para la construcción de un modelo de comportamiento asociado
+ a un malware consiste de tres etapas.
+ En una primera etapa se genera un modelo de comportamiento considerando
+ diferentes características de la red (por ej.
+ tamaño de paquete, periodicidad, duración, etc.).
+ Este modelo permite visualizar de manera sencilla un gran número de conexiones
+ de red a lo largo del tiempo y constituye además una herramienta de análisis.
+ Luego, en una segunda etapa de reconocimiento se realiza un proceso de
+ asociación entre el modelo de comportamiento y la aplicación maliciosa,
+ esta tarea normalmente denominada etiquetado, requiere del apoyo de un
+ especialista humano.
+ Finalmente, en una tercera etapa, mediante el uso de algoritmos con base
+ estadística o de aprendizaje automático se generaliza el modelo de comportamien
+to a fin de mejorar la capacidad del modelo para reconocer de forma automática
+ otras aplicaciones maliciosas que presenten un comportamiento similar.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\lang spanish
 Descripción de la propuesta
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+La herramienta principal sobre la que se basó este trabajo es Stratosphere
+ Testing Framework (STF).
+ El concepto detrás de STF es ofrecer una plataforma sobre la cual se puedan
+ manejar, verificar y evaluar distintos tipos de algoritmos abocados a la
+ detección de malware.
+ STF es capaz de cargar distintos tipos de datasets (pcap, netflow, flow,
+ etc) y generar los modelos de comportamiento que surgen de los mismos.
+ Los modelos de comportamiento están compuestos por una secuencia de estados
+ que son el resultado del análisis de la periodicidad, tamaño y duración
+ del flujo de datos bidireccional entre el host y el servidor, encuadrados
+ bajo los parámetros de STF que definen el estado que le corresponde dependiendo
+ del valor que toman dichos atributos a lo largo de la vida del flujo.
+ STF además permite el etiquetado de cada modelo, por tanto manteniendo
+ en la base de datos el tipo de tráfico que identifica a cada modelo específico.
+ Los modelos de comportamiento con su etiqueta serán lo que se utilizará
+ como entrada para el entrenamiento y evaluación del algoritmo que se implementa
+rá en este trabajo .
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Bajo este contexto, uno de los algoritmos que surge como mejor alternativa
+ para abordar el problema son las redes neuronales recurrentes (Recurrent
+ Neural Networks o RNN).
+ El potencial de estos algoritmos radica en su capacidad para analizar conjuntos
+ de secuencias de tamaño variable, usualmente haciendo referencia a secuencias
+ temporales.
+ La red analiza la secuencia un estado a la vez, manteniendo una memoria
+ que le permite contextualizar al estado dado que es consciente de los estados
+ anteriores.
+ Dentro de los tipos de RNN, uno de los más conocidos y probados tipos de
+ redes es el modelo Long Short Term Memory (LSTM), que en la práctica se
+ ha probado superior al algoritmo original, sobre todo por su capacidad
+ para mantener las dependencias entre los estados con secuencias de tamaño
+ considerable, lo que las convierte en uno de los mejores candidatos para
+ abordar el problema.
+\end_layout
+
+\begin_layout Standard
+
+\lang spanish
+Por lo expuesto anteriormente, se planteó como objetivo principal de este
+ trabajo analizar el potencial de las redes neuronales recurrentes (RNN)
+ para el reconocimiento y la detección de comportamiento malicioso en el
+ tráfico de red.
+ Para llevar a cabo dicho objetivo, se procedió a implementar una red LSTM,
+ realizando posteriormente un proceso de entrenamiento supervisado en el
+ cual se le brindó al algoritmo un conjunto de muestras de entrenamiento
+ procedentes de STF con su correspondiente etiqueta (tráfico Botnet o tráfico
+ normal).
+ De este objetivo principal también se desprendió la meta de evaluar la
+ capacidad de generalización del algoritmo, midiendo la capacidad de la
+ red para clasificar muestras nunca antes vistas.
 \end_layout
 
 \end_body
