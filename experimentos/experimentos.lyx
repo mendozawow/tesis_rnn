@@ -26,7 +26,6 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement h
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -757,7 +756,6 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_87_labels_normal.eps
-	lyxscale 50
 
 \end_inset
 
@@ -808,11 +806,24 @@ name "subsec:Métricas-de-rendimiento"
 \begin_layout Standard
 En problemas de clasificación, la fuente principal de métricas de rendimiento
  es una matriz de clasificación (también conocida como matriz de confusión).
- En la siguiente tabla se puede ver el formato de la matriz de confusión
- para el objeto actual de estudio:
+ En la tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:confusion-matrix"
+
+\end_inset
+
+ se puede ver el formato de la matriz de confusión para el objeto actual
+ de estudio.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -907,6 +918,33 @@ TP
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:confusion-matrix"
+
+\end_inset
+
+Matriz de confusión.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
 
 \end_inset
 
@@ -1221,8 +1259,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_1_barplot.png
-	lyxscale 50
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/experiment_1_barplot.eps
 	scale 50
 
 \end_inset
@@ -1285,34 +1322,6 @@ ento ahora son consideradas erróneamente como normales, aunque se debe tener
  que usualmente son realizadas por una Botnet, no difieren de comportamientos
  que tendría una conexión normal.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Esto no me parece que es así en este caso.
- Lo que está pasando es que al sacar muestras del entrenamiento, se están
- moviendo los bordes de decisión.
- Las conexiones removidas empujarían al conjunto de muestras de Botnet de
- conexiones establecidas mas cerca de los límites de las conexiones establecidas
- normales.
- Una forma de probarlo es remover muestras 
-\emph on
-Attempt
-\emph default
- del conjunto para hacer un 
-\begin_inset Quotes eld
-\end_inset
-
-Undersampling
-\begin_inset Quotes erd
-\end_inset
-
- y analizar los resultados obtenidos.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1365,19 +1374,6 @@ reference "fig:len_comparison"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO:Esta figura puede convertirse en una tabla.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -1385,8 +1381,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename exp_2_img_1.png
-	lyxscale 50
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/experiment_2_barplot.eps
 	scale 50
 
 \end_inset
@@ -1404,11 +1399,9 @@ name "fig:len_comparison"
 
 \end_inset
 
-Arriba: Comparación de los valores de ADR/FAR para distintas cantidades
- máximas de estados tomadas en cuenta al momento de entrenar la red.
- Abajo: cuadro de caja mostrando el valor medio de detección de ataques
- teniendo en cuenta los resultados obtenidos para cada uno de los casos
- así como valores máximos y mínimos de detección.
+Comparación de los valores de ADR/FAR para distintas cantidades máximas
+ de estados tomadas en cuenta al momento de entrenar la red.
+ 
 \end_layout
 
 \end_inset
@@ -1491,10 +1484,23 @@ A modo de garantizar una evaluación justa e independiente, la red LSTM se
 
 \begin_layout Standard
 Del experimento se desprenden los siguientes resultados presentados en la
- siguiente Tabla:
+ Tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:matriz-experimento-3"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -1595,6 +1601,34 @@ Botnet
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:matriz-experimento-3"
+
+\end_inset
+
+Matriz de confusión con los resultados obtenidos al evaluar la red contra
+ muestras desconocidas provenientes de una Botnet del mismo tipo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Se observa que la red LSTM ha sido capaz de detectar correctamente el 89,2%
  de las muestras de Botnet presentes en el dataset B.
@@ -1619,9 +1653,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_3_labels_analysis_botnet_10.png
-	lyxscale 50
-	scale 50
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_3_labels_analysis_botnet_10.eps
+	scale 75
 
 \end_inset
 
@@ -1665,8 +1698,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_3_labels_analysis_normal_10.png
-	lyxscale 50
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_3_labels_analysis_normal_10.eps
+	scale 75
 
 \end_inset
 
@@ -1697,7 +1730,7 @@ En el caso de las muestras normales, las únicas muestras incorrectamente
 \end_layout
 
 \begin_layout Subsubsection
-Evaluación del algoritmo contra muestras desconocidas de diferentes Botnets
+Evaluación del algoritmo contra muestras desconocidas de diferente Botnet
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:experimento-4"
@@ -1724,11 +1757,24 @@ Al igual que en el experimento anterior, para garantizar una evaluación
 \end_layout
 
 \begin_layout Standard
-En la siguiente Tabla se pueden visualizar los resultados obtenidos después
- de realizar el proceso de clasificación utilizando la red LSTM entrenada:
+En la Tabla 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:matriz-experimento-4"
+
+\end_inset
+
+ se pueden visualizar los resultados obtenidos después de realizar el proceso
+ de clasificación utilizando la red LSTM entrenada.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -1829,6 +1875,34 @@ Botnet
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:matriz-experimento-4"
+
+\end_inset
+
+Matriz de confusión con los resultados obtenidos al evaluar la red contra
+ muestras desconocidas provenientes de una Botnet de diferente tipo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 El modelo muestra un 0.809 de ADR, mientras que para el caso de FAR el valor
  observado es de 0.030.
@@ -1870,9 +1944,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename exp_4_labels_analysis_stacked.png
-	lyxscale 50
-	scale 50
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_4_labels_analysis_botnet_10.eps
+	scale 75
 
 \end_inset
 
@@ -1982,9 +2055,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename exp_4_labels_analysis_normal_stacked.png
-	lyxscale 50
-	scale 50
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_4_labels_analysis_normal_10.eps
+	scale 75
 
 \end_inset
 
