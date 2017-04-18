@@ -7,7 +7,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language spanish
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -27,6 +27,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -57,7 +58,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -71,14 +72,10 @@
 \begin_body
 
 \begin_layout Section
-
-\lang spanish
 Detección de comportamiento de Botnet mediante RNN
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La idea propuesta en este trabajo consiste en utilizar una red LSTM para
  construir modelos de detección basados en el comportamiento de las conexiones.
  La estrategia utilizada sigue el enfoque clásico de aprendizaje automático
@@ -90,16 +87,12 @@ La idea propuesta en este trabajo consiste en utilizar una red LSTM para
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Vectorización de las entradas
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La estrategia utilizada para codificar los modelos de comportamiento descriptos
- en la seccion 
+ en la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Stratosphere-Intrusion-Preventio"
@@ -145,8 +138,6 @@ b.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \begin{equation}
 a=\begin{bmatrix}1 & 0 & 0 & 0 & \cdots & 0 & 0 & 0\end{bmatrix}\label{eq:binary_vector_a}
@@ -166,8 +157,6 @@ b=\begin{bmatrix}0 & 1 & 0 & 0 & \cdots & 0 & 0 & 0\end{bmatrix}\label{eq:binary
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La secuencia completa del modelo de comportamiento es codificada en la forma
  de una matriz (ver la formula (
 \begin_inset CommandInset ref
@@ -185,8 +174,6 @@ reference "eq:binary_matrix"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \begin{equation}
 \begin{bmatrix}1 & 0 & 0 & 0 & \cdots & 0 & 0 & 0\\
@@ -206,14 +193,10 @@ reference "eq:binary_matrix"
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Otros detalles de implementación
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Note Note
 status open
 
@@ -240,8 +223,6 @@ Seccion 3.4 Otros como el tipo de entrenamiento y demas.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La arquitectura de la red propuesta cuenta con 50 unidades de entrada, debido
  al tamaño del vector de estados.
  Éstas unidades se encuentran conectadas a una capa LSTM compuesta por 128

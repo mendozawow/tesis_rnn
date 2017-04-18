@@ -7,7 +7,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language spanish
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -26,6 +26,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement h
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -67,20 +68,15 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author -1874138591 "Harpo Maxx,,,"
 \end_header
 
 \begin_body
 
 \begin_layout Section
-
-\lang spanish
 Experimentos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El presente capítulo aborda el objetivo de probar la factibilidad de entrenar
  una RNN para discriminar tráfico de Botnet de tráfico normal.
  Entre las tareas necesarias para la conclusión de dicho objetivo se plantearán
@@ -94,8 +90,6 @@ El presente capítulo aborda el objetivo de probar la factibilidad de entrenar
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para ilustrar mejor los resultados obtenidos y realizar un estudio más profundo
  de los mismos se comenzará realizando un análisis de los datasets a ser
  utilizados en el presente trabajo.
@@ -108,8 +102,6 @@ s.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Con la información provista del análisis de los datos, se continuará la
  exploración de los experimentos, concluyendo con una crítica objetiva que
  explique de manera objetiva los resultados obtenidos y brinde información
@@ -118,14 +110,17 @@ Con la información provista del análisis de los datos, se continuará la
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Datasets
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Datasets"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Los datasets utilizados en el presente trabajo corresponden a capturas de
  tráfico realizadas por el Malware Capture Facility Project en la Universidad
  Técnica de República Checa (CTU), en 2011, y que son parte del denominado
@@ -140,8 +135,6 @@ key "Garcia2014"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Cada dataset ha sido procesado a través de Stratosphere Testing Framework,
  a través del cual se ha generado el modelo de comportamiento de cada netflow
  así como el etiquetado de los mismos que identifica el tipo de muestra
@@ -151,8 +144,6 @@ Cada dataset ha sido procesado a través de Stratosphere Testing Framework,
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Es importante mencionar que para el objeto de estudio de este trabajo solo
  se han considerado las conexiones basadas en el protocolo TCP.
  En cuanto al estado de la conexión, cabe definir el significado de los
@@ -176,14 +167,17 @@ se hace referencia a que es una conexión realizada a un puerto que no es
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Dataset A
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Dataset-A"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Este dataset corresponde a la captura identificada en el CTU-13 como CTU-MALWARE
 -CAPTURE-BOTNET-42.
  El malware fue identificado como Neris y el dispositivo infectado fue una
@@ -191,8 +185,6 @@ Este dataset corresponde a la captura identificada en el CTU-13 como CTU-MALWARE
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La captura tuvo una duración de 6.15 horas, en las que se capturó la actividad
  de la máquina virtual infectada junto con la actividad dentro del departamento
  de investigación en la CTU.
@@ -201,66 +193,55 @@ La captura tuvo una duración de 6.15 horas, en las que se capturó la actividad
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Comunicarse por múltiples canales de C&C y después tratar de enviar SPAM.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Enviar SPAM.
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 Realizar click-fraud utilizando un servicio de publicidad.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El Dataset está compuesto por 2814 muestras, de las cuales 2101 corresponden
  a tráfico etiquetado como Botnet.
  Es decir que un 74,66% de las muestras corresponden a trafico malicioso.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 A continuación se puede observar el gráfico correspondiente al histograma
  de frecuencia en base al número de estados que componen cada muestra.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_22_len.eps
+	scale 50
 
-\lang spanish
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Histograma de longitud de estados del dataset A para muestras Botnet.
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:dataset_A_len_botnet"
+name "fig:dataset_A_len"
 
 \end_inset
 
-
-\begin_inset Graphics
-	filename dataset_22_len_botnet.png
-
-\end_inset
-
-
+Histograma de longitud de estados del dataset A para muestras Botnet y Normales.
 \end_layout
 
 \end_inset
@@ -274,52 +255,10 @@ name "fig:dataset_A_len_botnet"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-
-\lang spanish
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Histograma de longitud de estados del dataset A para muestras Normal.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:dataset_A_len_normal"
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename dataset_22_len_normal.png
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang spanish
 Para el caso de tráfico de Botnet, como se puede observar en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:dataset_A_len_botnet"
+reference "fig:dataset_A_len"
 
 \end_inset
 
@@ -328,12 +267,10 @@ reference "fig:dataset_A_len_botnet"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Por otro lado, en el caso de tráfico normal, en la figura 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:dataset_A_len_normal"
+reference "fig:dataset_A_len"
 
 \end_inset
 
@@ -343,15 +280,11 @@ reference "fig:dataset_A_len_normal"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Finalmente, se observa una diferencia importante entre la cantidad de muestras
  etiquetadas como Botnet y la cantidad de muestras etiquetadas como normal.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En la Figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -365,16 +298,22 @@ reference "fig:histogram_c_labels_botnet"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_22_labels_botnet.eps
+	clip
 
-\lang spanish
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -384,14 +323,9 @@ name "fig:histogram_a_labels_botnet"
 
 \end_inset
 
-
-\begin_inset Graphics
-	filename dataset_22_labels_botnet.png
-	lyxscale 25
-
-\end_inset
-
-
+Histograma de frecuencia en base a la etiqueta que identifica el tipo de
+ actividad realizada en los flujos de tráfico por la Botnet para el dataset
+ A.
 \end_layout
 
 \end_inset
@@ -405,8 +339,6 @@ name "fig:histogram_a_labels_botnet"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Como se puede observar, en el caso de las muestras identificadas como Botnet,
  la mayoría de las muestras corresponden a flujos de red que corresponden
  a intentos de conexión, de los cuales la mayoría fueron identificados para
@@ -420,16 +352,21 @@ Como se puede observar, en el caso de las muestras identificadas como Botnet,
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_22_labels_normal.eps
 
-\lang spanish
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -439,14 +376,8 @@ name "fig:histogram_a_labels_normal"
 
 \end_inset
 
-
-\begin_inset Graphics
-	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_22_labels_normal.png
-	lyxscale 50
-
-\end_inset
-
-
+Histograma de frecuencia en base a la etiqueta que identifica el tipo de
+ actividad realizada en los flujos de tráfico normal para el dataset A.
 \end_layout
 
 \end_inset
@@ -460,41 +391,24 @@ name "fig:histogram_a_labels_normal"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para el caso de las muestras Normal, el histograma de frecuencia por etiquetas
- se muestra en la Figura [REF]
-\change_inserted -1874138591 1467314760
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted -1874138591 1467314767
-TODO: Poner referencia
-\change_unchanged
-
-\end_layout
+ se muestra en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:histogram_a_labels_normal"
 
 \end_inset
 
-
-\change_unchanged
 .
  En dicha figura, se puede observar que son casi en su totalidad conexiones
  establecidas HTTP y HTTPS.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Dataset B
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El dataset B corresponde a la captura identificada dentro del conjunto CTU-13
  como CTU-MALWARE-CAPTURE-BOTNET-43.
  Así como en el dataset A, el malware fue identificado como Neris y el dispositi
@@ -502,8 +416,6 @@ vo infectado fue una máquina virtual de Windows XP corriendo sobre VirtualBox.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En este caso, el Dataset está compuesto por 1795 muestras, de las cuales
  1678 corresponden a tráfico etiquetado como Botnet.
  Es decir, que las muestras etiquetadas como Botnet representan el 93,48%
@@ -511,40 +423,37 @@ En este caso, el Dataset está compuesto por 1795 muestras, de las cuales
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 A continuación se puede observar el gráfico correspondiente al histograma
  de frecuencia en base a la cantidad de estados que componen cada muestra.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_45_len.eps
+	scale 50
 
-\lang spanish
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Histograma de longitud de estados del dataset B para muestras Botnet.
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:dataset_B_len_botnet"
+name "fig:dataset_B_len"
 
 \end_inset
 
-
-\begin_inset Graphics
-	filename dataset_45_len_botnet.png
-
-\end_inset
-
-
+Histograma de longitud de estados del dataset B para muestras Botnet y Normales.
 \end_layout
 
 \end_inset
@@ -558,140 +467,56 @@ name "fig:dataset_B_len_botnet"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang spanish
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Histograma de longitud de estados del dataset A para muestras Normal.
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:dataset_B_len_normal"
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename dataset_45_len_normal.png
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang spanish
 De manera similar a lo observado en el dataset A, las muestras con un numero
  de estados entre 1 y 5 son las de mayor representación en el dataset.
- Esto ultimo, se puede observar no solo para el caso de muestras etiquetadas
- como Botnets [Figura]
-\change_inserted -1874138591 1467314811
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted -1874138591 1467314812
-TODO: Poner referencia
-\change_unchanged
-
-\end_layout
+ Esto se puede observar en detalle en la figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dataset_B_len"
 
 \end_inset
 
-
-\change_unchanged
-, sino también en aquellas etiquetadas como Normal.
+, no solo para el caso de muestras etiquetadas como Botnets , sino también
+ en aquellas etiquetadas como Normal.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
-Por ultimo, en la Figura [REF
-\change_inserted -1874138591 1467314795
-]
-\change_deleted -1874138591 1467314791
-}
-\change_inserted -1874138591 1467314802
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted -1874138591 1467314803
-TODO: Poner referencia
-\change_unchanged
-
-\end_layout
+Por último, en la Figuras 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:histogram_a_labels_normal"
 
 \end_inset
 
+ y 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:histogram_b_labels_botnet"
 
-\change_unchanged
+\end_inset
+
 , se presenta el gráfico correspondiente al histograma de frecuencia en
  base a la etiqueta que identifica la actividad realizada en el flujo de
  red.
- 
-\change_inserted -1874138591 1467314823
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -1874138591 1467314825
-
-\lang spanish
-\begin_inset Note Note
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -1874138591 1467314844
-TODO: Las figuras tienen los labels muy chicos.
- No se alcanza a leer.
-\change_unchanged
-
-\end_layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_45_labels_botnet.eps
+	lyxscale 50
 
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
-\begin_layout Standard
-
-\lang spanish
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -701,14 +526,9 @@ name "fig:histogram_b_labels_botnet"
 
 \end_inset
 
-
-\begin_inset Graphics
-	filename histo_dataset45_labelsBotnet.png
-	lyxscale 50
-
-\end_inset
-
-
+Histograma de frecuencia en base a la etiqueta que identifica el tipo de
+ actividad realizada en los flujos de tráfico por la Botnet para el dataset
+ B.
 \end_layout
 
 \end_inset
@@ -722,16 +542,22 @@ name "fig:histogram_b_labels_botnet"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_45_labels_normal.eps
+	lyxscale 50
 
-\lang spanish
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -741,14 +567,8 @@ name "histogram_b_labels_normal"
 
 \end_inset
 
-
-\begin_inset Graphics
-	filename histo_dataset45_labelsNormales.png
-	lyxscale 50
-
-\end_inset
-
-
+Histograma de frecuencia en base a la etiqueta que identifica el tipo de
+ actividad realizada en los flujos de tráfico normal para el dataset B.
 \end_layout
 
 \end_inset
@@ -762,8 +582,6 @@ name "histogram_b_labels_normal"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En el caso de las muestras de Botnet, la mayoría de las muestras son del
  tipo Attempt, con dos etiquetas muy predominantes catalogadas como SMTP-SPAM-At
 tempt y Unknown-Attempt.
@@ -772,21 +590,15 @@ as, con un volumen muy bajo de conexiones del tipo CC.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Las conexiones etiquetadas como Normal en su mayoría son conexiones establecidas
  por HTTP y HTTPS, con algunas conexiones de Jabber.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Dataset C
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El Dataset C, corresponde a la captura identificada dentro del conjunto
  CTU-13 como CTU-MALWARE-CAPTURE-BOTNET-47.
  El malware fue identificado como DonBot y el dispositivo infectado fue
@@ -794,8 +606,6 @@ El Dataset C, corresponde a la captura identificada dentro del conjunto
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El Dataset está compuesto por 488 muestras, de las cuales 188 corresponden
  a tráfico etiquetado como Botnet.
  Es decir que para este dataset las muestran etiquetadas como Botnet representan
@@ -806,65 +616,44 @@ El Dataset está compuesto por 488 muestras, de las cuales 188 corresponden
 \end_layout
 
 \begin_layout Standard
+A continuación en las Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dataset_C_len"
 
-\lang spanish
-A continuación en las Figuras [Ref] y [Ref] se puede observar los gráficos
- correspondientes a los histograma de frecuencia en base a la cantidad de
- estados que componen cada muestra.
-\change_inserted -1874138591 1467314856
+\end_inset
 
+ se puede observar los gráficos correspondientes a los histograma de frecuencia
+ en base a la cantidad de estados que componen cada muestra.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -1874138591 1467314858
-
-\lang spanish
-\begin_inset Note Note
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -1874138591 1467314872
-TODO: Pasar figuras al espaniol
-\change_unchanged
-
-\end_layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_87_len.eps
+	scale 50
 
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
-\begin_layout Standard
-
-\lang spanish
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
 \begin_layout Plain Layout
-
-\lang spanish
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:dataset_b_len_botnet"
+name "fig:dataset_C_len"
 
 \end_inset
 
-
-\begin_inset Graphics
-	filename dataset_87_len_botnet.png
-
-\end_inset
-
-
+Histograma de longitud de estados del dataset C para muestras Botnet y Normales.
 \end_layout
 
 \end_inset
@@ -878,47 +667,6 @@ name "fig:dataset_b_len_botnet"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang spanish
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:dataset_b_len_normal"
-
-\end_inset
-
-
-\begin_inset Graphics
-	filename dataset_87_len_normal.png
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang spanish
 De la misma manera que en los datasets anteriores, existe una clara predominanci
 a de muestras compuestas por solo 1 estado.
  Paralelamente se puede observar el gráfico correspondiente al histograma
@@ -927,16 +675,21 @@ a de muestras compuestas por solo 1 estado.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_87_labels_botnet.eps
 
-\lang spanish
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -946,14 +699,9 @@ name "fig:histogram_c_labels_botnet"
 
 \end_inset
 
-
-\begin_inset Graphics
-	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_87_labels_botnet.png
-	lyxscale 50
-
-\end_inset
-
-
+Histograma de frecuencia en base a la etiqueta que identifica el tipo de
+ actividad realizada en los flujos de tráfico por la Botnet para el dataset
+ C.
 \end_layout
 
 \end_inset
@@ -967,8 +715,6 @@ name "fig:histogram_c_labels_botnet"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La figura 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1003,16 +749,22 @@ as a través de HTTP y HTTPS.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_87_labels_normal.eps
+	lyxscale 50
 
-\lang spanish
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -1022,14 +774,8 @@ name "fig:histogram_c_labels_normal"
 
 \end_inset
 
-
-\begin_inset Graphics
-	filename /home/h2o/rnn/tesis/tesis_rnn/plots/dataset_87_labels_normal.png
-	lyxscale 50
-
-\end_inset
-
-
+Histograma de frecuencia en base a la etiqueta que identifica el tipo de
+ actividad realizada en los flujos de tráfico normal para el dataset C.
 \end_layout
 
 \end_inset
@@ -1043,16 +789,12 @@ name "fig:histogram_c_labels_normal"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Por otro lado, para el caso de las conexiones etiquetadas como Normal, se
  puede observar que en su mayoría son conexiones establecidas por HTTP,
  con algunas muestras de conexiones a servicios como Jabber y Matlab server.
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Métricas de rendimiento para modelado predictivo
 \begin_inset CommandInset label
 LatexCommand label
@@ -1064,17 +806,13 @@ name "subsec:Métricas-de-rendimiento"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En problemas de clasificación, la fuente principal de métricas de rendimiento
  es una matriz de clasificación (también conocida como matriz de confusión).
- En la Tabla [ref] se puede ver el formato de la matriz de confusión para
- el objeto actual de estudio:
+ En la siguiente tabla se puede ver el formato de la matriz de confusión
+ para el objeto actual de estudio:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -1095,8 +833,6 @@ En problemas de clasificación, la fuente principal de métricas de rendimiento
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Predicción Normal
 \end_layout
 
@@ -1106,8 +842,6 @@ Predicción Normal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Predicción Botnet
 \end_layout
 
@@ -1119,8 +853,6 @@ Predicción Botnet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Normal
 \end_layout
 
@@ -1130,8 +862,6 @@ Normal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 TN
 \end_layout
 
@@ -1141,8 +871,6 @@ TN
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 FP
 \end_layout
 
@@ -1154,8 +882,6 @@ FP
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Botnet
 \end_layout
 
@@ -1165,8 +891,6 @@ Botnet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 FN
 \end_layout
 
@@ -1176,8 +900,6 @@ FN
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 TP
 \end_layout
 
@@ -1192,8 +914,6 @@ TP
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Los valores a lo largo de la diagonal de izquierda a derecha representan
  las clasificaciones correctas (Verdadero Negativo, True Negative o TN y
  Verdadero Positivo, True Positive o TP), mientras que los valores fuera
@@ -1210,22 +930,16 @@ Los valores a lo largo de la diagonal de izquierda a derecha representan
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Las ecuaciones de las métricas más frecuentemente utilizadas pueden ser
  calculadas a partir de la matriz de clasificación, entre las cuales para
  el objeto de estudio se destacan las siguientes:
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 Attack Detection Rate (ADR)
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \frac{TP}{TP+FP}
@@ -1237,20 +951,14 @@ Attack Detection Rate (ADR)
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 False alarm rate (FAR)/False positive rate(FPR)
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Ratio de ejemplos incorrectamente clasificados como positivos.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \frac{FP}{FP+TN}
@@ -1262,20 +970,14 @@ Ratio de ejemplos incorrectamente clasificados como positivos.
 \end_layout
 
 \begin_layout Paragraph
-
-\lang spanish
 Exactitud
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Porcentaje de ejemplos correctamente clasificados.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Formula 
 \[
 \frac{TP+TN}{TP+TN+FP+FN}
@@ -1287,20 +989,14 @@ Porcentaje de ejemplos correctamente clasificados.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Técnicas de muestreo
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Note Note
 status open
 
 \begin_layout Subsubsection
-
-\lang spanish
 (DATA MINING FOR IMBALANCED DATASETS: AN OVERVIEW - SPRINGER05)
 \end_layout
 
@@ -1310,8 +1006,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Como se desprende de las secciones anteriores, los 3 conjuntos de datos
  utilizados presentan un desbalanceo en las clases.
  De acuerdo con 
@@ -1337,8 +1031,6 @@ mundo real
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La pregunta que se presenta entonces es cual sería la distribución correcta
  de los datos para alimentar un algoritmo de aprendizaje.
  Del trabajo realizado por Weist y Provost 
@@ -1357,8 +1049,6 @@ key "Weiss2003"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Al momento de enfrentar un problema de desbalanceo en los datos, nos encontramos
  con la posibilidad de aplicar dos estrategias: Undersampling y Oversampling.
  Con Undersampling lo que se busca es disminuir la cantidad de muestras
@@ -1369,8 +1059,6 @@ Al momento de enfrentar un problema de desbalanceo en los datos, nos encontramos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Entre los casos particulares de aplicación de cada estrategia, el presente
  trabajo estudio se centrará en las dos técnicas más simples, denominados
  Random Undersampling y Random Oversampling.
@@ -1390,8 +1078,6 @@ overfitting
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Como se puede observar, tanto la aplicación de técnicas de sampling como
  la utilización de los datos con su distribución natural presentan ciertas
  problemáticas que se deben abordar al momento de realizar el análisis.
@@ -1401,14 +1087,10 @@ Como se puede observar, tanto la aplicación de técnicas de sampling como
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Técnicas de validación
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Las métricas de rendimiento mencionadas en la sección 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1417,7 +1099,14 @@ reference "subsec:Métricas-de-rendimiento"
 \end_inset
 
  se obtienen a partir de los resultados obtenidos al aplicar una metodología
- denominada Stratified K-Fold Cross Validation.
+ denominada Stratified K-Fold Cross Validation (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Olson2008"
+
+\end_inset
+
+).
  Esta metodología permite minimizar el sesgo asociado con el muestreo aleatorio
  de las muestras de entrenamiento y evaluación al comparar la precisión
  predictiva de dos o más métodos,.
@@ -1431,8 +1120,6 @@ reference "subsec:Métricas-de-rendimiento"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Debido a que la precisión de cross validation depende de la asignación aleatoria
  de los casos individuales a K folds distintos, una práctica común es estratific
 ar los folds.
@@ -1445,18 +1132,14 @@ es que el dataset original.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 K-Fold cross validation es usualmente también llamado 10-fold cross validation,
  debido a que K con el valor de 10 ha sido la práctica más común.
  De hecho, estudios empíricos han mostrado que 10 parece ser el valor óptimo
- de folds (en relación al tiempo que lleva completar el test versus el sesgo
+ de folds (en relación al tiempo que lleva completar el test frente al sesgo
  y varianza asociados al proceso de validación).
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se denota además que k-fold cross validation no requiere más datos en comparació
 n con el método tradicional de experimentación de división única (⅔ para
  entrenamiento, ⅓ para evaluación).
@@ -1467,27 +1150,11 @@ n con el método tradicional de experimentación de división única (⅔ para
  del método tradicional que sólo requiere una vez.
 \end_layout
 
-\begin_layout Standard
-
-\lang spanish
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Olson2008"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
-
-\lang spanish
 Experimentos
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Debido a la complejidad que presenta el entrenamiento de una RNN, se han
  realizado una serie de experimentos para delimitar los parámetros frente
  a los cuales se incrementa la probabilidad de obtener resultados robustos
@@ -1503,67 +1170,79 @@ r en que medida utilizar o no una técnica de muestreo y qué técnica de muestr
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En segundo lugar, se busca conocer cuantos estados del modelo de comportamiento
  de un flujo se deben analizar para poder realizar una predicción efectiva.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Una vez delimitados estos parámetros se procede a realizar la evaluación
  del algoritmo frente a muestras nunca antes vistas y de esta manera obtener
  una medida de la capacidad de generalización del algoritmo.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Análisis de técnicas de muestreo
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El objetivo de este experimento es probar distintas técnicas de sampling
  utilizando no más de los 10 estados iniciales de cada muestra.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Para este experimento se utiliza el dataset A , sobre el cual se aplicó
  Stratified K-Fold Cross Validation en cada corrida del algoritmo.
  La decisión de utilizar no más de 10 estados iniciales responde a que,
- como se discutió en la sección [REF], la mayoría de las muestras del dataset
- tenían entre 1 y 10 estados.
+ como se discutió en la sección 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Dataset-A"
+
+\end_inset
+
+, la mayoría de las muestras del dataset tenían entre 1 y 10 estados.
  Se ejecutan 50 repeticiones del algoritmo para incrementar la confianza
  en los resultados obtenidos.
- Los resultados obtenidos se presentan en la Figura [Ref]
+ Los resultados obtenidos se presentan en la Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:sampling-techniques-comparison"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_1_barplot.png
 	lyxscale 50
+	scale 50
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:sampling-techniques-comparison"
+
+\end_inset
+
+Comparación de los valores de ratio de detección de ataques (ADR) y ratio
+ de falsas alarmas (FAR) omitiendo el uso de una técnica de muestreo y utilizand
+o las técnicas de Undersampling y Oversampling.
 \end_layout
 
 \end_inset
@@ -1577,8 +1256,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En general, se puede ver que los valores de ADR observados no muestran una
  variación significativa entre los 3 casos sometidos a análisis.
  No utilizar un método de muestreo presenta el mejor ADR, con un 98% de
@@ -1639,8 +1316,6 @@ Undersampling
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En cuanto al ratio de falsas alarmas, no utilizar un método de muestreo
  muestra 3,7% de muestras normales clasificadas como Botnet, mientras que
  Undersampling se ubica en el 2% y Oversampling presenta el menor valor
@@ -1654,22 +1329,16 @@ En cuanto al ratio de falsas alarmas, no utilizar un método de muestreo
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Debido a la disminución en la cantidad de ejemplos a analizar por el algoritmo,
  el método de Undersampling es el que presenta menor tiempo de ejecución
  para el entrenamiento del algoritmo.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Análisis de cantidad de estados
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En este experimento se busca encontrar la cantidad de estados que se requiere
  analizar para poder clasificar con la mayor exactitud posible un modelo
  de comportamiento.
@@ -1684,15 +1353,18 @@ En este experimento se busca encontrar la cantidad de estados que se requiere
 \end_layout
 
 \begin_layout Standard
+La Figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:len_comparison"
 
-\lang spanish
-La Figura [Ref] muestra los valores en ADR y FAR luego de 50 repeticiones
- del algoritmo a fin de incrementar la confianza en los resultados obtenidos.
+\end_inset
+
+ muestra los valores en ADR y FAR luego de 50 repeticiones del algoritmo
+ a fin de incrementar la confianza en los resultados obtenidos.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Note Note
 status open
 
@@ -1706,26 +1378,37 @@ TODO:Esta figura puede convertirse en una tabla.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename exp_2_img_1.png
 	lyxscale 50
+	scale 50
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:len_comparison"
+
+\end_inset
+
+Arriba: Comparación de los valores de ADR/FAR para distintas cantidades
+ máximas de estados tomadas en cuenta al momento de entrenar la red.
+ Abajo: cuadro de caja mostrando el valor medio de detección de ataques
+ teniendo en cuenta los resultados obtenidos para cada uno de los casos
+ así como valores máximos y mínimos de detección.
 \end_layout
 
 \end_inset
@@ -1739,8 +1422,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Como se puede observar, los mejores resultados de ADR se obtienen en el
  caso de 25 estados.
  Más allá de este punto se nota una ligera caída en los valores.
@@ -1752,8 +1433,6 @@ Como se puede observar, los mejores resultados de ADR se obtienen en el
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 A partir de los resultados obtenidos podemos deducir que con 10 estados
  se puede obtener un ratio de detección de ataques óptimo en un 96,8% y
  que se mantiene casi invariable al incrementar la cantidad de estados a
@@ -1763,7 +1442,7 @@ A partir de los resultados obtenidos podemos deducir que con 10 estados
  de frecuencia por cantidad de estados para el dataset A 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:dataset_A_len_botnet"
+reference "fig:dataset_A_len"
 
 \end_inset
 
@@ -1774,8 +1453,6 @@ reference "fig:dataset_A_len_botnet"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En conclusión, dado que la diferencia en rendimiento entre 10 y 25 estados
  es despreciable (aproximadamente 0,5% ADR y 0,2% FAR), una longitud de
  10 estados sería de preferencia para asignar como óptimo, dada la reducción
@@ -1786,14 +1463,17 @@ En conclusión, dado que la diferencia en rendimiento entre 10 y 25 estados
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Evaluación del algoritmo contra muestras desconocidas de misma Botnet
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:experimento-3"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El presente experimento tiene como objetivo de evaluar la capacidad de generaliz
 ación del algoritmo contra un dataset compuesto por muestras nunca antes
  vistas provenientes de un mismo tipo de Botnet.
@@ -1803,8 +1483,6 @@ ación del algoritmo contra un dataset compuesto por muestras nunca antes
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 A modo de garantizar una evaluación justa e independiente, la red LSTM se
  entrenó una única vez.
  De esta manera la evaluación del dataset B se aproxima lo máximo posible
@@ -1812,15 +1490,11 @@ A modo de garantizar una evaluación justa e independiente, la red LSTM se
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Del experimento se desprenden los siguientes resultados presentados en la
  siguiente Tabla:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -1841,8 +1515,6 @@ Del experimento se desprenden los siguientes resultados presentados en la
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Predicción Normal
 \end_layout
 
@@ -1852,8 +1524,6 @@ Predicción Normal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Predicción Botnet
 \end_layout
 
@@ -1865,8 +1535,6 @@ Predicción Botnet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Normal
 \end_layout
 
@@ -1876,8 +1544,6 @@ Normal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 116
 \end_layout
 
@@ -1887,8 +1553,6 @@ Normal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 1
 \end_layout
 
@@ -1900,8 +1564,6 @@ Normal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Botnet
 \end_layout
 
@@ -1911,8 +1573,6 @@ Botnet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 181
 \end_layout
 
@@ -1922,8 +1582,6 @@ Botnet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 1497
 \end_layout
 
@@ -1938,8 +1596,6 @@ Botnet
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se observa que la red LSTM ha sido capaz de detectar correctamente el 89,2%
  de las muestras de Botnet presentes en el dataset B.
  A su vez, se observa que sólo el 0,9% de las muestras Normal han sido incorrect
@@ -1947,8 +1603,6 @@ amente clasificadas como Botnet.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El gráfico a continuación muestra un análisis de la detección llevada a
  cabo por la red, donde se visualiza en el eje horizontal las etiquetas
  de tipo de tráfico de las muestras presentes en el dataset B.
@@ -1958,26 +1612,28 @@ El gráfico a continuación muestra un análisis de la detección llevada a
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\lang spanish
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
 \begin_inset Graphics
 	filename /home/h2o/rnn/tesis/tesis_rnn/plots/exp_3_labels_analysis_botnet_10.png
 	lyxscale 50
+	scale 50
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Análisis de etiquetas de las muestras clasificadas como Botnet sobre el
+ dataset B.
 \end_layout
 
 \end_inset
@@ -1991,8 +1647,6 @@ status open
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Un análisis más exhaustivo de la clasificación revela que la red LSTM es
  capaz de discriminar los intentos de conexión de la Botnet (etiquetas 
 \emph on
@@ -2004,17 +1658,10 @@ Attempt
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang spanish
-\begin_inset Caption Standard
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
@@ -2026,6 +1673,14 @@ status collapsed
 
 \end_layout
 
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Análisis de etiquetas de las muestras clasificadas como Normal sobre el
+ dataset B.
+\end_layout
+
 \end_inset
 
 
@@ -2037,21 +1692,22 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En el caso de las muestras normales, las únicas muestras incorrectamente
  clasificadas son conexiones HTTP.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang spanish
 Evaluación del algoritmo contra muestras desconocidas de diferentes Botnets
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:experimento-4"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En este experimento el objetivo es evaluar la capacidad de generalización
  del algoritmo contra un dataset compuesto por muestras nunca antes vistas
  provenientes de otro tipo de Botnet.
@@ -2061,8 +1717,6 @@ En este experimento el objetivo es evaluar la capacidad de generalización
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Al igual que en el experimento anterior, para garantizar una evaluación
  justa e independiente, la red LSTM se entrenó una única vez.
  De esta manera la evaluación del dataset C se aproxima lo máximo posible
@@ -2070,15 +1724,11 @@ Al igual que en el experimento anterior, para garantizar una evaluación
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En la siguiente Tabla se pueden visualizar los resultados obtenidos después
  de realizar el proceso de clasificación utilizando la red LSTM entrenada:
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -2099,8 +1749,6 @@ En la siguiente Tabla se pueden visualizar los resultados obtenidos después
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Predicción Normal
 \end_layout
 
@@ -2110,8 +1758,6 @@ Predicción Normal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Predicción Botnet
 \end_layout
 
@@ -2123,8 +1769,6 @@ Predicción Botnet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Normal
 \end_layout
 
@@ -2134,8 +1778,6 @@ Normal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 287
 \end_layout
 
@@ -2145,8 +1787,6 @@ Normal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 9
 \end_layout
 
@@ -2158,8 +1798,6 @@ Normal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 Botnet
 \end_layout
 
@@ -2169,8 +1807,6 @@ Botnet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 36
 \end_layout
 
@@ -2180,8 +1816,6 @@ Botnet
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang spanish
 152
 \end_layout
 
@@ -2196,8 +1830,6 @@ Botnet
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El modelo muestra un 0.809 de ADR, mientras que para el caso de FAR el valor
  observado es de 0.030.
  Como se puede observar, el modelo ha sufrido una pérdida de rendimiento
@@ -2206,8 +1838,6 @@ El modelo muestra un 0.809 de ADR, mientras que para el caso de FAR el valor
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 A continuación se puede observar dos gráfico de barras mostrando el análisis
  de las muestras clasificadas por la red LSTM.
  El primer gráfico hace referencia a todas las muestras de Botnet que se
@@ -2219,8 +1849,6 @@ A continuación se puede observar dos gráfico de barras mostrando el análisis
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Note Note
 status open
 
@@ -2235,35 +1863,34 @@ TODO: Pasar figura al espaniol.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename exp_4_labels_analysis_stacked.png
+	lyxscale 50
+	scale 50
 
-\lang spanish
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Análisis de etiquetas de las muestras clasificadas como Botnet sobre el
- dataset C.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:dataset_c_labels_analysis_botnet"
 
 \end_inset
 
- 
-\begin_inset Graphics
-	filename exp_4_labels_analysis_stacked.png
-	lyxscale 50
-
-\end_inset
-
-
+Análisis de etiquetas de las muestras clasificadas como Botnet sobre el
+ dataset C.
 \end_layout
 
 \end_inset
@@ -2277,8 +1904,6 @@ name "fig:dataset_c_labels_analysis_botnet"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Así como se puede observar en el análisis de frecuencias de muestras por
  etiquetas realizado sobre el dataset C 
 \begin_inset CommandInset ref
@@ -2324,8 +1949,6 @@ SMTP-Established_SPAM
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El segundo gráfico hace referencia a todas las muestras Normales que se
  encuentran presentes en el dataset C.
  La proporción de muestras correctamente clasificadas como Normal han sido
@@ -2338,8 +1961,6 @@ El segundo gráfico hace referencia a todas las muestras Normales que se
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Note Note
 status open
 
@@ -2354,35 +1975,34 @@ TODO: Pasar figura al espaniol.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename exp_4_labels_analysis_normal_stacked.png
+	lyxscale 50
+	scale 50
 
-\lang spanish
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Análisis de etiquetas de las muestras clasificadas como Botnet sobre el
- dataset C.
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:dataset_c_labels_analysis_normal"
 
 \end_inset
 
-
-\begin_inset Graphics
-	filename exp_4_labels_analysis_normal_stacked.png
-	lyxscale 50
-
-\end_inset
-
-
+Análisis de etiquetas de las muestras clasificadas como Normal sobre el
+ dataset C.
 \end_layout
 
 \end_inset
@@ -2396,8 +2016,6 @@ name "fig:dataset_c_labels_analysis_normal"
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se puede ver que la mayoría de las muestras en el dataset C corresponden
  a conexiones 
 \emph on
@@ -2421,16 +2039,17 @@ HTTP-IM
 \end_layout
 
 \begin_layout Standard
+A partir de los resultados obtenidos tanto en el experimento 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:experimento-3"
 
-\lang spanish
-A partir de los resultados obtenidos tanto en el experimento 3 como en el
- experimento 4
-\begin_inset Note Note
-status open
+\end_inset
 
-\begin_layout Plain Layout
-TODO: Poner referencia a los experimentos 3 y 4
-\end_layout
+ como en el experimento 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:experimento-4"
 
 \end_inset
 
@@ -2472,8 +2091,6 @@ HTTP.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Otra de las razones que podrían explicar por qué la red es incapaz de clasificar
  correctamente algunas de las muestras de Botnet es el comportamiento inherente
  de cada tipo de tráfico.
@@ -2491,14 +2108,10 @@ nto.
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Conclusiones
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 A lo largo de este capítulo se ha puesto a prueba la capacidad de una red
  LSTM para detectar el comportamiento de una Botnet dentro de un conjunto
  de conexiones bajo distintos escenarios.

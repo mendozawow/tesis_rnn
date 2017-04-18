@@ -7,7 +7,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language spanish
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -27,6 +27,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -57,7 +58,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -71,36 +72,21 @@
 \begin_body
 
 \begin_layout Section
-
-\lang spanish
 Introducción
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
-De acuerdo a 
+De acuerdo a Hachem et al.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hachem2011"
 
 \end_inset
 
-, una 
-\lang english
-Botnet
-\lang spanish
- se puede definir como un conjunto de computadoras conectadas a Internet
- y que, generalmente sin el conocimiento del usuario, se encuentran configuradas
- para transmitir datos (incluyendo 
-\lang english
-spam
-\lang spanish
- y 
-\lang english
-viruses
-\lang spanish
-) a otras computadoras en Internet.
+, una Botnet se puede definir como un conjunto de computadoras conectadas
+ a Internet y que, generalmente sin el conocimiento del usuario, se encuentran
+ configuradas para transmitir datos (incluyendo spam y viruses) a otras
+ computadoras en Internet.
  Éstas computadoras son denominadas 
 \begin_inset Quotes eld
 \end_inset
@@ -118,15 +104,7 @@ zombies
 \end_inset
 
 , en el sentido de que sirven a las órdenes de un control maestro, denominado
- 
-\lang english
-Bot
-\lang spanish
- 
-\lang english
-Master
-\lang spanish
-.
+ Bot Master.
  La mayoría de las computadoras controladas de este modo son computadoras
  de hogares.
  En un momento específico, el Bot Master tiene la capacidad para ordenar
@@ -141,8 +119,6 @@ Master
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En los últimos tiempos se ha visto un incremento en la cantidad de Botnets
  maliciosas.
  La motivación detrás de este incremento se puede ver en el rédito económico
@@ -164,14 +140,10 @@ iones y tratan de mantener la actividad en el equipo lo más cercana al uso
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Complejidad en la detección de Botnets
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Tradicionalmente, las técnicas de detección de aplicaciones maliciosas (también
  denominadas malware) estaban basadas en dos enfoques.
  Por un lado los sistemas de reconocimiento basados en reglas que describen
@@ -186,8 +158,6 @@ Tradicionalmente, las técnicas de detección de aplicaciones maliciosas (tambi�
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La hipótesis detrás de estos sistemas es que existe un conjunto de operaciones
  inherentes a cada aplicación/software que opera en la red.
  Este conjunto de operaciones es transformado en una secuencia de datos
@@ -203,8 +173,6 @@ to malicioso no visto con anterioridad.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El proceso para la construcción de un modelo de comportamiento asociado
  a un malware consiste de tres etapas.
  En una primera etapa se genera un modelo de comportamiento considerando
@@ -224,14 +192,10 @@ to a fin de mejorar la capacidad del modelo para reconocer de forma automática
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Descripción de la propuesta
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 La herramienta principal sobre la que se basó este trabajo es Stratosphere
  Testing Framework (STF).
  El concepto detrás de STF es ofrecer una plataforma sobre la cual se puedan
@@ -252,8 +216,6 @@ rá en este trabajo .
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Bajo este contexto, uno de los algoritmos que surge como mejor alternativa
  para abordar el problema son las redes neuronales recurrentes (Recurrent
  Neural Networks o RNN).
@@ -272,8 +234,6 @@ Bajo este contexto, uno de los algoritmos que surge como mejor alternativa
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Por lo expuesto anteriormente, se planteó como objetivo principal de este
  trabajo analizar el potencial de las redes neuronales recurrentes (RNN)
  para el reconocimiento y la detección de comportamiento malicioso en el

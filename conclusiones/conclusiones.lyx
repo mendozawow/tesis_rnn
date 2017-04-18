@@ -7,7 +7,7 @@
 \textclass article
 \use_default_options true
 \maintain_unincluded_children false
-\language english
+\language spanish
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -27,6 +27,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -57,7 +58,7 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_language french
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -71,14 +72,10 @@
 \begin_body
 
 \begin_layout Section
-
-\lang spanish
 Conclusiones
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 En el presente trabajo se ha abordado el problema de detectar Botnets utilizando
  los modelos de comportamiento de STF empleando como algoritmo para la clasifica
 ción de las muestras una red neuronal recurrente del tipo LSTM.
@@ -100,8 +97,6 @@ ción de las muestras una red neuronal recurrente del tipo LSTM.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Se realizaron dos experimentos independientes para analizar la capacidad
  de generalización de la red.
  En el primer experimento, se evaluó el clasificador contra un conjunto
@@ -118,8 +113,6 @@ te a la cantidad de muestras de tráfico de Botnet.
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 El análisis detallado de los resultados muestra que la red LSTM es capaz
  de detectar correctamente el comportamiento de Botnet cuando presenta una
  diferencia significativa al tráfico normal.
@@ -134,14 +127,10 @@ lemente mayor que permita una comparación de los distintos tipos de tráfico
 \end_layout
 
 \begin_layout Subsection
-
-\lang spanish
 Trabajos Futuros
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 A partir del trabajo realizado se abren varios caminos posibles para profundizar
  en la clasificación de flujos de tráfico de red utilizando los modelos
  de comportamiento de STF.
@@ -155,8 +144,6 @@ A partir del trabajo realizado se abren varios caminos posibles para profundizar
 \end_layout
 
 \begin_layout Standard
-
-\lang spanish
 Alternativamente, se podría utilizar otro tipo de red para realizar el análisis
  de las secuencias de estados.
  Una de estas alternativas podría ser utilizar una red neuronal convolucional
