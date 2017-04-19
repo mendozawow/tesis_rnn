@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass ../tesis
 \use_default_options true
 \maintain_unincluded_children false
 \language spanish
@@ -72,6 +72,7 @@
 \begin_body
 
 \begin_layout Section
+\noindent
 Introducción
 \end_layout
 
@@ -210,9 +211,9 @@ La herramienta principal sobre la que se basó este trabajo es Stratosphere
  del valor que toman dichos atributos a lo largo de la vida del flujo.
  STF además permite el etiquetado de cada modelo, por tanto manteniendo
  en la base de datos el tipo de tráfico que identifica a cada modelo específico.
- Los modelos de comportamiento con su etiqueta serán lo que se utilizará
- como entrada para el entrenamiento y evaluación del algoritmo que se implementa
-rá en este trabajo .
+ Los modelos de comportamiento con su etiqueta constituyen la entrada para
+ el entrenamiento y evaluación del algoritmo implementado en el presente
+ trabajo .
 \end_layout
 
 \begin_layout Standard

@@ -1,0 +1,56 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[article]{Your custom Layoutname}
+
+Format 35
+
+# important: include the default "article" layout, we want to extend it
+Input article.layout
+
+# global document settings in LaTeX preamble
+Preamble
+    % remove indentation for paragraphs ?
+    % \setlength{\parindent}{0mm}
+
+    % set spacing between paragraphs
+    \setlength{\parskip}{8pt}
+
+    % set spacing between items in lists
+    \usepackage{enumitem}
+    % play around with these parameters
+    \setlist{topsep=5.2pt,parsep=8pt,partopsep=0pt,itemsep=0pt}
+    \usepackage{sectsty}
+    \usepackage{titlecaps}
+    \sectionfont{\centering\MakeUppercase}
+
+    % --- Dedication command --- %
+    \newcommand{\dedicatoria}[1]{
+      \clearemptydoublepage
+      \thispagestyle{empty}
+      \vspace*{10ex}
+      \begin{Large}
+        \begin{flushright}
+          \emph{#1}
+        \end{flushright}
+      \end{Large}
+      \vfill
+      \clearemptydoublepage
+    }    
+
+EndPreamble
+
+# Just in case you want to create a custom style:
+Style dedicatoria
+    LatexType       Command
+    LatexName     dedicatoria
+    Margin        Dynamic
+    Align         Block
+    BottomSep     0.5
+    LabelType     Static
+    LabelString   "Dedicatoria"
+    LabelSep      xx
+    LabelFont
+        Series      Bold
+        Size        Large
+        Color       Black
+    EndFont
+End

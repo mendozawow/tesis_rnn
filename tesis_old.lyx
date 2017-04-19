@@ -4,14 +4,9 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass tesis
+\textclass article
 \begin_preamble
 \usepackage{soul}
-\renewcommand\thesection{\Roman{section}}
-\fancyhf{}               % Clear fancy header/footer
-\fancyfoot[L]{Pablo Torres}   % My name in Left footer
-\fancyfoot[C]{\thepage}  % Page number in Right footer
-\fancyfoot[R]{"Redes Neuronales Recurrentes para la detección de comportamiento de Botnets"}  % Page number in Right footer
 \begin{titlepage} 	
 \centering 	
 \includegraphics[width=0.15\textwidth]{logo_um.jpg}\par\vspace{1cm} 	
@@ -22,15 +17,13 @@
 \vspace{1.5cm} 	
 {\huge\bfseries \ul{"Redes Neuronales Recurrentes para la detección de comportamiento de Botnets"}\par}
 \vspace{2cm} 	
-{\Large\itshape Pablo Daniel Torres\par}
-\vspace{2cm} 	
+{\Large\itshape Pablo Daniel Torres\par} 	
+\vfill 	
 Profesor Titular\par 	Dr. Ing.   \textsc{Carlos A. Catania}
-\vspace{1.5cm}
-\par Asesor
-\par 	Dr. Ing.   \textsc{Sebastián García}
-% Bottom of the page
-\vspace{2.5cm}
-{\par\large 2017\par} 
+\vfill
+Asesor\par 	Dr. Ing.   \textsc{Sebastián García}
+% Bottom of the page 	
+{\large 2017\par} 
 \end{titlepage} 
 \end_preamble
 \use_default_options true
@@ -41,7 +34,7 @@ tabs-within-sections
 \end_modules
 \maintain_unincluded_children false
 \language spanish
-\language_package auto
+\language_package default
 \inputencoding auto
 \fontencoding global
 \font_roman "default" "default"
@@ -60,10 +53,10 @@ tabs-within-sections
 \bibtex_command default
 \index_command default
 \paperfontsize default
-\spacing onehalf
+\spacing single
 \use_hyperref false
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 1
@@ -87,18 +80,14 @@ tabs-within-sections
 \shortcut idx
 \color #008000
 \end_index
-\leftmargin 4cm
-\topmargin 4.5cm
-\rightmargin 3cm
-\bottommargin 3cm
 \secnumdepth 3
 \tocdepth 3
-\paragraph_separation skip
-\defskip medskip
+\paragraph_separation indent
+\paragraph_indentation default
 \quotes_language french
 \papercolumns 1
 \papersides 1
-\paperpagestyle fancy
+\paperpagestyle default
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -108,64 +97,7 @@ tabs-within-sections
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-thispagestyle{empty}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout dedicatoria
-
-\shape slanted
-Esto es para vos, riber plei.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-setcounter{page}{1}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-abstractname}{Resumen}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{abstract} 
-\end_layout
-
-\begin_layout Plain Layout
-
+\begin_layout Abstract
 Una Botnet se puede visualizar como una red de computadoras comprometidas
  que pueden ser controladas en su conjunto por un nodo central para llevar
  a cabo acciones maliciosas coordinadas.
@@ -197,33 +129,31 @@ os de tal manera de ser capaz de detectar tráfico de Botnet nunca antes
  a su vez una tasa de falsas alarmas mínima, lo que la convierte en una
  potencial candidata para implementación y despliegue en escenarios de la
  vida real.
+ Sin embargo, la experimentación también revela los problemas de la red
+ frente a comportamientos de tráfico de difícil diferenciación cuando el
+ volumen de muestras es considerablemente bajo además de algunos casos particula
+res sobre desbalanceo de tráfico de red.
 \end_layout
+
+\begin_layout Abstract
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
 
 
 \backslash
-end{abstract} 
+bigbreak
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
 
-\backslash
-renewcommand{
-\backslash
-abstractname}{Abstract}
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Abstract
 
-
-\backslash
-begin{abstract}
-\end_layout
-
-\begin_layout Plain Layout
-
+\lang english
 A Botnet can be viewed as a network of compromised computers that can be
  controlled as a whole by a central node to perform coordinated malicious
  actions.
@@ -253,30 +183,12 @@ A Botnet can be viewed as a network of compromised computers that can be
  with a high rate of attack detection, while maintaining a minimum false
  alarm rate, which makes it a potential candidate for implementation and
  deployment in real life scenarios.
+ However, experimentation also reveals the network problems against difficult-to
+-differentiate traffic behaviors when the volume of samples is considerably
+ low, in addition to some particular cases of network traffic unbalance.
 \end_layout
 
-\begin_layout Plain Layout
-
-
-\backslash
-end{abstract}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout Abstract
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
 
